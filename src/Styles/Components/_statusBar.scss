@@ -1,0 +1,127 @@
+// $barDelay: .1s;
+.status-bar-container {
+	margin-bottom: 3em;
+	.status-bar {
+		position: relative;
+		.circles {
+			z-index: 2;
+			display: flex;
+			justify-content: space-between;
+			.status-circle {
+				width: 30px;
+				height: 30px;
+				border-radius: 100%;
+				background-color: var(--clr-grey-200);
+				border: 1px solid var(--clr-border-100);
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				position: relative;
+				outline: 1px solid var(--clr-white-100);
+			}
+
+			.unfilled {
+				&:after {
+					content: "";
+					position: absolute;
+					width: 10px;
+					height: 10px;
+					border-radius: 100%;
+					background-color: var(--clr-white-100);
+					box-shadow: 0 0 10px 5px var(--clr-white-100);
+					border: 1px solid rgba(255, 255, 255, 0.486);
+				}
+			}
+			
+
+			.filled {
+				color: var(--clr-white-100);
+
+				&:after {
+					mix-blend-mode: overlay;
+					content: "";
+					position: absolute;
+					width: 12px;
+					height: 12px;
+					border-radius: 100%;
+					box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
+					background-color: rgba(255, 255, 255, 0.75);
+				}
+
+				animation: circleFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+
+				svg {
+					animation: circleCheck .5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+					animation-delay: inherit;
+				}
+			}
+		}
+
+		.bar {
+			z-index: -1;
+			position: absolute;
+			height: 10px;
+			width: 98%;
+			right: 1%;
+			top: 25%;
+			background-size: 200%;
+			background-position: 100%;
+			animation: statusBar 1s linear forwards;
+            animation-delay: .1647s;
+			transform: translateY(25%);
+		}
+	}
+
+	.status-content {
+		display: flex;
+		justify-content: space-between;
+		// padding: 0 .2em;
+		margin-top: .5em;
+		p {
+			font-size: var(--fs-small-200);
+			color: var(--clr-border-800);
+            // width: 10px;
+            text-align: center;
+		}
+	}
+}
+@keyframes statusBar {
+	0% {
+		background-position: 100%;
+	}
+	100% {
+		background-position: 0;
+	}
+}
+
+@keyframes circleFill {
+	0% {
+		background-color: var(--clr-grey-200);
+		transform: scale(1);
+	}
+	30% {
+		transform: scale(1);
+		box-shadow: 0 0 0 var(--clr-primary-100);
+	}
+	60% {
+		transform: scale(1.2);
+		box-shadow: 0 0 20px var(--clr-primary-100);
+	}
+	100% {
+		transform: scale(1);
+		background-color: var(--clr-primary-400);
+		border: 1px solid var(--clr-primary-100);
+		box-shadow: 0 0 0 var(--clr-primary-100);
+	}
+}
+
+@keyframes circleCheck {
+	0% {
+		opacity: 0;
+		transform: scale(2);
+	}
+	100% {
+		opacity: 1;
+		transform: scale(1);
+	}
+}

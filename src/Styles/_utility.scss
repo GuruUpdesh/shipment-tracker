@@ -1,0 +1,134 @@
+.neo-btn {
+	svg {
+		transform: scale(1);
+		filter: drop-shadow(1px 3px 1.5px transparent);
+		transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+	}
+	transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+	box-shadow: -1px -1px 5px var(--clr-white-100), 1px 1px 2px var(--clr-white-100), 0px 4px 6px var(--clr-border-600),
+		-1px -1px 10px var(--clr-white-100);
+}
+
+.neo-btn-highlight-primary:hover {
+	background: linear-gradient(-45deg, var(--clr-primary-400), var(--clr-primary-200));
+	color: var(--clr-white-100);
+	background-color: var(--clr-primary-400);
+	box-shadow: 1px 1px 2px var(--clr-primary-600), 0px 4px 6px var(--clr-primary-700), -1px -1px 10px var(--clr-primary-200);
+	svg {
+		transform: scale(1.2);
+		filter: drop-shadow(1px 3px 1.5px var(--clr-border-600));
+	}
+}
+
+.neo-btn-highlight:hover {
+	color: black;
+	box-shadow: -1px -1px 5px var(--clr-white-100), 1px 1px 2px var(--clr-white-100), 0px 4px 10px var(--clr-border-800),
+		-1px -1px 10px var(--clr-white-100);
+}
+
+.btn-highlight:hover {
+	background-color: var(--clr-primary-400);
+	color: var(--clr-white-100);
+}
+
+.display-none {
+	display: none !important;
+}
+
+.site-padding {
+	padding-left: calc(100vw / 8);
+	padding-right: calc(100vw / 8);
+
+	@media (max-width: 850px) {
+		padding-left: 2em;
+		padding-right: 2em;
+	}
+}
+
+.btn-black {
+	background-color: var(--clr-dark-400);
+	color: var(--clr-white-100);
+	border-radius: var(--br-section-100);
+	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+	position: relative;
+
+	svg {
+		display: block;
+	}
+
+	span {
+		display: none;
+	}
+
+	&:hover {
+		cursor: pointer;
+		background-color: var(--clr-dark-100);
+
+		span {
+			display: block;
+			position: absolute;
+			background-color: var(--clr-border-800);
+			backdrop-filter: blur(5px);
+			left: 50%;
+			top: 100%;
+			transform: translate(-50%, 8px);
+			transform-origin: top;
+			padding: 0.5em 1em;
+			font-size: var(--fs-small-400);
+			border-radius: 20px;
+			animation: btnLabels 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+			animation-delay: 0.2s;
+			opacity: 0;
+			line-height: 125%;
+
+			&:after {
+				content: " ";
+				display: block;
+				border-style: solid;
+				border-width: 0 0.5em 0.5em 0.5em;
+				border-color: rgba(0, 0, 0, 0);
+				position: absolute;
+				top: 0;
+				left: 50%;
+				border-bottom-color: var(--clr-border-800);
+				transform: translate(-50%, -100%);
+			}
+		}
+	}
+
+	&:active {
+		background-color: var(--clr-primary-400);
+		transform: translateY(2px);
+	}
+}
+
+.btn-normal-text {
+	padding: 0;
+	color: var(--clr-border-800);
+	&:hover {
+		color: var(--clr-dark-400);
+	}
+
+	&:active {
+		color: var(--clr-primary-400);
+		transform: translateY(2px);
+	}
+}
+
+.btn-close {
+	color: rgb(255, 255, 255);
+	position: absolute;
+	right: 1em;
+	top: 1em;
+	border-radius: var(--br-section-100);
+	padding: 0.5em;
+
+	svg {
+		display: block;
+	}
+
+	&:active {
+		background-color: var(--clr-warning);
+	}
+}

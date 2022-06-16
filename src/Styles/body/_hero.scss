@@ -1,0 +1,226 @@
+.hero {
+  width: 100vw;
+  max-height: 900px;
+  padding: 30px;
+  position: relative;
+  
+  .heroContainer {
+    height: 700px;
+    background-color: var(--clr-white-600);
+    border-radius: var(--br-section-100);
+    padding: 64px 75px;
+
+    h1 {
+      font-size: var(--fs-ex-large-100);
+      color: var(--clr-dark-400);
+      max-width: 750px;
+      font-style: normal;
+      font-weight: 700;
+      line-height: 105%;
+    }
+
+    button {
+      margin-top: 60px;
+      background: linear-gradient(
+        45deg,
+        var(--clr-primary-400) 25%,
+        var(--clr-primary-100)
+      );
+      background-size: 300%;
+      color: var(--clr-white-100);
+      border-radius: 55px;
+      font-size: var(--fs-medium-200);
+      font-weight: 300;
+      padding: 0.75em 2em;
+      transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+      b {
+        margin-right: 1em;
+      }
+
+      svg {
+        transform: translateY(3px) scale(1.5);
+        transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+      }
+
+      &:hover {
+        background-size: 100%;
+        box-shadow: -2px 2px 2px #35a86b;
+
+        svg {
+          transform: translateY(3px) scale(1.5) translateX(5px);
+        }
+      }
+    }
+  }
+
+  .imageContainer {
+    pointer-events: none;
+    overflow: hidden;
+    img {
+      position: absolute;
+      width: 1750px;
+      right: -100px;
+      top: -50px;
+      &:first-child {
+        animation: boxFloating 5s ease-in-out infinite;
+      }
+      &:nth-child(2) {
+        animation: boxFloating 6s ease-in-out infinite;
+        animation-delay: 1s;
+      }
+      &:nth-child(3) {
+        animation: boxFloating 8s ease-in-out infinite;
+        animation-delay: 2s;
+      }
+    }
+  }
+}
+
+@keyframes boxFloating {
+  0% {
+    transform: translate(0, 0);
+  }
+  25% {
+    transform: translate(10px, 4px);
+  }
+  50% {
+    transform: translate(5px, -4px);
+  }
+  75% {
+    transform: translate(0px, -15px);
+  }
+}
+
+.homepage-nav {
+  padding: 1rem 2rem;
+  padding-bottom: 0;
+  display: flex;
+  justify-content: space-between;
+
+
+  h3 {
+    font-family: "Rubik";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 36px;
+    line-height: 105%;
+    color: var(--clr-primary-400);
+  }
+}
+
+.courier-slider-container {
+  background-color: var(--clr-white-600);
+  border-radius: var(--br-section-100);
+  padding: 1em;
+  // width: 60vw;
+  // margin: 5em;
+  z-index: 0;
+  position: relative;
+
+  h3 {
+    font-weight: 500;
+    margin-left: 22px;
+    margin-bottom: 1em;
+
+  }
+
+  .slider {
+    display: flex;
+    background-color: var(--clr-white-100);
+    border-radius: var(--br-section-100);
+    overflow: hidden;
+  }
+
+  .control {
+    display: block;
+    z-index: 10;
+
+    &:first-child {
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    &:last-child {
+      background: linear-gradient(
+        to left,
+        rgba(255, 255, 255, 1) 0%,
+        rgba(255, 255, 255, 0) 100%
+      );
+    }
+
+    &:hover {
+      opacity: 1;
+    }
+
+    &:active {
+      transform: translateY(2px);
+    }
+  }
+
+  .courier-images {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 1em;
+    z-index: 2;
+    animation: scroll 20s linear infinite;
+
+    img {
+      pointer-events: none;
+      filter: saturate(0%);
+      width: 160px;
+      mix-blend-mode: multiply;
+      user-select: none;
+      margin-left: 40px;
+    }
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-200px * 3));
+  }
+}
+
+.hero-grid-section {
+  padding: 30px;
+  display: grid;
+  grid-template-columns: 1fr 8fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 1rem;
+}
+
+.description-container {
+  background-color: var(--clr-white-600);
+  border-radius: var(--br-section-100);
+  position: relative;
+  padding: 1em;
+  grid-row: 1 / 3;
+  color: var(--clr-dark-400);
+  font-size: var(--fs-medium-200);
+
+  button {
+    position: absolute;
+    bottom: 1em;
+    right: 1em;
+    padding: .5em;
+    font-size: var(--fs-medium-200);
+    svg {
+      display: block;
+    }
+  }
+}
+
+.footer {
+  border-top: 1px solid var(--clr-border-800);
+  background-color: red;
+  width: 100vw;
+  height: 200px;
+}

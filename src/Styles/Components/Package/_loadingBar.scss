@@ -1,0 +1,54 @@
+.loading-bar-container {
+    display: flex;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    z-index: 100;
+    background-color: var(--clr-white-600);
+}
+
+.loading-bar {
+    height: 10px;
+    width: 15vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    position: relative;
+    div {
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+        position: absolute;
+
+        transition: width .5s linear;
+    }
+}
+
+.closeLoaderAnimation {
+    animation: closeLoaderAnimation 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+    animation-delay: 1s;
+}
+
+@keyframes closeLoaderAnimation {
+    0% {
+        transform: scaleY(1) scaleX(1);
+    }
+    100% {
+        transform: scaleY(0) scaleX(0);
+    }
+}
+
+.closeLoadingContainerAnimation {
+        animation: closeLoadingContainerAnimation .5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+        animation-delay: 2s;
+}
+
+@keyframes closeLoadingContainerAnimation {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}

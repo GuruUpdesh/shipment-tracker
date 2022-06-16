@@ -1,0 +1,18 @@
+.flex-space-between {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.grid-3row-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    @media screen and (max-width: 2000px) {
+		grid-template-columns: 1fr 1fr;
+	}
+	@media screen and (max-width: 750px) {
+		grid-template-columns: 1fr;
+	}
+    column-gap: 2em;
+    row-gap: 2em;
+}
