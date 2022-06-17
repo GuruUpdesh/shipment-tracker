@@ -17,6 +17,7 @@ const Input = ({ placeholder, value, setValue, type }) => {
       <span>{placeholder}</span>
       <input
         onChange={(e) => setValue(e.target.value)}
+        value={value}
         type={type === "password" ? (visible ? "text" : type) : type}
       />
       {type == "password" ? (

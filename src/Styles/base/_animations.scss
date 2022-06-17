@@ -79,7 +79,7 @@
 		opacity: 0;
 	}
 	100% {
-		opacity: 0.4;
+		opacity: .4;
 		background-position: center;
 	}
 }
@@ -89,12 +89,23 @@
 		opacity: 0;
 		transform: translate(-50%, -2px) scaleY(0.75);
 	}
-	5% {
+	2% {
+		opacity: 0;
+	}
+	25% {
+		opacity: 1;
+		transform: translate(-50%, 8px) scaleY(1);
+	}
+	75% {
+		opacity: 1;
+		transform: translate(-50%, 8px) scaleY(1);
+	}
+	98% {
 		opacity: 0;
 	}
 	100% {
-		opacity: 1;
-		transform: translate(-50%, 8px) scaleY(1);
+		opacity: 0;
+		transform: translate(-50%, -2px) scaleY(0.75);
 	}
 }
 

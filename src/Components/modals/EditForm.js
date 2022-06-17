@@ -7,10 +7,10 @@ import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import { GoPackage } from "react-icons/go";
 import { AiFillPlusCircle} from "react-icons/ai";
 
-const AddForm = ({ isOpen, setIsOpen }) => {
-  const [courier, setCourier] = useState("");
-  const [name, setName] = useState("");
-  const [trackingNumber, setTrackingNumber] = useState("");
+const EditForm = ({ isOpen, setIsOpen, header }) => {
+  const [courier, setCourier] = useState(header.courier);
+  const [name, setName] = useState(header.name);
+  const [trackingNumber, setTrackingNumber] = useState(header.trackingNumber);
   const [errors, setErrors] = useState({
     courier: null,
     name: null,
@@ -37,7 +37,7 @@ const AddForm = ({ isOpen, setIsOpen }) => {
     if (name.length === 0) {
       tempErrors.name = "name is required";
     }
-    if (["UPS", "USPS", "FedEx", "DHL"].indexOf(courier) === -1) {
+    if (["UPS", "USPS", "FEDEX", "DHL"].indexOf(courier.toUpperCase()) === -1) {
       tempErrors.courier = "courier is required";
     }
     if (trackingNumber.length === 0) {
@@ -58,11 +58,12 @@ const AddForm = ({ isOpen, setIsOpen }) => {
   };
 
   const createPackage = async () => {
-    const response = await fetch("/api/add", {
-      method: "PUT",
+    const response = await fetch("/api/update", {
+      method: "POST",
       body: JSON.stringify({
         email: localStorage.getItem("email"),
         id: localStorage.getItem("id"),
+        packageId: header.id,
         name: name,
         trackingNumber: trackingNumber,
         courier: courier,
@@ -99,8 +100,8 @@ const AddForm = ({ isOpen, setIsOpen }) => {
           <AiFillPlusCircle />
 
           </div>
-          <h1>Add Package</h1>
-          <p>fill out your package details to start tracking</p>
+          <h1>Edit Package</h1>
+          <p>change your package details</p>
         </div>
         <Input
           placeholder={"name"}
@@ -141,11 +142,11 @@ const AddForm = ({ isOpen, setIsOpen }) => {
           }}
         >
           <div className="pulse" style={{"top": y, "left": x}}></div>
-          add
+          save
         </button>
       </div>
     </Modal>
   );
 };
 
-export default AddForm;
+export default EditForm;

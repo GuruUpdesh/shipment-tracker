@@ -1,6 +1,9 @@
 // $barDelay: .1s;
 .status-bar-container {
 	margin-bottom: 3em;
+    animation: fadeRight .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+    animation-delay: .165s;
+
 	.status-bar {
 		position: relative;
 		.circles {
@@ -32,10 +35,10 @@
 					border: 1px solid rgba(255, 255, 255, 0.486);
 				}
 			}
-			
 
 			.filled {
 				color: var(--clr-white-100);
+				// color: red;
 
 				&:after {
 					mix-blend-mode: overlay;
@@ -51,14 +54,14 @@
 				animation: circleFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 
 				svg {
-					animation: circleCheck .5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+					animation: circleCheck 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 					animation-delay: inherit;
 				}
 			}
 		}
 
 		.bar {
-			z-index: -1;
+			z-index: 0;
 			position: absolute;
 			height: 10px;
 			width: 98%;
@@ -67,24 +70,40 @@
 			background-size: 200%;
 			background-position: 100%;
 			animation: statusBar 1s linear forwards;
-            animation-delay: .1647s;
+			animation-delay: 0.1647s;
 			transform: translateY(25%);
 		}
 	}
 
-	.status-content {
+	.status-icons {
 		display: flex;
 		justify-content: space-between;
-		// padding: 0 .2em;
-		margin-top: .5em;
-		p {
-			font-size: var(--fs-small-200);
-			color: var(--clr-border-800);
-            // width: 10px;
-            text-align: center;
+		margin-top: 0.5em;
+		padding: 0 0.3em;
+
+		.icon-container {
+			color: var(--clr-dark-400);
+			opacity: 0.5;
+			.icon {
+				font-size: var(--fs-medium-400);
+			}
+
+			.small-icon {
+				transform: translate(-6px, 2px);
+				background-color: var(--clr-white-100);
+			}
 		}
 	}
 }
+
+.status-content {
+	display: flex;
+	justify-content: space-between;
+	color: var(--clr-border-800);
+	font-size: var(--fs-small-300);
+	margin-bottom: 1em;
+}
+
 @keyframes statusBar {
 	0% {
 		background-position: 100%;

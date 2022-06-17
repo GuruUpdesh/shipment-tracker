@@ -5,9 +5,13 @@ import AddForm from "../Components/modals/AddForm";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BiPlus } from "react-icons/bi";
-import InfoModal from "../Components/modals/InfoModal";
+import InfoModal from "../Components/modals/infoModal/InfoModal";
+import { useNavigate } from "react-router-dom";
+import Confirm from "../Components/modals/Confirm";
+import EditForm from "../Components/modals/EditForm";
 
 const MainPage = () => {
+	const navigate = useNavigate();
 	const [packages, setPackages] = useState([]);
 	const packagesRef = useRef([]);
 
@@ -18,16 +22,40 @@ const MainPage = () => {
 
 	// on load
 	useEffect(() => {
-		packagesRef.current = [];
-		loadPackages();
+		if (!localStorage.getItem("token")) {
+			navigate("/login");
+		}
+		authenticate();
+		async function authenticate() {
+			const response = await fetch("/api/authenticate", {
+				method: "POST",
+				body: JSON.stringify({
+					email: localStorage.getItem("email"),
+					id: localStorage.getItem("id"),
+				}),
+				headers: {
+					"Content-Type": "application/json",
+					"x-access-token": `${localStorage.getItem("token")}`,
+				},
+			});
+
+			if (response.status === 200) {
+				packagesRef.current = [];
+				loadPackages();
+				return;
+			}
+
+			navigate("/login");
+		}
 	}, []);
 
 	const loadPackages = async () => {
 		const response = await fetch("/api/packages-data", {
 			method: "POST",
-			body: JSON.stringify({ email: "guruupdeshsingh@gmail.com" }),
+			body: JSON.stringify({ email: localStorage.getItem("email"), id: localStorage.getItem("id") }),
 			headers: {
 				"Content-Type": "application/json",
+				"x-access-token": `${localStorage.getItem("token")}`,
 			},
 		});
 
@@ -49,9 +77,10 @@ const MainPage = () => {
 	const loadPackage = async (id, index) => {
 		await fetch("/api/package-tracking-data", {
 			method: "POST",
-			body: JSON.stringify({ id }),
+			body: JSON.stringify({ packageId: id, id: localStorage.getItem("id") }),
 			headers: {
 				"Content-Type": "application/json",
+				"x-access-token": `${localStorage.getItem("token")}`,
 			},
 		}).then((response) => {
 			response.json().then((data) => {
@@ -66,6 +95,8 @@ const MainPage = () => {
 
 	const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 	const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
+	const [isConfirmOpen, setIsConfirmOpen] = useState(false)
+	const [isEditFormOpen, setIsEditFormOpen] = useState(false)
 	const [currentInfo, setCurrentInfo] = useState({});
 
 	const notify = (message, duration) =>
@@ -101,7 +132,14 @@ const MainPage = () => {
 							if (object?.state) {
 								return <div className={"package-loading-container"} key={index}></div>;
 							} else {
-								return <Package packageInfo={object} setCurrentInfo={setCurrentInfo} setIsInfoModalOpen={setIsInfoModalOpen} key={index} />;
+								return (
+									<Package
+										packageInfo={object}
+										setCurrentInfo={setCurrentInfo}
+										setIsInfoModalOpen={setIsInfoModalOpen}
+										key={index}
+									/>
+								);
 							}
 						})}
 						<button
@@ -116,7 +154,22 @@ const MainPage = () => {
 					</div>
 				</div>
 				{isAddFormOpen && <AddForm isOpen={isAddFormOpen} setIsOpen={setIsAddFormOpen} />}
-				{isInfoModalOpen && <InfoModal isOpen={isInfoModalOpen} setIsOpen={setIsInfoModalOpen} packageInfo={currentInfo} notify={notify}/>}
+				{isInfoModalOpen && (
+					<InfoModal
+						isOpen={isInfoModalOpen}
+						setIsOpen={setIsInfoModalOpen}
+						packageInfo={currentInfo}
+						notify={notify}
+						setIsConfirmOpen={setIsConfirmOpen}
+						setIsEditFormOpen={setIsEditFormOpen}
+					/>
+				)}
+				{isConfirmOpen && (
+					<Confirm header={currentInfo.header} notify={notify} setIsOpen={setIsConfirmOpen}/>
+				)}
+				{isEditFormOpen && (
+					<EditForm isOpen={isEditFormOpen} setIsOpen={setIsEditFormOpen} header={currentInfo.header}/>
+				)}
 			</>
 		</MainLayout>
 	);

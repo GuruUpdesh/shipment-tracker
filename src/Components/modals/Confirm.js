@@ -1,0 +1,46 @@
+import React, { useRef } from "react";
+import Modal from "./Modal";
+import useOnClickOutside from "../../Hooks/useOnClickOutside";
+
+const Confirm = ({ setIsOpen, header, notify }) => {
+	const deletePackage = async () => {
+		const response = await fetch("/api/delete", {
+			method: "DELETE",
+			body: JSON.stringify({
+				id: localStorage.getItem("id"),
+				trackingNumber: header.trackingNumber,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+				"x-access-token": `${localStorage.getItem("token")}`,
+			},
+		});
+
+		if (response.status === 200) {
+			notify(`deleted ${header.name}`);
+		}
+
+        setIsOpen(false)
+	};
+
+	const ref = useRef();
+	useOnClickOutside(ref, () => {
+		setIsOpen(false);
+	});
+	return (
+		<Modal>
+			<div className="confirm-modal" ref={ref}>
+				<div className="header">
+					<h1>Delete {header.name}?</h1>
+					<p>packages will be deleted forever</p>
+				</div>
+				<div className="content">
+					<button className="btn-normal-text" onClick={() => setIsOpen(false)}>cancel</button>
+					<button className="btn-black" onClick={deletePackage} >confirm</button>
+				</div>
+			</div>
+		</Modal>
+	);
+};
+
+export default Confirm;

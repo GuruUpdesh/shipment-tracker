@@ -20,7 +20,7 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen }) => {
 						<div
 							className="package-img"
 							style={{
-								backgroundImage: `url(${packageInfo.header.photos[0]})`,
+								backgroundImage: `url(${packageInfo.header.photos[packageInfo.header.imgIndex]})`,
 							}}
 						></div>
 						<div className="content-wrapper">
@@ -29,7 +29,7 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen }) => {
 						</div>
 					</div>
 					<div className="marker"></div>
-					<PackageMap center={packageInfo.header.coordinates} />
+					<PackageMap center={packageInfo.header.coordinates} zoom={10}/>
 					<div className="bottom-right-indicators">
 						{(packageInfo.header.eta || packageInfo.header.status.includes("transit")) && (
 							<div className="indicator">
