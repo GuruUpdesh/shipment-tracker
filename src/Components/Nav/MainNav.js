@@ -6,6 +6,7 @@ import { IoSearch } from "react-icons/io5";
 import Settings from "./Settings";
 import Filter from "./Filter";
 import Fuse from "fuse.js";
+import ButtonBlack from "../ButtonBlack";
 
 const MainNav = ({ packages, setFilteredPackages, setIsAddFormOpen }) => {
 	const [settingsOpen, setSettingsOpen] = useState(false);
@@ -37,39 +38,42 @@ const MainNav = ({ packages, setFilteredPackages, setIsAddFormOpen }) => {
 	}
 
 	return (
-		<nav className='main-nav flex-space-between  site-padding'>
-			{settingsOpen && (
-				<Settings settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen} />
-			)}
+		<nav className="main-nav flex-space-between  site-padding">
+			{settingsOpen && <Settings settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen} />}
 			<div>
-				<button onClick={toggleSettingsMenu} className='btn-highlight btn-settings'>
+				<ButtonBlack className="btn-settings" onClick={toggleSettingsMenu}>
 					<MdSettings />
 					<span>settings</span>
-				</button>
-				<button className='btn-highlight'>
-					<BsFillArchiveFill />
+				</ButtonBlack>
+				<ButtonBlack >
+					<BsFillArchiveFill/>
 					<span>archive</span>
-				</button>
+				</ButtonBlack>
 			</div>
 			<div>
-				<div className='search '>
+				<div className="search ">
 					<input
 						value={searchValue}
-						placeholder='search'
-						type='text'
+						placeholder="search"
+						type="text"
 						onChange={(e) => searchHandler(e.target.value)}
 					/>
-					<div className='search-icon'>
+					<div className="search-icon">
 						<IoSearch />
 					</div>
 				</div>
-				<Filter />
+				{/* <Filter /> */}
 			</div>
 			<div>
-				<button className='btn-add btn-highlight' onClick={() => {setIsAddFormOpen(true)}}>
+				<ButtonBlack
+					className="btn-add"
+					onClick={() => {
+						setIsAddFormOpen(true);
+					}}
+				>
 					<BiPlus />
 					<span>add</span>
-				</button>
+				</ButtonBlack>
 			</div>
 		</nav>
 	);

@@ -98,9 +98,28 @@
 		}
 	}
 
+	.pulse {
+		width: 20px;
+		height: 20px;
+		border-radius: 100%;
+		background-color: var(--clr-white-100);
+		position: absolute;
+		opacity: 0;
+	}
+
+	&:focus {
+		.pulse {
+			animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+		}
+	}
+
 	&:active {
 		background-color: var(--clr-primary-400);
 		transform: translateY(2px);
+
+		.pulse {
+			animation: none;
+		}
 
 		span {
 			display: none;

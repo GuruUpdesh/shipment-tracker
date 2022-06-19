@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 
-const Input = ({ placeholder, value, setValue, type }) => {
+const Input = ({ placeholder, value, setValue, type, autoFocus }) => {
   const [visible, setVisible] = useState(false);
 
   const toggleVisibility = () => {
@@ -19,6 +19,7 @@ const Input = ({ placeholder, value, setValue, type }) => {
         onChange={(e) => setValue(e.target.value)}
         value={value}
         type={type === "password" ? (visible ? "text" : type) : type}
+        autoFocus = {autoFocus}
       />
       {type == "password" ? (
         <>

@@ -2,9 +2,11 @@ import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
 import MainLayout from "../Components/Layout/MainLayout";
 import Package from "../Components/Package/Package";
 import AddForm from "../Components/modals/AddForm";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer, toast, cssTransition } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BiPlus } from "react-icons/bi";
+import { BsCheck } from "react-icons/bs";
+import {AiOutlineWarning} from "react-icons/ai"
 import InfoModal from "../Components/modals/infoModal/InfoModal";
 import { useNavigate } from "react-router-dom";
 import Confirm from "../Components/modals/Confirm";
@@ -22,9 +24,6 @@ const MainPage = () => {
 
 	// on load
 	useEffect(() => {
-		if (!localStorage.getItem("token")) {
-			navigate("/login");
-		}
 		authenticate();
 		async function authenticate() {
 			const response = await fetch("/api/authenticate", {
@@ -35,7 +34,6 @@ const MainPage = () => {
 				}),
 				headers: {
 					"Content-Type": "application/json",
-					"x-access-token": `${localStorage.getItem("token")}`,
 				},
 			});
 
@@ -55,7 +53,6 @@ const MainPage = () => {
 			body: JSON.stringify({ email: localStorage.getItem("email"), id: localStorage.getItem("id") }),
 			headers: {
 				"Content-Type": "application/json",
-				"x-access-token": `${localStorage.getItem("token")}`,
 			},
 		});
 
@@ -70,21 +67,22 @@ const MainPage = () => {
 			loadPackage(packages[i]._id, i);
 			packages[i].state = "loading";
 		}
+		console.log(packages)
 		packagesRef.current = packages;
 		setPackages(packages);
 	};
 
 	const loadPackage = async (id, index) => {
+		console.log(id, index)
 		await fetch("/api/package-tracking-data", {
 			method: "POST",
 			body: JSON.stringify({ packageId: id, id: localStorage.getItem("id") }),
 			headers: {
 				"Content-Type": "application/json",
-				"x-access-token": `${localStorage.getItem("token")}`,
 			},
 		}).then((response) => {
 			response.json().then((data) => {
-				console.log(data);
+				data.header.index = index;
 				const copy = [...packagesRef.current];
 				copy[index] = data;
 				packagesRef.current = copy;
@@ -93,20 +91,61 @@ const MainPage = () => {
 		});
 	};
 
+	const reloadPackage = (index) => {
+		const copy = [...packagesRef.current];
+		copy[index].state = "loading";
+		setPackages(packagesRef.current);
+
+		loadPackage(packagesRef.current[index].header.id, index);
+	};
+
+	const removePackage = (index) => {
+		const copy = [...packagesRef.current]
+		copy.splice(index, 1)
+		packagesRef.current = copy
+		setPackages(copy)
+	};
+
+	const addLoadingPackage = (packageData) => {
+		const copy = [...packagesRef.current]
+		packageData.state = "loading"
+		console.log(packageData)
+		copy.push(packageData)
+		packagesRef.current = copy
+		setPackages(copy)
+		loadPackage(packageData._id, packagesRef.current.length-1)
+	}
+
 	const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 	const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
-	const [isConfirmOpen, setIsConfirmOpen] = useState(false)
-	const [isEditFormOpen, setIsEditFormOpen] = useState(false)
+	const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+	const [isEditFormOpen, setIsEditFormOpen] = useState(false);
 	const [currentInfo, setCurrentInfo] = useState({});
 
-	const notify = (message, duration) =>
-		toast.success(message, {
-			position: "bottom-center",
-			autoClose: duration,
-			closeOnClick: true,
-			pauseOnHover: false,
-			draggable: true,
-		});
+	const fade = cssTransition({
+		enter: "fade-up",
+		exit: "fade-down"
+	})
+	const notify = (message, duration, type) => {
+		if (type === "success") {
+			toast.success(message, {
+				autoClose: duration,
+				closeOnClick: true,
+				pauseOnHover: false,
+				hideProgressBar: true,
+				icon: ({ theme, type }) => <BsCheck />,
+				transition: fade
+			});
+		} else if (type === "warning") {
+			toast.error(message, {
+				autoClose: duration,
+				closeOnClick: true,
+				pauseOnHover: false,
+				icon: ({ theme, type }) => <AiOutlineWarning />,
+				transition: fade
+			})
+		}
+	};
 
 	return (
 		<MainLayout
@@ -119,12 +158,9 @@ const MainPage = () => {
 			<>
 				<ToastContainer
 					position="bottom-center"
-					autoClose={5000}
-					hideProgressBar={false}
-					newestOnTop={false}
 					closeOnClick
-					rtl={false}
-					draggable
+					draggable={false}
+					toastId = "test"
 				/>
 				<div className="package-wrapper">
 					<div className="grid-3row-layout">
@@ -153,7 +189,7 @@ const MainPage = () => {
 						</button>
 					</div>
 				</div>
-				{isAddFormOpen && <AddForm isOpen={isAddFormOpen} setIsOpen={setIsAddFormOpen} />}
+				{isAddFormOpen && <AddForm isOpen={isAddFormOpen} setIsOpen={setIsAddFormOpen} addLoadingPackage={addLoadingPackage} notify={notify} />}
 				{isInfoModalOpen && (
 					<InfoModal
 						isOpen={isInfoModalOpen}
@@ -164,11 +200,15 @@ const MainPage = () => {
 						setIsEditFormOpen={setIsEditFormOpen}
 					/>
 				)}
-				{isConfirmOpen && (
-					<Confirm header={currentInfo.header} notify={notify} setIsOpen={setIsConfirmOpen}/>
-				)}
+				{isConfirmOpen && <Confirm header={currentInfo.header} notify={notify} setIsOpen={setIsConfirmOpen} removePackage={removePackage}/>}
 				{isEditFormOpen && (
-					<EditForm isOpen={isEditFormOpen} setIsOpen={setIsEditFormOpen} header={currentInfo.header}/>
+					<EditForm
+						isOpen={isEditFormOpen}
+						setIsOpen={setIsEditFormOpen}
+						header={currentInfo.header}
+						reloadPackage={reloadPackage}
+						notify={notify}
+					/>
 				)}
 			</>
 		</MainLayout>

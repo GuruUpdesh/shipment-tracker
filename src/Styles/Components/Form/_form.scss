@@ -27,32 +27,32 @@
   .selector {
     z-index: 10;
   }
-  .btn-black:last-child {
-    position: relative;
-    // overflow: hidden;
+  // .btn-black:last-child {
+  //   position: relative;
+  //   // overflow: hidden;
 
-    .pulse {
-      width: 20px;
-      height: 20px;
-      border-radius: 100%;
-      background-color: var(--clr-white-100);
-      position: absolute;
-      // top: 0;
-      // left: 0;
-      opacity: 0;
-    }
-    &:focus {
-      .pulse {
-        animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-      }
-    }
+  //   .pulse {
+  //     width: 20px;
+  //     height: 20px;
+  //     border-radius: 100%;
+  //     background-color: var(--clr-white-100);
+  //     position: absolute;
+  //     // top: 0;
+  //     // left: 0;
+  //     opacity: 0;
+  //   }
+  //   &:focus {
+  //     .pulse {
+  //       animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  //     }
+  //   }
 
-    &:active {
-      .pulse {
-        animation: none;
-      }
-    }
-  }
+  //   &:active {
+  //     .pulse {
+  //       animation: none;
+  //     }
+  //   }
+  // }
 
   p {
     color: var(--clr-warning);

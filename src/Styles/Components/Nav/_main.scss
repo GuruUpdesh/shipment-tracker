@@ -15,57 +15,58 @@
 			display: block;
 			fill: var(--clr-white-100);
 		}
-		span {
-			display: none;
-		}
+		// span {
+		// 	display: none;
+		// }
 
 		&:first-child {
 			margin-right: 1em;
 		}
 
-		&:hover {
-			background: var(--clr-dark-200);
-			span {
-				display: block;
-				position: absolute;
-				background-color: var(--clr-border-800);
-				backdrop-filter: blur(5px);
-				left: 50%;
-				top: 100%;
-				transform: translate(-50%, 8px);
-				padding: 0.5em;
-				font-size: var(--fs-small-400);
-				border-radius: 6px;
-				animation: btnLabels 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-				animation-delay: 0.2s;
-				opacity: 0;
+		// &:hover {
+		// 	background: var(--clr-dark-200);
+		// 	span {
+		// 		display: block;
+		// 		position: absolute;
+		// 		background-color: var(--clr-border-800);
+		// 		backdrop-filter: blur(5px);
+		// 		left: 50%;
+		// 		top: 100%;
+		// 		transform: translate(-50%, 8px);
+		// 		padding: 0.5em;
+		// 		font-size: var(--fs-small-400);
+		// 		border-radius: 6px;
+		// 		animation: btnLabels 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+		// 		animation-delay: 0.2s;
+		// 		opacity: 0;
 
-				&:after {
-					content: " ";
-					display: block;
-					border-style: solid;
-					border-width: 0 0.5em 0.5em 0.5em;
-					border-color: rgba(0, 0, 0, 0);
-					position: absolute;
-					top: 0;
-					left: 50%;
-					border-bottom-color: var(--clr-border-800);
-					transform: translate(-50%, -100%);
-				}
-			}
-		}
+		// 		&:after {
+		// 			content: " ";
+		// 			display: block;
+		// 			border-style: solid;
+		// 			border-width: 0 0.5em 0.5em 0.5em;
+		// 			border-color: rgba(0, 0, 0, 0);
+		// 			position: absolute;
+		// 			top: 0;
+		// 			left: 50%;
+		// 			border-bottom-color: var(--clr-border-800);
+		// 			transform: translate(-50%, -100%);
+		// 		}
+		// 	}
+		// }
 	}
 
 	.btn-settings {
 		svg {
 			transition: 0s linear;
 		}
-		&:hover {
+		&:focus {
 			svg {
 				transform: rotate(360deg);
 				transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			}
 		}
+
 	}
 
 	.btn-add {

@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import Modal from "./Modal";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
+import {RiCloseFill} from "react-icons/ri"
 
-const Confirm = ({ setIsOpen, header, notify }) => {
+const Confirm = ({ setIsOpen, header, notify, removePackage }) => {
 	const deletePackage = async () => {
 		const response = await fetch("/api/delete", {
 			method: "DELETE",
@@ -17,7 +18,8 @@ const Confirm = ({ setIsOpen, header, notify }) => {
 		});
 
 		if (response.status === 200) {
-			notify(`deleted ${header.name}`);
+			removePackage(header.index)
+			notify(`deleted ${header.name}`, 2000, "warning");
 		}
 
         setIsOpen(false)
@@ -30,6 +32,15 @@ const Confirm = ({ setIsOpen, header, notify }) => {
 	return (
 		<Modal>
 			<div className="confirm-modal" ref={ref}>
+			<button
+					className="btn-close btn-black"
+					onClick={() => {
+						setIsOpen(false);
+					}}
+				>
+					<RiCloseFill />
+				</button>
+				
 				<div className="header">
 					<h1>Delete {header.name}?</h1>
 					<p>packages will be deleted forever</p>

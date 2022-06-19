@@ -6,8 +6,11 @@ import Selector from "../Form/Selector";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import { GoPackage } from "react-icons/go";
 import { AiFillPlusCircle} from "react-icons/ai";
+import ButtonBlack from "../ButtonBlack";
+import useEscape from "../../Hooks/useEscape";
 
-const AddForm = ({ isOpen, setIsOpen }) => {
+
+const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
   const [courier, setCourier] = useState("");
   const [name, setName] = useState("");
   const [trackingNumber, setTrackingNumber] = useState("");
@@ -74,14 +77,19 @@ const AddForm = ({ isOpen, setIsOpen }) => {
     });
 
     const jsonResponse = await response.json();
-    console.log(jsonResponse);
+    
+    if (response.status === 201) {
+      addLoadingPackage(jsonResponse.packageData)
+      notify(`added ${name}`, 2000, "success")
+    } else {
+      notify(jsonResponse.message, 2000, "warning")
+    }
   };
 
   const ref = useRef();
   useOnClickOutside(ref, () => setIsOpen(false));
 
-  const [x, setX] = useState(-500);
-  const [y, setY] = useState(-100);
+  useEscape(() => {setIsOpen(false)})
   return (
     <Modal>
       <div className="add-form" ref={ref}>
@@ -107,6 +115,7 @@ const AddForm = ({ isOpen, setIsOpen }) => {
           value={name}
           setValue={setName}
           type="text"
+          autoFocus={true}
         />
         <p>{errors.name}</p>
         <Input
@@ -131,18 +140,9 @@ const AddForm = ({ isOpen, setIsOpen }) => {
         >
           cancel
         </button>
-        <button
-          className="btn-black"
-          onClick={(e) => {
-            let bounds = e.target.getBoundingClientRect()
-            setX(e.screenX - bounds.left);
-            setY(e.clientY - bounds.top);
-            handleSubmit();
-          }}
-        >
-          <div className="pulse" style={{"top": y, "left": x}}></div>
+        <ButtonBlack onClick={handleSubmit}>
           add
-        </button>
+        </ButtonBlack>
       </div>
     </Modal>
   );

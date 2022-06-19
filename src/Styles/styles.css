@@ -2,6 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 :root {
   --clr-white-100: white;
+  --clr-white-200: rgb(245, 245, 245);
   --clr-white-400: #f2f2f2;
   --clr-white-600: #F1F1F1;
   --clr-grey-200: rgb(180, 180, 180);
@@ -38,6 +39,10 @@
   --fs-large-800: 72px;
   --fs-large-900: 84px;
   --fs-ex-large-100: 96px;
+  --toastify-color-light: var(--clr-white-100) !important;
+  --toastify-color-success: var(--clr-primary-400) !important;
+  --toastify-text-color-light: var(--clr-border-800) !important;
+  --toastify-color-error: var(--clr-warning) !important;
 }
 
 @-webkit-keyframes fadeIn {
@@ -409,49 +414,13 @@ select {
   display: block;
   fill: var(--clr-white-100);
 }
-.main-nav button span {
-  display: none;
-}
 .main-nav button:first-child {
   margin-right: 1em;
-}
-.main-nav button:hover {
-  background: var(--clr-dark-200);
-}
-.main-nav button:hover span {
-  display: block;
-  position: absolute;
-  background-color: var(--clr-border-800);
-  -webkit-backdrop-filter: blur(5px);
-          backdrop-filter: blur(5px);
-  left: 50%;
-  top: 100%;
-  transform: translate(-50%, 8px);
-  padding: 0.5em;
-  font-size: var(--fs-small-400);
-  border-radius: 6px;
-  -webkit-animation: btnLabels 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: btnLabels 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
-  opacity: 0;
-}
-.main-nav button:hover span:after {
-  content: " ";
-  display: block;
-  border-style: solid;
-  border-width: 0 0.5em 0.5em 0.5em;
-  border-color: rgba(0, 0, 0, 0);
-  position: absolute;
-  top: 0;
-  left: 50%;
-  border-bottom-color: var(--clr-border-800);
-  transform: translate(-50%, -100%);
 }
 .main-nav .btn-settings svg {
   transition: 0s linear;
 }
-.main-nav .btn-settings:hover svg {
+.main-nav .btn-settings:focus svg {
   transform: rotate(360deg);
   transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
@@ -509,7 +478,7 @@ select {
   left: 0;
   top: 0;
   height: 100vh;
-  background-color: var(--clr-white-600);
+  background-color: var(--clr-white-100);
   border-right: 1px solid var(--clr-border-600);
   overflow: hidden;
   padding: 1rem;
@@ -517,6 +486,7 @@ select {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  box-shadow: 0 0 35px rgba(0, 0, 0, 0.2);
   z-index: 200;
   opacity: 0;
   -webkit-animation: slideInRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
@@ -564,9 +534,10 @@ select {
   text-align: left;
   text-transform: capitalize;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  background-color: var(--clr-white-100);
+  background-color: var(--clr-white-600);
   color: var(--clr-dark-400);
   border-radius: 6px;
+  outline: 1px solid transparent;
   font-weight: 600;
 }
 .nav-settings .logout svg {
@@ -578,7 +549,8 @@ select {
 }
 .nav-settings .logout:hover {
   color: var(--clr-primary-400);
-  background-color: var(--clr-white-100);
+  background-color: var(--clr-white-200);
+  outline: 1px solid var(--clr-border-400);
 }
 .nav-settings .logout:hover svg {
   fill: var(--clr-primary-400);
@@ -603,13 +575,13 @@ select {
   font-size: var(--fs-medium-200);
 }
 .nav-settings .theme-toggler .theme-buttons {
-  background-color: var(--clr-grey-200);
+  background-color: var(--clr-white-600);
   border-radius: 20px;
   position: relative;
   padding: 4px;
 }
 .nav-settings .theme-toggler .theme-buttons .highlighter {
-  background-color: rgba(255, 255, 255, 0.377);
+  background-color: rgb(190, 190, 190);
   mix-blend-mode: overlay;
   position: absolute;
   left: unset;
@@ -637,7 +609,7 @@ select {
   font-weight: inherit;
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
   margin: 5px;
-  background-color: var(--clr-white-100);
+  background-color: var(--clr-border-400);
 }
 .nav-settings .theme-toggler .theme-buttons button svg {
   float: left;
@@ -656,7 +628,7 @@ select {
   width: 100%;
   padding: 0.5em 1em;
   text-align: left;
-  background-color: var(--clr-white-100);
+  background-color: var(--clr-white-600);
   margin: 0.25rem;
   text-transform: capitalize;
   -webkit-user-select: none;
@@ -664,6 +636,7 @@ select {
       -ms-user-select: none;
           user-select: none;
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+  outline: 1px solid transparent;
 }
 .nav-settings li button svg {
   float: left;
@@ -675,14 +648,18 @@ select {
 }
 .nav-settings li button:hover {
   color: var(--clr-dark-200);
-  background-color: var(--clr-white-100);
+  background-color: var(--clr-white-200);
+  outline: 1px solid var(--clr-border-400);
 }
 .nav-settings li button:hover svg {
   fill: var(--clr-dark-200);
 }
 .nav-settings li button:active {
-  background-color: var(--clr-dark-200);
+  color: var(--clr-primary-400);
   transform: translateY(2px);
+}
+.nav-settings li button:active svg {
+  fill: var(--clr-primary-400);
 }
 .nav-settings li p {
   padding: 1rem;
@@ -1199,13 +1176,13 @@ select {
   padding-top: 0.5em;
   border-radius: 0 0 var(--br-section-100) var(--br-section-100);
 }
-.selector li {
+.selector li button {
   color: var(--clr-border-800);
 }
-.selector li:hover {
+.selector li button:hover {
   color: var(--clr-dark-400);
 }
-.selector li:active {
+.selector li button:active {
   color: var(--clr-primary-400);
   transform: translateY(2px);
 }
@@ -1284,25 +1261,6 @@ select {
 }
 .add-form .selector {
   z-index: 10;
-}
-.add-form .btn-black:last-child {
-  position: relative;
-}
-.add-form .btn-black:last-child .pulse {
-  width: 20px;
-  height: 20px;
-  border-radius: 100%;
-  background-color: var(--clr-white-100);
-  position: absolute;
-  opacity: 0;
-}
-.add-form .btn-black:last-child:focus .pulse {
-  -webkit-animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-}
-.add-form .btn-black:last-child:active .pulse {
-  -webkit-animation: none;
-          animation: none;
 }
 .add-form p {
   color: var(--clr-warning);
@@ -1413,11 +1371,26 @@ select {
 }
 .info-modal .header .background-container {
   z-index: 0;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+.info-modal .header .circleTest {
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  z-index: 12;
+  pointer-events: none;
+  transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  transition-delay: 1s;
 }
 .info-modal .header .background-image {
   position: absolute;
-  height: 100%;
-  width: 55%;
+  height: 110%;
+  width: 60%;
   z-index: 0;
   top: 0;
   left: 0;
@@ -1426,6 +1399,7 @@ select {
   opacity: 0.5;
   -webkit-animation: backgroundPosition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
           animation: backgroundPosition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  transition: all 1.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .info-modal .header .gradient {
   background: linear-gradient(90deg, transparent 5%, var(--clr-white-100) 55%, var(--clr-white-100) 100%);
@@ -1513,6 +1487,10 @@ select {
   align-items: center;
   z-index: 5;
   font-size: var(--fs-small-300);
+  -webkit-animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+          animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  -webkit-animation-delay: 0.2s;
+          animation-delay: 0.2s;
 }
 .info-modal .transit-history .btn-close svg {
   display: none;
@@ -2077,6 +2055,84 @@ select {
     transform: scale(1);
   }
 }
+.Toastify__toast-body {
+  pointer-events: none;
+}
+
+.Toastify__toast {
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.555);
+  border-radius: 6px !important;
+}
+
+.Toastify__toast--error div {
+  color: var(--clr-warning);
+  font-weight: 700;
+}
+
+.Toastify__toast-container--bottom-center {
+  bottom: 0 !important;
+}
+
+@-webkit-keyframes swipeUp {
+  0% {
+    transform: translateY(3em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes swipeUp {
+  0% {
+    transform: translateY(3em);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.fade-up {
+  -webkit-animation: swipeUp 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+          animation: swipeUp 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) both;
+}
+
+@-webkit-keyframes swipeDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(3em);
+    opacity: 0;
+  }
+}
+
+@keyframes swipeDown {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(3em);
+    opacity: 0;
+  }
+}
+.fade-down {
+  -webkit-animation: swipeDown 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+          animation: swipeDown 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
+
 button {
   border: none;
   background-color: transparent;
@@ -2218,9 +2274,25 @@ input:focus-visible {
   border-bottom-color: var(--clr-border-800);
   transform: translate(-50%, -100%);
 }
+.btn-black .pulse {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: var(--clr-white-100);
+  position: absolute;
+  opacity: 0;
+}
+.btn-black:focus .pulse {
+  -webkit-animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+          animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+}
 .btn-black:active {
   background-color: var(--clr-primary-400);
   transform: translateY(2px);
+}
+.btn-black:active .pulse {
+  -webkit-animation: none;
+          animation: none;
 }
 .btn-black:active span {
   display: none;

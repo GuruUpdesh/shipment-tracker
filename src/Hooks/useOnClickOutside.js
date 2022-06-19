@@ -4,8 +4,13 @@ import { useEffect } from "react";
 function useOnClickOutside(ref, handler) {
 	useEffect(() => {
 		const listener = (event) => {
-			// Do nothing if clicking ref's element or descendent elements
-			if (!ref.current || ref.current.contains(event.target)) {
+			// Do nothing if clicking ref's element or descendent elements or notification
+			if (
+				!ref.current ||
+				ref.current.contains(event.target) ||
+				event.target.classList.contains("Toastify__toast") ||
+				`${event.target.tagName}` === "svg"
+			) {
 				return;
 			}
 			handler(event);

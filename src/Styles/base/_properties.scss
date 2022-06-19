@@ -20,6 +20,7 @@
 
 :root {
 	--clr-white-100: white;
+	--clr-white-200: rgb(245, 245, 245);
 	--clr-white-400: #f2f2f2;
 	--clr-white-600: #F1F1F1;
 	
@@ -63,4 +64,9 @@
 	--fs-large-900: 84px;
 	--fs-ex-large-100: 96px;
 
+	//change notification properties
+	 --toastify-color-light: var(--clr-white-100) !important;
+	 --toastify-color-success: var(--clr-primary-400) !important;
+	 --toastify-text-color-light: var(--clr-border-800) !important;
+	 --toastify-color-error: var(--clr-warning) !important;
 }

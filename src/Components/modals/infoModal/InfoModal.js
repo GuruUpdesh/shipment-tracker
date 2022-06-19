@@ -17,29 +17,32 @@ const InfoModal = ({ isOpen, setIsOpen, packageInfo, notify, setIsConfirmOpen, s
 
 	function getCourierLink() {
 		const link = getTrackingUrl(header.trackingNumber, header.courier);
-		window.open(link, "_blank").focus()
+		window.open(link, "_blank").focus();
 	}
 
 	return (
 		<Modal>
 			<div className="info-modal" ref={ref}>
-				<InfoHeader header={header} transitHistory={transitHistory} setIsOpen={setIsOpen} setIsConfirmOpen={setIsConfirmOpen} setIsEditFormOpen={setIsEditFormOpen}/>
+				<InfoHeader
+					header={header}
+					transitHistory={transitHistory}
+					setIsOpen={setIsOpen}
+					setIsConfirmOpen={setIsConfirmOpen}
+					setIsEditFormOpen={setIsEditFormOpen}
+				/>
 				<div className="transit-history">
 					<h1>Transit History</h1>
-					{/* <button
+					<button
 						className="btn-normal-text"
 						onClick={() => {
 							navigator.clipboard.writeText(header.trackingNumber);
-							notify("copied to clipboard", 2000);
+							notify("copied to clipboard", 2000, "success");
 						}}
 					>
-						<FiCopy /> {header.trackingNumber}
-					</button> */}
+						{header.trackingNumber}
+					</button>
 					<StatusBar header={header} transitHistory={transitHistory} />
-					<button
-						className="btn-close btn-black"
-						onClick={getCourierLink}
-					>
+					<button className="btn-close btn-black" onClick={getCourierLink}>
 						{header.courier}.com <BsArrowRight />
 					</button>
 					<ul>

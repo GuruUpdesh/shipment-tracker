@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Input from "../Components/Form/Input";
 import { useNavigate } from "react-router-dom";
 import { BsArrowLeftSquareFill } from "react-icons/bs";
+import axios from "axios";
 
 const LoginPage = () => {
 	const [email, setEmail] = useState("");
@@ -62,11 +63,19 @@ const LoginPage = () => {
 			},
 		});
 
+		
 		const jsonResponse = await response.json();
-
+		
+		
 		if (response.status === 200) {
+			await axios.get(`/api/cookie?id=${jsonResponse.userData.id}`, {
+				withCredentials: true,
+				validateStatus: (status) => {
+					return status < 400
+				}
+			})
 			localStorage.setItem("id", jsonResponse.userData.id);
-			localStorage.setItem("token", jsonResponse.token);
+			// localStorage.setItem("token", jsonResponse.token);
 			localStorage.setItem("email", jsonResponse.userData.email);
 			navigate("/packages");
 		} else {
