@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 
 // react hook for when enter key is pressed
-const useEnter = (onEscape) => {
+const useEnter = (onEnter) => {
     useEffect(() => {
-        const handleEsc = (event) => {
+        const handleEnter = (event) => {
             if (event.keyCode === 13) 
-                onEscape();
+                onEnter();
         };
-        window.addEventListener('keydown', handleEsc);
+        window.addEventListener('keydown', handleEnter);
 
         return () => {
-            window.removeEventListener('keydown', handleEsc);
+            window.removeEventListener('keydown', handleEnter);
         };
     }, []);
 }

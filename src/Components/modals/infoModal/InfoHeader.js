@@ -45,7 +45,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 					const curX = e.clientX - bounds.left;
 					const curY = e.clientY - bounds.top;
 
-					const tiles = 50
+					const tiles = 0
 					if (x - curX > tiles || curX - x > tiles) {
 						setX(curX)
 					}
@@ -84,7 +84,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 			</button>
 			<div className={"content-container"}>
 				<h1 className="title">{header.name}</h1>
-				{header.eta ? (
+				{header.eta && !header.status.includes("delivered") ? (
 					<>
 						<p>expected delivery</p>
 						<p> {header.eta}</p>

@@ -31,7 +31,7 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen }) => {
 					<div className="marker"></div>
 					<PackageMap center={packageInfo.header.coordinates} zoom={10}/>
 					<div className="bottom-right-indicators">
-						{(packageInfo.header.eta || packageInfo.header.status.includes("transit")) && (
+						{(packageInfo.header.eta && packageInfo.header.status.includes("transit")) && (
 							<div className="indicator">
 								<BsTruck />
 							</div>
@@ -40,7 +40,7 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen }) => {
 							<AiOutlineWarning />
 						</div> */}
 
-						{packageInfo.header.eta && <div className="indicator">{packageInfo.header.eta}</div>}
+						{(packageInfo.header.eta && !packageInfo.header.status.includes("deliver")) && <div className="indicator">{packageInfo.header.eta}</div>}
 					</div>
 				</div>
 			)}

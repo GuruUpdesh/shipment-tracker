@@ -8,6 +8,7 @@ import { GoPackage } from "react-icons/go";
 import { AiFillPlusCircle} from "react-icons/ai";
 import ButtonBlack from "../ButtonBlack";
 import useEscape from "../../Hooks/useEscape";
+import useEnter from "../../Hooks/useEnter";
 
 
 const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
@@ -21,6 +22,7 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
   });
 
   const handleSubmit = async () => {
+    console.log(courier, name, trackingNumber)
     const valid = verify();
     if (!valid) {
       return;
@@ -88,7 +90,8 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
 
   const ref = useRef();
   useOnClickOutside(ref, () => setIsOpen(false));
-
+  
+  // useEnter(() => {handleSubmit()})
   useEscape(() => {setIsOpen(false)})
   return (
     <Modal>

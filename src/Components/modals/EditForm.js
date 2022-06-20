@@ -8,6 +8,7 @@ import { GoPackage } from "react-icons/go";
 import { BiEdit} from "react-icons/bi";
 import ButtonBlack from "../ButtonBlack";
 import useEscape from "../../Hooks/useEscape";
+import useEnter from "../../Hooks/useEnter";
 
 const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 	const [courier, setCourier] = useState(header.courier);
@@ -83,6 +84,8 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 
 	const ref = useRef();
 	useOnClickOutside(ref, () => setIsOpen(false));
+
+	// useEnter(() => {handleSubmit()})
 	useEscape(() => {setIsOpen(false)})
 	return (
 		<Modal>

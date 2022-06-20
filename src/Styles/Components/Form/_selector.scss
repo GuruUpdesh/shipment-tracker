@@ -78,6 +78,9 @@
 		padding: 1em;
 		padding-top: 0.5em;
 		border-radius: 0 0 var(--br-section-100) var(--br-section-100);
+		transform-origin: top;
+
+		animation: list .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 	}
 
 	li {
@@ -90,6 +93,16 @@
 				color: var(--clr-primary-400);
 				transform: translateY(2px);
 			}
+
+		}
+		opacity: 0;
+		animation: fadeRight .2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+		
+		$n: 50;
+		@for $x from 1 through $n {
+			&:nth-child(#{$x}) {
+				animation-delay: 50ms * ($x - 1);
+			}
 		}
 	}
 }
@@ -97,3 +110,4 @@
 .active-selector {
 	border-radius: var(--br-section-100) var(--br-section-100) 0 0;
 }
+

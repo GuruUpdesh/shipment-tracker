@@ -119,3 +119,14 @@
 		transform: translateX(-25%);
 	}
 }
+
+@keyframes list {
+	0% {
+		opacity: 0;
+		transform: scaleY(0) translateX(calc(-1em - 1px)) translateY(0.5em);
+	}
+	100% {
+		opacity: 1;
+		transform: scaleY(1) translateX(calc(-1em - 1px)) translateY(0.5em);
+	}
+}

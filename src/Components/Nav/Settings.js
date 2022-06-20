@@ -65,7 +65,7 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 						</button>
 					</li>
 					<li>
-						<button>
+						<button onClick={() => {window.open("https://github.com/GuruUpdesh", "_blank").focus()}}>
 							github <BsGithub />
 						</button>
 					</li>
