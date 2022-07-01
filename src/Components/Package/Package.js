@@ -2,10 +2,26 @@ import React, { useState, useEffect } from "react";
 import PackageMap from "./PackageMap";
 import { InView } from "react-intersection-observer";
 import { BsTruck } from "react-icons/bs";
-import { AiOutlineWarning } from "react-icons/ai";
+import { AiOutlineWarning, AiOutlineHome } from "react-icons/ai";
 
 const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen }) => {
-	return (
+	return !packageInfo.inCurrentBlock ? (
+		<></>
+	) : packageInfo.error ? (
+		<div className="package-container error-package-container">
+			<div className="package-header">
+				<div className="content-wrapper">
+					<h3 className="package-name">
+						<AiOutlineWarning />
+						can't load {packageInfo.name}
+					</h3>
+					<p className="status">{packageInfo.errorMessage}</p>
+				</div>
+			</div>
+		</div>
+	) : packageInfo.loading ? (
+		<div className="package-loading-container" />
+	) : (
 		<InView>
 			{({ inView, ref, entry }) => (
 				<div
@@ -13,7 +29,7 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen }) => {
 					ref={ref}
 					onClick={() => {
 						setCurrentInfo(packageInfo);
-						setIsInfoModalOpen(true)
+						setIsInfoModalOpen(true);
 					}}
 				>
 					<div className={"package-header " + (inView ? "" : "display-none")}>
@@ -29,18 +45,22 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen }) => {
 						</div>
 					</div>
 					<div className="marker"></div>
-					<PackageMap center={packageInfo.header.coordinates} zoom={10}/>
-					<div className="bottom-right-indicators">
-						{(packageInfo.header.eta && packageInfo.header.status.includes("transit")) && (
+					<PackageMap center={packageInfo.header.coordinates} zoom={10} />
+					<div className={"bottom-right-indicators " + (inView ? "" : "display-none")}>
+						{packageInfo.header.eta && packageInfo.header.status.includes("transit") && (
 							<div className="indicator">
 								<BsTruck />
 							</div>
 						)}
-						{/* <div className="indicator">
-							<AiOutlineWarning />
-						</div> */}
+						{packageInfo.header.status.includes("delivered") && (
+							<div className="indicator">
+								<AiOutlineHome />
+							</div>
+						)}
 
-						{(packageInfo.header.eta && !packageInfo.header.status.includes("deliver")) && <div className="indicator">{packageInfo.header.eta}</div>}
+						{packageInfo.header.eta && !packageInfo.header.status.includes("deliver") && (
+							<div className="indicator">{packageInfo.header.eta}</div>
+						)}
 					</div>
 				</div>
 			)}

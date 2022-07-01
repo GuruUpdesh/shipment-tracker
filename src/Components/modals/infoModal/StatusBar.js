@@ -79,6 +79,8 @@ const StatusBar = ({ header, transitHistory }) => {
 			barPercentage = 75 + 25 * ((21 - hoursDifference) / 21);
 		}
 
+		barPercentage = barPercentage * 4/3
+
 		return { circleInfo, barPercentage };
 	};
 
@@ -89,7 +91,7 @@ const StatusBar = ({ header, transitHistory }) => {
 	return (
 		<div className="status-bar-container">
 			{/* <h1>{statusBar.barPercentage}</h1> */}
-			<div className="status-content">
+			<div className="status-content flex-space-between">
 				<p>Package Shipped</p>
 				<p>Package in Transit</p>
 				<p>Out for Delivery</p>
@@ -147,7 +149,7 @@ const StatusBar = ({ header, transitHistory }) => {
                         )}
 				</div>
 			</div>
-			<div className="status-icons">
+			<div className="status-icons flex-space-between">
 				<div className="icon-container">
 					<GoPackage className="icon" />
 					{/* <BsFillArrowRightCircleFill className="small-icon" /> */}

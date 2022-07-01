@@ -6,6 +6,7 @@ import { FiCopy } from "react-icons/fi";
 import { BsArrowRight } from "react-icons/bs";
 import InfoHeader from "./InfoHeader";
 import { getTrackingUrl } from "tracking-number-validation";
+import HelpIcon from "../../other/HelpIcon";
 
 const InfoModal = ({ isOpen, setIsOpen, packageInfo, notify, setIsConfirmOpen, setIsEditFormOpen }) => {
 	const ref = useRef();
@@ -32,15 +33,22 @@ const InfoModal = ({ isOpen, setIsOpen, packageInfo, notify, setIsConfirmOpen, s
 				/>
 				<div className="transit-history">
 					<h1>Transit History</h1>
-					<button
-						className="btn-normal-text"
-						onClick={() => {
-							navigator.clipboard.writeText(header.trackingNumber);
-							notify("copied to clipboard", 2000, "success");
-						}}
-					>
-						{header.trackingNumber}
-					</button>
+					<div className="transit-sub-content">
+						<HelpIcon
+							message={
+								"We use a basic algorithm to guess where your package is in its journey. We do not guarantee the accuracy of this information. For more up to date information visit the couriers tracking page directly by clicking the button in the bottom right corner."
+							}
+						/>
+						<button
+							className="btn-normal-text"
+							onClick={() => {
+								navigator.clipboard.writeText(header.trackingNumber);
+								notify("copied to clipboard", 2000, "success");
+							}}
+						>
+							{header.trackingNumber}
+						</button>
+					</div>
 					<StatusBar header={header} transitHistory={transitHistory} />
 					<button className="btn-close btn-black" onClick={getCourierLink}>
 						{header.courier}.com <BsArrowRight />

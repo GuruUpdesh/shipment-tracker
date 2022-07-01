@@ -7,3 +7,11 @@
         display: none;
     }
 }
+
+.maps-wrapper > div > div > div > div:nth-child(17) {
+    display: none;
+}
+
+.maps-wrapper > div > div {
+    background-color: var(--clr-bg-100) !important;
+}

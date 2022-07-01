@@ -106,7 +106,7 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 					<h1>Edit Package</h1>
 					<p>change your package details</p>
 				</div>
-				<Input placeholder={"name"} value={name} setValue={setName} type="text" />
+				<Input placeholder={"name"} value={name} setValue={setName} type="text" autoFocus={true}/>
 				<p>{errors.name}</p>
 				<Input placeholder={"tracking number"} value={trackingNumber} setValue={setTrackingNumber} type="text" />
 				<p>{errors.trackingNumber}</p>

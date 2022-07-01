@@ -12,22 +12,22 @@
 	border: 1px solid var(--clr-border-400);
 	border-radius: 20px;
 	padding: 0.5em 1em;
-	background-color: var(--clr-white-100);
+	background-color: var(--clr-bg-100);
 	position: relative;
 	cursor: pointer;
-
+	
 	&:hover {
 		border: 1px solid var(--clr-border-600);
-
+		
 		ul {
 			border-color: var(--clr-border-600);
 		}
 	}
-
+	
 	&:focus-within,
 	&:focus {
 		outline: 1px solid var(--clr-primary-400);
-
+		
 		ul {
 			outline: 1px solid var(--clr-primary-400);
 		}
@@ -35,12 +35,14 @@
 			color: var(--clr-primary-400);
 		}
 	}
-
+	
 	svg {
+		color: var(--clr-dark-400);
 		pointer-events: none;
 	}
-
+	
 	button {
+		color: var(--clr-dark-400);
 		user-select: none;
 		padding: 0;
 		width: 100%;
@@ -77,7 +79,7 @@
 		// border-top: none;
 		padding: 1em;
 		padding-top: 0.5em;
-		border-radius: 0 0 var(--br-section-100) var(--br-section-100);
+		border-radius: 0 0 var(--br) var(--br);
 		transform-origin: top;
 
 		animation: list .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -108,6 +110,6 @@
 }
 
 .active-selector {
-	border-radius: var(--br-section-100) var(--br-section-100) 0 0;
+	border-radius: var(--br) var(--br) 0 0;
 }
 

@@ -6,8 +6,8 @@
   
   .heroContainer {
     height: 700px;
-    background-color: var(--clr-white-600);
-    border-radius: var(--br-section-100);
+    background-color: var(--clr-bg-400);
+    border-radius: var(--br);
     padding: 64px 75px;
 
     h1 {
@@ -110,8 +110,8 @@
 }
 
 .courier-slider-container {
-  background-color: var(--clr-white-600);
-  border-radius: var(--br-section-100);
+  background-color: var(--clr-bg-400);
+  border-radius: var(--br);
   padding: 1em;
   // width: 60vw;
   // margin: 5em;
@@ -127,8 +127,8 @@
 
   .slider {
     display: flex;
-    background-color: var(--clr-white-100);
-    border-radius: var(--br-section-100);
+    background-color: var(--clr-bg-100);
+    border-radius: var(--br);
     overflow: hidden;
   }
 
@@ -198,8 +198,8 @@
 }
 
 .description-container {
-  background-color: var(--clr-white-600);
-  border-radius: var(--br-section-100);
+  background-color: var(--clr-bg-400);
+  border-radius: var(--br);
   position: relative;
   padding: 1em;
   grid-row: 1 / 3;

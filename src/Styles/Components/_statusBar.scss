@@ -1,8 +1,7 @@
-// $barDelay: .1s;
 .status-bar-container {
 	margin-bottom: 3em;
-    animation: fadeRight .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-    animation-delay: .165s;
+	animation: fadeRight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+	animation-delay: 0.165s;
 
 	.status-bar {
 		position: relative;
@@ -20,7 +19,7 @@
 				justify-content: center;
 				align-items: center;
 				position: relative;
-				outline: 1px solid var(--clr-white-100);
+				outline: 1px solid var(--clr-bg-100);
 			}
 
 			.unfilled {
@@ -30,8 +29,8 @@
 					width: 10px;
 					height: 10px;
 					border-radius: 100%;
-					background-color: var(--clr-white-100);
-					box-shadow: 0 0 10px 5px var(--clr-white-100);
+					background-color: var(--clr-bg-100);
+					box-shadow: 0 0 10px 5px var(--clr-bg-100);
 					border: 1px solid rgba(255, 255, 255, 0.486);
 				}
 			}
@@ -76,8 +75,6 @@
 	}
 
 	.status-icons {
-		display: flex;
-		justify-content: space-between;
 		margin-top: 0.5em;
 		padding: 0 0.3em;
 
@@ -90,15 +87,13 @@
 
 			.small-icon {
 				transform: translate(-6px, 2px);
-				background-color: var(--clr-white-100);
+				background-color: var(--clr-bg-100);
 			}
 		}
 	}
 }
 
 .status-content {
-	display: flex;
-	justify-content: space-between;
 	color: var(--clr-border-800);
 	font-size: var(--fs-small-300);
 	margin-bottom: 1em;

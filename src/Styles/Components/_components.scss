@@ -4,7 +4,6 @@
 @import "helpIcon";
 @import "./Package/package";
 @import "./Package/map";
-@import "./Package/loadingBar";
 @import "./modal";
 @import "./Form/form";
 @import "./infoModal";
@@ -23,7 +22,8 @@ input {
   border: 1px solid var(--clr-border-400);
   border-radius: 20px;
   padding: 0.5em 1em;
-  background-color: var(--clr-white-100);
+  background-color: var(--clr-bg-100);
+  color: var(--clr-dark-400);
 
   &:hover {
     border: 1px solid var(--clr-border-600);

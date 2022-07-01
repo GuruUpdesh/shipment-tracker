@@ -109,6 +109,18 @@
 	}
 }
 
+@keyframes btnFocus {
+	0% {
+		transform: translateY(0);
+	}
+	75% {
+		transform: translateY(-3px);
+	}
+	100% {
+		transform: translateY(0);
+	}
+}
+
 @keyframes transitHistoryBubble {
 	0% {
 		opacity: 0;

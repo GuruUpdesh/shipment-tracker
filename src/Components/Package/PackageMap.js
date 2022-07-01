@@ -1,6 +1,8 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import { GoogleMap, Polyline, useJsApiLoader } from "@react-google-maps/api";
+import { ThemeContext } from "../../App";
 import mapStyle from "../../Styles/Components/Package/mapStyle";
+import mapStylesDark from "../../Styles/Components/Package/mapStylesDark";
 import axios from "axios";
 
 const containerStyle = {
@@ -10,6 +12,15 @@ const containerStyle = {
 
 function PackageMap({ center, drawLines, zoom, transitHistory }) {
 	const [style, setStyle] = useState(mapStyle);
+	const { theme } = useContext(ThemeContext);
+	useEffect(() => {
+		if (theme === 'light') {
+			setStyle(mapStyle)
+		} else {
+			setStyle(mapStylesDark)
+		}
+	}, [theme]);
+
 	const options = {
 		styles: style,
 		disableDefaultUI: true,
@@ -38,22 +49,22 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 
 			path.push(latLng);
 		}
-		setPath(path)
+		setPath(path);
 	};
-	
+
 	useEffect(() => {
-		createPath()
+		createPath();
 	}, []);
-	
+
 	// loaded?
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
 		googleMapsApiKey: "AIzaSyCKa3w9Ee5Kyfdy8qeUX_j__6hsyqkpkXo",
 	});
-	
+
 	// map state
 	const [map, setMap] = React.useState(null);
-	
+
 	// once loaded setMap to loaded map
 	const onLoad = React.useCallback(function callback(map) {
 		setMap(map);

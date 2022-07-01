@@ -1,6 +1,6 @@
 .info-modal {
-	background-color: var(--clr-white-100);
-	border-radius: var(--br-section-100);
+	background-color: var(--clr-bg-100);
+	border-radius: var(--br);
 	overflow: hidden;
 	height: min-content;
 	border: 1px solid var(--clr-border-400);
@@ -12,20 +12,26 @@
 	opacity: 0;
 	animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 
-	
 	.map-toggle {
 		position: absolute;
 		bottom: 1em;
 		left: 1em;
 	}
-	
+
+	.help-icon {
+		z-index: 100000000000;
+		position: absolute;
+		right: 1rem;
+		bottom: 1.5rem;
+		transform: translate(-2px, -1.2rem);
+		div {
+			width: 400px;
+		}
+	}
+
 	.header {
-		background-color: var(--clr-white-600);
+		background-color: var(--clr-bg-400);
 		padding: 1em 2em;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		flex-direction: column;
 		position: relative;
 		min-height: 200px;
 		border-bottom: 1px solid var(--clr-border-600);
@@ -111,7 +117,7 @@
 		}
 
 		.gradient {
-			background: linear-gradient(90deg, transparent 5%, var(--clr-white-100) 55%, var(--clr-white-100) 100%);
+			background: linear-gradient(90deg, transparent 5%, var(--clr-bg-100) 55%, var(--clr-bg-100) 100%);
 			position: absolute;
 			width: 100%;
 			height: 100%;
@@ -162,12 +168,8 @@
 	}
 
 	.controls {
-		display: flex;
-		justify-content: space-evenly;
 		padding: 1em 2em;
 		gap: 1rem;
-
-		// border-bottom: 1px solid var(--clr-border-600);
 
 		button {
 			animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
@@ -186,20 +188,18 @@
 		overflow-y: scroll;
 		max-height: 50vh;
 		overflow-x: hidden;
-		margin-bottom: var(--br-section-100);
+		margin-bottom: var(--br);
 		padding: 0 3em;
 
 		.btn-close {
 			bottom: 1em;
 			top: unset;
 			padding: 0.5em 1em;
-			display: flex;
-			align-items: center;
 			z-index: 5;
 			font-size: var(--fs-small-300);
 
 			animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-			animation-delay: .2s;
+			animation-delay: 0.2s;
 
 			svg {
 				display: none;
@@ -228,6 +228,7 @@
 			text-align: center;
 			font-size: var(--fs-medium-400);
 			margin-bottom: 1em;
+			color: var(--clr-dark-400);
 		}
 
 		ul {
@@ -334,23 +335,16 @@
 }
 
 .confirm-modal {
-	background-color: var(--clr-white-100);
-	border-radius: var(--br-section-100);
+	background-color: var(--clr-bg-100);
+	border-radius: var(--br);
 	overflow: hidden;
 	height: min-content;
 	border: 1px solid var(--clr-border-400);
-
 	width: fit-content;
 	max-width: 90vw;
 	min-width: 30vw; //TODO: remove this
-
 	opacity: 0;
 	animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
 	padding: 2em 1em;
 
 	.header {
@@ -378,164 +372,19 @@
 
 	.content {
 		width: 100%;
-		display: flex;
-		justify-content: space-evenly;
 		padding: 0 5em;
 		.btn-normal-text {
 			padding: 1em;
-			
+
 			opacity: 0;
-			animation: fadeUp .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-			animation-delay: .1s;
+			animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+			animation-delay: 0.1s;
 		}
-		
+
 		.btn-black {
-			animation: fadeUp .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-			animation-delay: .5s;
+			animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+			animation-delay: 0.5s;
 			background-color: var(--clr-warning);
 		}
 	}
 }
-
-// $barDelay: .1s;
-// .status-bar-container {
-// 	// padding: 3rem;
-// 	// background-color: var(--clr-white-600);
-// 	margin-bottom: 3em;
-// 	.status-bar {
-// 		position: relative;
-// 		.circles {
-// 			z-index: 2;
-// 			display: flex;
-// 			justify-content: space-between;
-// 			.status-circle {
-// 				width: 30px;
-// 				height: 30px;
-// 				border-radius: 100%;
-// 				background-color: var(--clr-grey-200);
-// 				border: 1px solid var(--clr-border-100);
-// 				display: flex;
-// 				justify-content: center;
-// 				align-items: center;
-// 				position: relative;
-// 				outline: 1px solid var(--clr-white-100);
-// 			}
-
-// 			.unfilled {
-// 				&:after {
-// 					content: "";
-// 					position: absolute;
-// 					width: 10px;
-// 					height: 10px;
-// 					border-radius: 100%;
-// 					background-color: var(--clr-white-100);
-// 					box-shadow: 0 0 10px 5px var(--clr-white-100);
-// 					border: 1px solid rgba(255, 255, 255, 0.486);
-// 				}
-// 			}
-
-// 			.filled {
-// 				// background-color: var(--clr-primary-400);
-// 				color: var(--clr-white-100);
-
-// 				&:after {
-// 					mix-blend-mode: overlay;
-// 					content: "";
-// 					position: absolute;
-// 					width: 12px;
-// 					height: 12px;
-// 					border-radius: 100%;
-// 					box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
-// 					background-color: rgba(255, 255, 255, 0.75);
-// 				}
-
-// 				animation: circleFill .5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-// 				animation-delay: 0;
-
-// 				&:first-child {
-// 					animation-delay: .1s;
-// 				}
-
-// 				&:nth-child(2) {
-// 					animation-delay: $barDelay + .4s;
-// 				}
-
-// 				&:nth-child(3) {
-// 					animation-delay: $barDelay + .9s;
-// 				}
-
-// 				svg {
-// 					animation: circleCheck .5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-// 					animation-delay: inherit;
-// 				}
-// 			}
-// 		}
-
-// 		.bar {
-// 			z-index: -1;
-// 			position: absolute;
-// 			height: 10px;
-// 			width: 98%;
-// 			right: 1%;
-// 			// background-color: var(--clr-border-400);
-// 			top: 25%;
-// 			background-size: 200%;
-// 			background-position: 100%;
-// 			animation: statusBar 1s linear forwards;
-// 			animation-delay: $barDelay;
-// 			// background-repeat: no-repeat;
-// 			transform: translateY(25%);
-// 		}
-// 	}
-
-// 	.status-content {
-// 		display: flex;
-// 		justify-content: space-between;
-// 		padding: 0 .2em;
-// 		margin-top: .5em;
-// 		p {
-// 			font-size: var(--fs-small-400);
-// 			color: var(--clr-border-800);
-// 		}
-// 	}
-// }
-// @keyframes statusBar {
-// 	0% {
-// 		background-position: 100%;
-// 	}
-// 	100% {
-// 		background-position: 0;
-// 	}
-// }
-
-// @keyframes circleFill {
-// 	0% {
-// 		background-color: var(--clr-grey-200);
-// 		transform: scale(1);
-// 	}
-// 	30% {
-// 		transform: scale(1);
-// 		box-shadow: 0 0 0 var(--clr-primary-100);
-// 	}
-// 	60% {
-// 		transform: scale(1.2);
-// 		box-shadow: 0 0 20px var(--clr-primary-100);
-// 	}
-// 	100% {
-// 		transform: scale(1);
-// 		background-color: var(--clr-primary-400);
-// 		border: 1px solid var(--clr-primary-100);
-// 		box-shadow: 0 0 0 var(--clr-primary-100);
-// 	}
-// }
-
-// @keyframes circleCheck {
-// 	0% {
-// 		opacity: 0;
-// 		transform: scale(2);
-// 	}
-// 	100% {
-// 		opacity: 1;
-// 		transform: scale(1);
-// 	}
-// }

@@ -1,44 +1,13 @@
-.neo-btn {
-	svg {
-		transform: scale(1);
-		filter: drop-shadow(1px 3px 1.5px transparent);
-		transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
-	}
-	transition: all 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
-
-	box-shadow: -1px -1px 5px var(--clr-white-100), 1px 1px 2px var(--clr-white-100), 0px 4px 6px var(--clr-border-600),
-		-1px -1px 10px var(--clr-white-100);
-}
-
-.neo-btn-highlight-primary:hover {
-	background: linear-gradient(-45deg, var(--clr-primary-400), var(--clr-primary-200));
-	color: var(--clr-white-100);
-	background-color: var(--clr-primary-400);
-	box-shadow: 1px 1px 2px var(--clr-primary-600), 0px 4px 6px var(--clr-primary-700), -1px -1px 10px var(--clr-primary-200);
-	svg {
-		transform: scale(1.2);
-		filter: drop-shadow(1px 3px 1.5px var(--clr-border-600));
-	}
-}
-
-.neo-btn-highlight:hover {
-	color: black;
-	box-shadow: -1px -1px 5px var(--clr-white-100), 1px 1px 2px var(--clr-white-100), 0px 4px 10px var(--clr-border-800),
-		-1px -1px 10px var(--clr-white-100);
-}
-
-.btn-highlight:hover {
-	background-color: var(--clr-primary-400);
-	color: var(--clr-white-100);
-}
+@use "sass:math";
 
 .display-none {
 	display: none !important;
 }
 
 .site-padding {
-	padding-left: calc(100vw / 8);
-	padding-right: calc(100vw / 8);
+	$padding: math.div(100vw, 8);
+	padding-left: $padding;
+	padding-right: $padding;
 
 	@media (max-width: 850px) {
 		padding-left: 2em;
@@ -46,17 +15,36 @@
 	}
 }
 
-.btn-black {
-	background-color: var(--clr-dark-400);
-	color: var(--clr-white-100);
+.btn-neo {
+	background-color: var(--clr-white-200);
+	color: var(--clr-grey-400);
 	border-radius: var(--br-section-100);
+	position: relative;
+	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1), 0 -5px 6px rgba(238, 238, 238, 0.411);
+	padding: 0.5em 1em;
+	border: 1px solid var(--clr-white-100);
+
+	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+	&:hover {
+		background-color: var(--clr-white-100);
+		color: var(--clr-dark-100);
+		box-shadow: 0px 5px 7px rgba(0, 0, 0, 0.1);
+	}
+}
+
+.btn-black {
+	background-color: var(--clr-dark-400-true);
+	color: var(--clr-white-100);
+	border-radius: var(--br);
 	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 	position: relative;
+	// overflow: hidden;
 
 	svg {
 		display: block;
 	}
-	
+
 	span {
 		display: none;
 		pointer-events: none;
@@ -64,12 +52,12 @@
 
 	&:hover {
 		cursor: pointer;
-		background-color: var(--clr-dark-100);
+		background-color: var(--clr-dark-100-true);
 
 		span {
 			display: block;
 			position: absolute;
-			background-color: var(--clr-border-800);
+			background-color: var(--clr-bg-dark-800);
 			backdrop-filter: blur(5px);
 			left: 50%;
 			top: 100%;
@@ -92,15 +80,30 @@
 				position: absolute;
 				top: 0;
 				left: 50%;
-				border-bottom-color: var(--clr-border-800);
+				border-bottom-color: var(--clr-bg-dark-800);
 				transform: translate(-50%, -100%);
 			}
 		}
 	}
 
+	.pulseContainer {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		// background-color: red;
+		top: 0 !important;
+		left: 0 !important;
+		border-radius: inherit;
+		overflow: hidden;
+	}
 	.pulse {
 		width: 20px;
 		height: 20px;
+
+		@media screen and (max-width: 1000px){
+			width: 10px;
+			height: 10px;
+		}
 		border-radius: 100%;
 		background-color: var(--clr-white-100);
 		position: absolute;
@@ -141,11 +144,10 @@
 }
 
 .btn-close {
-	color: rgb(255, 255, 255);
+	color: var(--clr-white-100);
 	position: absolute;
 	right: 1em;
 	top: 1em;
-	border-radius: var(--br-section-100);
 	padding: 0.5em;
 
 	svg {

@@ -4,21 +4,23 @@ import { BsFillArchiveFill } from "react-icons/bs";
 import { BiPlus } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
 import Settings from "./Settings";
-import Filter from "./Filter";
+import { RiCloseFill } from "react-icons/ri";
 import Fuse from "fuse.js";
 import ButtonBlack from "../ButtonBlack";
 
-const MainNav = ({ packages, setFilteredPackages, setIsAddFormOpen }) => {
+const MainNav = ({ setIsAddFormOpen, packagesRef }) => {
 	const [settingsOpen, setSettingsOpen] = useState(false);
 	function toggleSettingsMenu() {
 		setSettingsOpen(!settingsOpen);
 	}
 
+	const { isClearButton, setIsClearButton } = useState(false);
 	function search(value) {
+		console.log(packagesRef);
 		if (value === "") {
 			return [];
 		}
-		const fuse = new Fuse(packages, { keys: ["header.name"] });
+		const fuse = new Fuse(packagesRef.current.packageList, { keys: ["header.name"] });
 		const result = fuse.search(value);
 		const newPackages = [];
 		for (let i = 0; i < result.length; i++) {
@@ -31,10 +33,10 @@ const MainNav = ({ packages, setFilteredPackages, setIsAddFormOpen }) => {
 	function searchHandler(value) {
 		setSearchValue(value);
 		if (value === "") {
-			setFilteredPackages(packages);
+			packagesRef.current.resetPackages();
 			return;
 		}
-		setFilteredPackages(search(value));
+		packagesRef.current.packageSearch(search(value));
 	}
 
 	return (
@@ -45,8 +47,8 @@ const MainNav = ({ packages, setFilteredPackages, setIsAddFormOpen }) => {
 					<MdSettings />
 					<span>settings</span>
 				</ButtonBlack>
-				<ButtonBlack >
-					<BsFillArchiveFill/>
+				<ButtonBlack>
+					<BsFillArchiveFill />
 					<span>archive</span>
 				</ButtonBlack>
 			</div>
@@ -61,6 +63,17 @@ const MainNav = ({ packages, setFilteredPackages, setIsAddFormOpen }) => {
 					<div className="search-icon">
 						<IoSearch />
 					</div>
+					{searchValue.length > 2 && (
+						<div
+							className="clear-icon"
+							tabIndex={-1}
+							onClick={() => {
+								searchHandler("");
+							}}
+						>
+							<RiCloseFill />
+						</div>
+					)}
 				</div>
 				{/* <Filter /> */}
 			</div>

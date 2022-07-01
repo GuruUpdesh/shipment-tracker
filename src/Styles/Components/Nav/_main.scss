@@ -1,59 +1,21 @@
 .main-nav {
 	z-index: 99;
-	background-color: var(--clr-white-100);
+	background-color: var(--clr-bg-400);
 	padding: 1rem;
 	border-bottom: 1px solid var(--clr-border-400);
 
 	button {
-		color: var(--clr-white-100);
-		background: var(--clr-dark-400);
 		border-radius: 100%;
 		padding: 1em 1em;
 		position: relative;
 
 		svg {
 			display: block;
-			fill: var(--clr-white-100);
 		}
-		// span {
-		// 	display: none;
-		// }
 
 		&:first-child {
 			margin-right: 1em;
 		}
-
-		// &:hover {
-		// 	background: var(--clr-dark-200);
-		// 	span {
-		// 		display: block;
-		// 		position: absolute;
-		// 		background-color: var(--clr-border-800);
-		// 		backdrop-filter: blur(5px);
-		// 		left: 50%;
-		// 		top: 100%;
-		// 		transform: translate(-50%, 8px);
-		// 		padding: 0.5em;
-		// 		font-size: var(--fs-small-400);
-		// 		border-radius: 6px;
-		// 		animation: btnLabels 0.25s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-		// 		animation-delay: 0.2s;
-		// 		opacity: 0;
-
-		// 		&:after {
-		// 			content: " ";
-		// 			display: block;
-		// 			border-style: solid;
-		// 			border-width: 0 0.5em 0.5em 0.5em;
-		// 			border-color: rgba(0, 0, 0, 0);
-		// 			position: absolute;
-		// 			top: 0;
-		// 			left: 50%;
-		// 			border-bottom-color: var(--clr-border-800);
-		// 			transform: translate(-50%, -100%);
-		// 		}
-		// 	}
-		// }
 	}
 
 	.btn-settings {
@@ -71,9 +33,17 @@
 
 	.btn-add {
 		padding: 0.75em 3rem;
-		border-radius: var(--br-section-100);
+		border-radius: var(--br);
 		align-items: center;
 		background-color: var(--clr-primary-400);
+
+		&:hover {
+			background-color: var(--clr-primary-200);
+		}
+
+		&:active {
+			background-color: var(--clr-primary-500);
+		}
 	}
 
 	.search {
@@ -101,6 +71,11 @@
 			.search-icon {
 				opacity: 0;
 			}
+
+			.clear-icon {
+				display: block;
+
+			}
 		}
 		.search-icon {
 			pointer-events: none;
@@ -110,6 +85,20 @@
 			left: 1em;
 			transition: opacity 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
 			z-index: 3;
+			color: var(--clr-dark-400);
+		}
+		
+		.clear-icon {
+			position: absolute;
+			cursor: pointer;
+			display: none;
+			top: 50%;
+			transform: translateY(-40%);
+			right: 2.5em;
+			transition: opacity 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+			z-index: 3;
+			color: var(--clr-dark-400);
+			animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 		}
 	}
 }

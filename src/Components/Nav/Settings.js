@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import HelpIcon from "../other/HelpIcon";
 import { IoMdExit, IoIosMoon } from "react-icons/io";
@@ -8,6 +8,7 @@ import { MdPeopleAlt } from "react-icons/md";
 import { BsQuestionLg, BsGithub, BsArchiveFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
+import { ThemeContext } from "../../App";
 
 const Settings = ({ settingsOpen, setSettingsOpen }) => {
 	const navigate = useNavigate();
@@ -19,9 +20,11 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 		setTimeout(() => setSettingsOpen(false), 200);
 	}
 
-	const [theme, setTheme] = useState("light");
+	// const [theme, setTheme] = useLocalStorage("theme", "light");
+	const {theme, setTheme} = useContext(ThemeContext)
 	function toggleTheme() {
 		setTheme(theme === "light" ? "dark" : "light");
+		document.documentElement.setAttribute("data-theme", theme === "light" ? "dark" : "light");
 	}
 
 	function logout() {
@@ -65,7 +68,11 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 						</button>
 					</li>
 					<li>
-						<button onClick={() => {window.open("https://github.com/GuruUpdesh", "_blank").focus()}}>
+						<button
+							onClick={() => {
+								window.open("https://github.com/GuruUpdesh", "_blank").focus();
+							}}
+						>
 							github <BsGithub />
 						</button>
 					</li>
@@ -85,7 +92,7 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 				<button
 					className="logout"
 					onClick={() => {
-						logout()
+						logout();
 						navigate("/login");
 					}}
 				>
@@ -97,7 +104,7 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 						<HelpIcon message={"Change the website colors to be light or dark depending on your preferences."} />
 						<p>Color Scheme</p>
 					</div>
-					<div className="theme-buttons">
+					<div className="theme-buttons" onClick={toggleTheme}>
 						<div
 							className={"highlighter " + (theme === "light" ? " left-highlighter" : "right-highlighter")}
 						></div>

@@ -21,12 +21,25 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 			}),
 			headers: {
 				"Content-Type": "application/json",
-				"x-access-token": `${localStorage.getItem("token")}`,
 			},
 		});
 		header.imgIndex = index;
 		setImgIndex(index);
 	};
+
+	const archive = async() => {
+		const response = fetch("/api/update-archived", {
+			method: "POST",
+			body: JSON.stringify({
+				id: localStorage.getItem("id"),
+				packageId: header.id,
+				isArchived: true
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			}
+		})
+	}
 
 	const ref = useRef();
 
@@ -37,23 +50,23 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 
 	return (
 		<div
-			className={"header " + (mapToggle ? "map" : "")}
+			className={"header flex-center-column " + (mapToggle ? "map" : "")}
 			ref={ref}
-			onMouseMove={(e) => {
-				if (!ref.current || ref.current.contains(e.target)) {
-					const bounds = ref.current.getBoundingClientRect();
-					const curX = e.clientX - bounds.left;
-					const curY = e.clientY - bounds.top;
+			// onMouseMove={(e) => {
+			// 	if (!ref.current || ref.current.contains(e.target)) {
+			// 		const bounds = ref.current.getBoundingClientRect();
+			// 		const curX = e.clientX - bounds.left;
+			// 		const curY = e.clientY - bounds.top;
 
-					const tiles = 0
-					if (x - curX > tiles || curX - x > tiles) {
-						setX(curX)
-					}
-					if (y - curY > tiles/2 || curY - y > tiles/2) {
-						setY(curY)
-					}
-				}
-			}}
+			// 		const tiles = 0
+			// 		if (x - curX > tiles || curX - x > tiles) {
+			// 			setX(curX)
+			// 		}
+			// 		if (y - curY > tiles/2 || curY - y > tiles/2) {
+			// 			setY(curY)
+			// 		}
+			// 	}
+			// }}
 		>
 			<div className="circleTest" style={{ top: y, left: x }}></div>
 			<button
@@ -105,9 +118,8 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 						></div>
 						<div className="gradient"></div>
 					</div>
-					<div className="controls">
+					<div className="controls flex-evenly">
 						<button className="btn-black" onClick={cycleImgIndex}>
-							{" "}
 							<AiOutlineSwap />
 							<span>change image</span>
 						</button>
@@ -115,7 +127,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 							<AiOutlineCheckSquare />
 							<span>mark as delivered</span>
 						</button>
-						<button className="btn-black">
+						<button className="btn-black" onClick={archive}>
 							<RiInboxArchiveLine />
 							<span>archive</span>
 						</button>

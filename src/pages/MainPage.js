@@ -6,21 +6,17 @@ import { ToastContainer, toast, cssTransition } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { BiPlus } from "react-icons/bi";
 import { BsCheck } from "react-icons/bs";
-import {AiOutlineWarning} from "react-icons/ai"
+import { AiOutlineWarning } from "react-icons/ai";
 import InfoModal from "../Components/modals/infoModal/InfoModal";
 import { useNavigate } from "react-router-dom";
 import Confirm from "../Components/modals/Confirm";
 import EditForm from "../Components/modals/EditForm";
+import Packages from "../Components/Package/Packages";
 
 const MainPage = () => {
 	const navigate = useNavigate();
-	const [packages, setPackages] = useState([]);
-	const packagesRef = useRef([]);
 
-	const [filteredPackages, setFilteredPackages] = useState(packages);
-	useEffect(() => {
-		setFilteredPackages(packages);
-	}, [packages]);
+	const [isAuthentic, setIsAuthentic] = useState(false);
 
 	// on load
 	useEffect(() => {
@@ -38,83 +34,13 @@ const MainPage = () => {
 			});
 
 			if (response.status === 200) {
-				packagesRef.current = [];
-				loadPackages();
+				setIsAuthentic(true);
 				return;
 			}
 
 			navigate("/login");
 		}
 	}, []);
-
-	const loadPackages = async () => {
-		const response = await fetch("/api/packages-data", {
-			method: "POST",
-			body: JSON.stringify({ email: localStorage.getItem("email"), id: localStorage.getItem("id") }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-
-		if (response.status !== 200) {
-			return;
-		}
-
-		const jsonResponse = await response.json();
-		const packages = jsonResponse;
-
-		for (let i = 0; i < packages.length; i++) {
-			loadPackage(packages[i]._id, i);
-			packages[i].state = "loading";
-		}
-		console.log(packages)
-		packagesRef.current = packages;
-		setPackages(packages);
-	};
-
-	const loadPackage = async (id, index) => {
-		console.log(id, index)
-		await fetch("/api/package-tracking-data", {
-			method: "POST",
-			body: JSON.stringify({ packageId: id, id: localStorage.getItem("id") }),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		}).then((response) => {
-			response.json().then((data) => {
-				data.header.index = index;
-				const copy = [...packagesRef.current];
-				copy[index] = data;
-				packagesRef.current = copy;
-				setPackages(packagesRef.current);
-			});
-		});
-	};
-
-	const reloadPackage = (index) => {
-		const copy = [...packagesRef.current];
-		copy[index].state = "loading";
-		setPackages(packagesRef.current);
-
-		loadPackage(packagesRef.current[index].header.id, index);
-	};
-
-	const removePackage = (index) => {
-		const copy = [...packagesRef.current]
-		copy.splice(index, 1)
-		packagesRef.current = copy
-		setPackages(copy)
-	};
-
-	const addLoadingPackage = (packageData) => {
-		const copy = [...packagesRef.current]
-		packageData.state = "loading"
-		console.log(packageData)
-		copy.push(packageData)
-		packagesRef.current = copy
-		setPackages(copy)
-		loadPackage(packageData._id, packagesRef.current.length-1)
-	}
 
 	const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 	const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
@@ -124,8 +50,8 @@ const MainPage = () => {
 
 	const fade = cssTransition({
 		enter: "fade-up",
-		exit: "fade-down"
-	})
+		exit: "fade-down",
+	});
 	const notify = (message, duration, type) => {
 		if (type === "success") {
 			toast.success(message, {
@@ -134,7 +60,7 @@ const MainPage = () => {
 				pauseOnHover: false,
 				hideProgressBar: true,
 				icon: ({ theme, type }) => <BsCheck />,
-				transition: fade
+				transition: fade,
 			});
 		} else if (type === "warning") {
 			toast.error(message, {
@@ -142,54 +68,33 @@ const MainPage = () => {
 				closeOnClick: true,
 				pauseOnHover: false,
 				icon: ({ theme, type }) => <AiOutlineWarning />,
-				transition: fade
-			})
+				transition: fade,
+			});
 		}
 	};
+
+	const packagesRef = useRef();
 
 	return (
 		<MainLayout
 			className={"site-padding"}
-			packages={packages}
-			setFilteredPackages={setFilteredPackages}
+			packagesRef={packagesRef}
 			setIsAddFormOpen={setIsAddFormOpen}
 			overflowState={isAddFormOpen || isInfoModalOpen}
 		>
 			<>
-				<ToastContainer
-					position="bottom-center"
-					closeOnClick
-					draggable={false}
-					toastId = "test"
-				/>
-				<div className="package-wrapper">
-					<div className="grid-3row-layout">
-						{filteredPackages.map((object, index) => {
-							if (object?.state) {
-								return <div className={"package-loading-container"} key={index}></div>;
-							} else {
-								return (
-									<Package
-										packageInfo={object}
-										setCurrentInfo={setCurrentInfo}
-										setIsInfoModalOpen={setIsInfoModalOpen}
-										key={index}
-									/>
-								);
-							}
-						})}
-						<button
-							onClick={() => {
-								// notify("test");
-								setIsAddFormOpen(true);
-							}}
-							className="package-add-btn"
-						>
-							<BiPlus />
-						</button>
-					</div>
-				</div>
-				{isAddFormOpen && <AddForm isOpen={isAddFormOpen} setIsOpen={setIsAddFormOpen} addLoadingPackage={addLoadingPackage} notify={notify} />}
+				<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
+				{isAuthentic && (
+					<Packages setCurrentInfo={setCurrentInfo} setIsInfoModalOpen={setIsInfoModalOpen} setIsAddFormOpen={setIsAddFormOpen} ref={packagesRef} />
+				)}
+				{isAddFormOpen && (
+					<AddForm
+						isOpen={isAddFormOpen}
+						setIsOpen={setIsAddFormOpen}
+						addLoadingPackage={packagesRef.current.addLoadingPackage}
+						notify={notify}
+					/>
+				)}
 				{isInfoModalOpen && (
 					<InfoModal
 						isOpen={isInfoModalOpen}
@@ -200,13 +105,20 @@ const MainPage = () => {
 						setIsEditFormOpen={setIsEditFormOpen}
 					/>
 				)}
-				{isConfirmOpen && <Confirm header={currentInfo.header} notify={notify} setIsOpen={setIsConfirmOpen} removePackage={removePackage}/>}
+				{isConfirmOpen && (
+					<Confirm
+						header={currentInfo.header}
+						notify={notify}
+						setIsOpen={setIsConfirmOpen}
+						removePackage={packagesRef.current.removePackage}
+					/>
+				)}
 				{isEditFormOpen && (
 					<EditForm
 						isOpen={isEditFormOpen}
 						setIsOpen={setIsEditFormOpen}
 						header={currentInfo.header}
-						reloadPackage={reloadPackage}
+						reloadPackage={packagesRef.current.reloadPackage}
 						notify={notify}
 					/>
 				)}

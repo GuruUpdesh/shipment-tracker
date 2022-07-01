@@ -31,7 +31,7 @@ const Confirm = ({ setIsOpen, header, notify, removePackage }) => {
 	});
 	return (
 		<Modal>
-			<div className="confirm-modal" ref={ref}>
+			<div className="confirm-modal flex-center-column" ref={ref}>
 			<button
 					className="btn-close btn-black"
 					onClick={() => {
@@ -45,7 +45,7 @@ const Confirm = ({ setIsOpen, header, notify, removePackage }) => {
 					<h1>Delete {header.name}?</h1>
 					<p>packages will be deleted forever</p>
 				</div>
-				<div className="content">
+				<div className="content flex-evenly">
 					<button className="btn-normal-text" onClick={() => setIsOpen(false)}>cancel</button>
 					<button className="btn-black" onClick={deletePackage} >confirm</button>
 				</div>
