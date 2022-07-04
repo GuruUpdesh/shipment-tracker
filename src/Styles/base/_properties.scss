@@ -71,6 +71,14 @@
 // 	 --toastify-color-error: var(--clr-warning) !important;
 // }
 
+$bpw-100: 500px;
+$bpw-200: 800px;
+$bpw-300: 1200px;
+$bpw-400: 1800px;
+$bpw-500: 2300px;
+$bpw-600: 3000px;
+
+
 :root {
 	// colors:
 	--clr-white-100: white;
@@ -118,23 +126,41 @@
 	// -------------------------
 
 	//font sizes:
-	--fs-small-100: 8px;
-	--fs-small-200: 10px;
-	--fs-small-300: 12px;
-	--fs-small-400: 14px;
-	--fs-small-600: 16px;
-	--fs-medium-200: 18px;
-	--fs-medium-400: 24px;
-	--fs-medium-600: 30px;
-	--fs-large-200: 36px;
-	--fs-large-400: 48px;
-	--fs-large-600: 60px;
-	--fs-large-800: 72px;
-	--fs-large-900: 84px;
-	--fs-ex-large-100: 96px;
+	// --fs-small-100: 8px;
+	// --fs-small-200: 10px;
+	// --fs-small-300: 12px;
+	// --fs-small-400: 14px;
+	// --fs-small-600: 16px;
+	// --fs-medium-200: 18px;
+	// --fs-medium-400: 24px;
+	// --fs-medium-600: 30px;
+	// --fs-large-200: 36px;
+	// --fs-large-400: 48px;
+	// --fs-large-600: 60px;
+	// --fs-large-800: 72px;
+	// --fs-large-900: 84px;
+	// --fs-ex-large-100: 96px;
+	--fs-small-100: clamp(6px, 1vw, 8px);
+	--fs-small-200: clamp(8px, 1.2vw, 10px);
+	--fs-small-300: clamp(9px, 1.4vw, 12px);
+	--fs-small-400: clamp(12px, 1.6vw, 14px);
+	--fs-small-600: clamp(14px, 2vw, 16px);
+
+	--fs-medium-200: clamp(15px, 2.2vw, 18px);
+	--fs-medium-400: clamp(18px, 3vw, 24px);
+	--fs-medium-600: clamp(25px, 4vw, 30px);
+
+	--fs-large-200: clamp(30px, 6vw, 36px);
+	--fs-large-400: clamp(36px, 7vw, 48px);
+	--fs-large-600: clamp(48px, 8vw, 60px);
+	--fs-large-800: clamp(60px, 9vw, 72px);
+	--fs-large-900: clamp(70px, 10vw, 84px);
+	--fs-ex-large-100: clamp(55px, 10vw, 96px);
+
 	// --------------------------
 
-	--br: 22px;
+	// --br: 22px;
+	--br: 5px;
 
 	// notification props override
 	--toastify-color-light: var(--clr-bg-100) !important;

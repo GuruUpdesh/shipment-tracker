@@ -1,7 +1,8 @@
-import React from "react";
+import React, {useState, useRef, useEffect} from "react";
 import { ToastContainer } from "react-toastify";
 import MainLayout from "../Components/Layout/MainLayout";
 import { useNavigate } from "react-router-dom";
+import Packages from "../Components/Package/Packages";
 
 const ArchivePage = () => {
 	const navigate = useNavigate();
@@ -31,12 +32,14 @@ const ArchivePage = () => {
 			navigate("/login");
 		}
 	}, []);
+
+	const packagesRef = useRef();
 	return (
-		<MainLayout>
+		<MainLayout className={"site-padding"} packagesRef={packagesRef} isArchive={true}>
 			<>
 				<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
 				{isAuthentic && (
-					<Packages setCurrentInfo={setCurrentInfo} setIsInfoModalOpen={setIsInfoModalOpen} ref={packagesCRef} />
+					<Packages  ref={packagesRef} isArchive={true}/>
 				)}
 			</>
 		</MainLayout>

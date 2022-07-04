@@ -6,7 +6,7 @@ import Selector from "../Form/Selector";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import { GoPackage } from "react-icons/go";
 import { AiFillPlusCircle} from "react-icons/ai";
-import ButtonBlack from "../ButtonBlack";
+import ButtonBlack from "../Core/ButtonBlack";
 import useEscape from "../../Hooks/useEscape";
 import useEnter from "../../Hooks/useEnter";
 
@@ -25,12 +25,16 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
     console.log(courier, name, trackingNumber)
     const valid = verify();
     if (!valid) {
-      return;
+      return 'error';
     }
 
-    await createPackage();
+    const result = await createPackage();
+    if (result) {
+      setIsOpen(false);
+      return
+    }
 
-    setIsOpen(false);
+    return "error"
   };
 
   const verify = () => {
@@ -83,8 +87,10 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
     if (response.status === 201) {
       addLoadingPackage(jsonResponse.packageData)
       notify(`added ${name}`, 2000, "success")
+      return true
     } else {
       notify(jsonResponse.message, 2000, "warning")
+      return false
     }
   };
 
@@ -119,22 +125,25 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
           setValue={setName}
           type="text"
           autoFocus={true}
+          error={errors.name}
         />
-        <p>{errors.name}</p>
+        {/* <p>{errors.name}</p> */}
         <Input
           placeholder={"tracking number"}
           value={trackingNumber}
           setValue={setTrackingNumber}
           type="text"
+          error={errors.trackingNumber}
         />
-        <p>{errors.trackingNumber}</p>
+        {/* <p>{errors.trackingNumber}</p> */}
         <Selector
           placeholder="courier"
           options={["UPS", "USPS", "FedEx", "DHL"]}
           selected={courier}
           setSelected={setCourier}
+          error={errors.courier}
         />
-        <p>{errors.courier}</p>
+        {/* <p>{errors.courier}</p> */}
         <button
           className="btn-normal-text"
           onClick={() => {
@@ -143,7 +152,7 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
         >
           cancel
         </button>
-        <ButtonBlack onClick={handleSubmit}>
+        <ButtonBlack onClick={handleSubmit} errors={true} load={true}>
           add
         </ButtonBlack>
       </div>

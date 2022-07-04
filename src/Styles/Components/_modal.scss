@@ -14,6 +14,9 @@
     width: 50vw;
     height: 100vh;
     top: 10%;
+    @media (max-width: $bpw-300) {
+        top: 5%;
+    }
     left: 25%;
     display: flex;
     z-index: 101;

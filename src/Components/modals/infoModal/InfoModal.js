@@ -36,8 +36,9 @@ const InfoModal = ({ isOpen, setIsOpen, packageInfo, notify, setIsConfirmOpen, s
 					<div className="transit-sub-content">
 						<HelpIcon
 							message={
-								"We use a basic algorithm to guess where your package is in its journey. We do not guarantee the accuracy of this information. For more up to date information visit the couriers tracking page directly by clicking the button in the bottom right corner."
+								"We use a basic algorithm to guess where your package is in its journey. We do not guarantee the accuracy of this information. For more up to date information visit the couriers tracking page directly by clicking the button below."
 							}
+							direction={'left'}
 						/>
 						<button
 							className="btn-normal-text"

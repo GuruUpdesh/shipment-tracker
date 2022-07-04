@@ -19,7 +19,21 @@
 				justify-content: center;
 				align-items: center;
 				position: relative;
-				outline: 1px solid var(--clr-bg-100);
+				// outline: 1px solid var(--clr-bg-100);
+				// transform: translateZ(0);
+				transform-style: preserve-3d;
+
+				&:before {
+					content: "";
+					position: absolute;
+					width: calc(100% + 4px);
+					height: calc(100% + 4px);
+					background-color: var(--clr-bg-100);
+					border-radius: 99%;
+					top: -2px;
+					left: -2px;
+					transform: translateZ(-1px);
+				}
 			}
 
 			.unfilled {
@@ -40,20 +54,23 @@
 				// color: red;
 
 				&:after {
-					mix-blend-mode: overlay;
 					content: "";
 					position: absolute;
-					width: 12px;
-					height: 12px;
+					width: 10px;
+					height: 10px;
 					border-radius: 100%;
-					box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
-					background-color: rgba(255, 255, 255, 0.75);
+					background-color: var(--clr-bg-100);
+					box-shadow: 0 0 10px 5px var(--clr-bg-100);
+					border: 1px solid rgba(255, 255, 255, 0.486);
+
+					animation: circleAfterFill .5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+					animation-delay: inherit;
 				}
 
 				animation: circleFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 
 				svg {
-					animation: circleCheck 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+					animation: circleCheck 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
 					animation-delay: inherit;
 				}
 			}
@@ -105,6 +122,25 @@
 	}
 	100% {
 		background-position: 0;
+	}
+}
+
+@keyframes circleAfterFill {
+	0% {
+		width: 10px;
+		height: 10px;
+		background-color: var(--clr-bg-100);
+		box-shadow: 0 0 10px 5px var(--clr-bg-100);
+		border: 1px solid rgba(255, 255, 255, 0.486);
+	}
+
+	100% {
+		mix-blend-mode: overlay;
+		width: 12px;
+		height: 12px;
+		border-radius: 100%;
+		box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
+		background-color: rgba(255, 255, 255, 0.75);
 	}
 }
 

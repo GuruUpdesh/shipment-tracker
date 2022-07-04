@@ -3,11 +3,18 @@
 	background-color: var(--clr-bg-400);
 	padding: 1rem;
 	border-bottom: 1px solid var(--clr-border-400);
+	position: absolute;
+	width: 100%;
+	top: 0;
 
 	button {
 		border-radius: 100%;
 		padding: 1em 1em;
 		position: relative;
+
+		@media (max-width: $bpw-100) {
+			font-size: var(--fs-small-400);
+		}
 
 		svg {
 			display: block;
@@ -15,6 +22,12 @@
 
 		&:first-child {
 			margin-right: 1em;
+		}
+
+		@media (max-width: $bpw-200) {
+			&:first-child {
+				margin-right: .5em;
+			}
 		}
 	}
 
@@ -28,11 +41,15 @@
 				transition: 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 			}
 		}
-
 	}
 
 	.btn-add {
+		margin: 0 !important;
 		padding: 0.75em 3rem;
+		@media (max-width: $bpw-300) {
+			padding: 1em 1em;
+			border-radius: 100%;
+		}
 		border-radius: var(--br);
 		align-items: center;
 		background-color: var(--clr-primary-400);
@@ -74,7 +91,6 @@
 
 			.clear-icon {
 				display: block;
-
 			}
 		}
 		.search-icon {
@@ -87,7 +103,7 @@
 			z-index: 3;
 			color: var(--clr-dark-400);
 		}
-		
+
 		.clear-icon {
 			position: absolute;
 			cursor: pointer;

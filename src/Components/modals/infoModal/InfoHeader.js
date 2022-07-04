@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef, useContext, useEffect } from "react";
 import PackageMap from "../../Package/PackageMap";
 import { RiCloseFill, RiInboxArchiveLine } from "react-icons/ri";
 import { AiOutlineCheckSquare, AiOutlineDelete, AiOutlineSwap } from "react-icons/ai";
 import { FiMap } from "react-icons/fi";
 import { BiEdit, BiArrowBack } from "react-icons/bi";
-import _ from "underscore";
+import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
+import { UserContext } from "../../../App";
 
 const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIsEditFormOpen }) => {
 	const [imgIndex, setImgIndex] = useState(header.imgIndex);
@@ -27,48 +28,28 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 		setImgIndex(index);
 	};
 
-	const archive = async() => {
+	const archive = async () => {
 		const response = fetch("/api/update-archived", {
 			method: "POST",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),
 				packageId: header.id,
-				isArchived: true
+				isArchived: true,
 			}),
 			headers: {
 				"Content-Type": "application/json",
-			}
-		})
-	}
+			},
+		});
+	};
 
 	const ref = useRef();
 
 	const [mapToggle, setMapToggle] = useState(false);
 
-	const [x, setX] = useState(0);
-	const [y, setY] = useState(0);
+	const { user } = useContext(UserContext);
 
 	return (
-		<div
-			className={"header flex-center-column " + (mapToggle ? "map" : "")}
-			ref={ref}
-			// onMouseMove={(e) => {
-			// 	if (!ref.current || ref.current.contains(e.target)) {
-			// 		const bounds = ref.current.getBoundingClientRect();
-			// 		const curX = e.clientX - bounds.left;
-			// 		const curY = e.clientY - bounds.top;
-
-			// 		const tiles = 0
-			// 		if (x - curX > tiles || curX - x > tiles) {
-			// 			setX(curX)
-			// 		}
-			// 		if (y - curY > tiles/2 || curY - y > tiles/2) {
-			// 			setY(curY)
-			// 		}
-			// 	}
-			// }}
-		>
-			<div className="circleTest" style={{ top: y, left: x }}></div>
+		<div className={"header flex-center-column " + (mapToggle ? "map" : "")} ref={ref}>
 			<button
 				className="btn-black map-toggle"
 				onClick={() => {
@@ -110,14 +91,16 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 				<PackageMap center={header.coordinates} drawLines={true} zoom={4} transitHistory={transitHistory} />
 			) : (
 				<>
-					<div className="background-container"> 
-						<div
-							className="background-image"
-							style={{ backgroundImage: `url(${header.photos[imgIndex]})`, left: -x / 30, top: -y / 10 }}
-							key={imgIndex}
-						></div>
-						<div className="gradient"></div>
-					</div>
+					<MouseParallaxContainer useWindowMouseEvents={true} enabled={!user.isMobile}>
+						<MouseParallaxChild factorX={0.01} factorY={0.02}>
+							<div
+								className="background-image"
+								style={{ backgroundImage: `url(${header.photos[imgIndex]})`, left: 0, top: 0 }}
+								key={imgIndex}
+							></div>
+							<div className="gradient"></div>
+						</MouseParallaxChild>
+					</MouseParallaxContainer>
 					<div className="controls flex-evenly">
 						<button className="btn-black" onClick={cycleImgIndex}>
 							<AiOutlineSwap />

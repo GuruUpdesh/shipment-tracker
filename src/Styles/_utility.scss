@@ -5,13 +5,24 @@
 }
 
 .site-padding {
-	$padding: math.div(100vw, 8);
+	// $padding: math.div(100vw, 8);
+	$padding: clamp(1rem, 4vw, 8rem);
 	padding-left: $padding;
 	padding-right: $padding;
 
-	@media (max-width: 850px) {
+	@media (min-width: $bpw-400) {
+		padding-left: math.div(100vw, 8);
+		padding-right: math.div(100vw, 8);
+	}
+
+	@media (max-width: $bpw-200) {
 		padding-left: 2em;
 		padding-right: 2em;
+	}
+
+	@media (max-width: $bpw-100) {
+		padding-left: 1em;
+		padding-right: 1em;
 	}
 }
 
@@ -39,7 +50,17 @@
 	border-radius: var(--br);
 	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 	position: relative;
-	// overflow: hidden;
+	// font-size: var(--fs-me);
+	user-select: none;
+
+
+	.loading-icon {
+		display: inline;
+		transform: translateY(3px);
+		margin-left: 1ch;
+
+		animation: loading 1s linear forwards infinite;
+	}
 
 	svg {
 		display: block;
@@ -66,7 +87,7 @@
 			padding: 0.5em 1em;
 			font-size: var(--fs-small-400);
 			border-radius: 20px;
-			animation: btnLabels 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+			animation: btnLabels 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 			animation-delay: 0.2s;
 			opacity: 0;
 			line-height: 125%;
@@ -100,7 +121,7 @@
 		width: 20px;
 		height: 20px;
 
-		@media screen and (max-width: 1000px){
+		@media screen and (max-width: 1000px) {
 			width: 10px;
 			height: 10px;
 		}
@@ -108,6 +129,10 @@
 		background-color: var(--clr-white-100);
 		position: absolute;
 		opacity: 0;
+	}
+
+	&:focus-visible {
+		outline: 1px solid var(--clr-primary-400);
 	}
 
 	&:focus {
@@ -123,10 +148,31 @@
 		.pulse {
 			animation: none;
 		}
+	}
+}
 
-		span {
-			display: none;
-		}
+.btn-error {
+	animation: btnError 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes btnError {
+	0% {
+		transform: translateX(0);
+		background-color: var(--clr-dark-400-true);
+	}
+	25% {
+		transform: translateX(-3px);
+	}
+	50% {
+		transform: translateX(3px);
+		background-color: var(--clr-warning);
+	}
+	75% {
+		transform: translateX(-3px);
+	}
+	100% {
+		transform: translateX(0);
+		background-color: var(--clr-dark-400-true);
 	}
 }
 
@@ -156,5 +202,14 @@
 
 	&:active {
 		background-color: var(--clr-warning);
+	}
+}
+
+@keyframes loading {
+	0% {
+		transform: translateY(3px) rotate(0);
+	}
+	100% {
+		transform: translateY(3px) rotate(300deg);
 	}
 }

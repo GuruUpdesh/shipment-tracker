@@ -15,24 +15,26 @@
 	font-family: "Poppins", sans-serif;
 }
 
-
-main {
-	max-height: 100vh;
-	overflow-y: scroll;
-}
-
 .overflowNone {
 	overflow-y: hidden;
 }
 
 #root {
 	overflow: hidden !important;
-	max-height: 100vh;
+	min-height: 100vh;
+	background-color: var(--clr-bg-100);
 }
 
-body {
-	overflow: hidden;
+body  {
+	// overflow-y: hidden;
+	// position: fixed;
+	width: 100%;
+	height: 100%;
 }
+
+// body {
+// 	overflow: hidden;
+// }
 
 /* Remove default margin */
 body,

@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { MdSettings } from "react-icons/md";
-import { BsFillArchiveFill } from "react-icons/bs";
+import { BsFillArchiveFill} from "react-icons/bs";
+import { GoPackage } from "react-icons/go";
 import { BiPlus } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
 import Settings from "./Settings";
 import { RiCloseFill } from "react-icons/ri";
 import Fuse from "fuse.js";
-import ButtonBlack from "../ButtonBlack";
+import ButtonBlack from "../Core/ButtonBlack";
+import { useNavigate } from "react-router-dom";
 
-const MainNav = ({ setIsAddFormOpen, packagesRef }) => {
+const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
+	const navigate = useNavigate()
 	const [settingsOpen, setSettingsOpen] = useState(false);
 	function toggleSettingsMenu() {
 		setSettingsOpen(!settingsOpen);
@@ -20,7 +23,7 @@ const MainNav = ({ setIsAddFormOpen, packagesRef }) => {
 		if (value === "") {
 			return [];
 		}
-		const fuse = new Fuse(packagesRef.current.packageList, { keys: ["header.name"] });
+		const fuse = new Fuse(packagesRef.current.packageList, { keys: isArchive ? ["name"] : ["header.name"] });
 		const result = fuse.search(value);
 		const newPackages = [];
 		for (let i = 0; i < result.length; i++) {
@@ -47,10 +50,17 @@ const MainNav = ({ setIsAddFormOpen, packagesRef }) => {
 					<MdSettings />
 					<span>settings</span>
 				</ButtonBlack>
-				<ButtonBlack>
-					<BsFillArchiveFill />
-					<span>archive</span>
-				</ButtonBlack>
+				{isArchive ? (
+					<ButtonBlack onClick={() => {navigate('/packages')}}>
+						<GoPackage />
+						<span>packages</span>
+					</ButtonBlack>
+				) : (
+					<ButtonBlack onClick={() => {navigate('/archive')}}>
+						<BsFillArchiveFill />
+						<span>archive</span>
+					</ButtonBlack>
+				)}
 			</div>
 			<div>
 				<div className="search ">

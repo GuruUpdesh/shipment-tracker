@@ -8,6 +8,10 @@
 	perspective-origin: 50% 50%;
 	animation: fadeRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 	animation-delay: 0.3s;
+
+	@media (max-width: 1000px) {
+		display: none;
+	}
 }
 
 .login-image-wrapper {

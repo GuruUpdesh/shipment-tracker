@@ -6,7 +6,7 @@ import Selector from "../Form/Selector";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import { GoPackage } from "react-icons/go";
 import { BiEdit} from "react-icons/bi";
-import ButtonBlack from "../ButtonBlack";
+import ButtonBlack from "../Core/ButtonBlack";
 import useEscape from "../../Hooks/useEscape";
 import useEnter from "../../Hooks/useEnter";
 
@@ -23,12 +23,16 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 	const handleSubmit = async () => {
 		const valid = verify();
 		if (!valid) {
-			return;
+			return 'error';
 		}
 
-		await editPackage();
+		const result = await editPackage();
+		if (result) {
+			setIsOpen(false);
+			return
+		}
 
-		setIsOpen(false);
+		return 'error'
 	};
 
 	const verify = () => {
@@ -106,17 +110,15 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 					<h1>Edit Package</h1>
 					<p>change your package details</p>
 				</div>
-				<Input placeholder={"name"} value={name} setValue={setName} type="text" autoFocus={true}/>
-				<p>{errors.name}</p>
-				<Input placeholder={"tracking number"} value={trackingNumber} setValue={setTrackingNumber} type="text" />
-				<p>{errors.trackingNumber}</p>
+				<Input placeholder={"name"} value={name} setValue={setName} type="text" autoFocus={true} error={errors.name}/>
+				<Input placeholder={"tracking number"} value={trackingNumber} setValue={setTrackingNumber} type="text" error={errors.trackingNumber}/>
 				<Selector
 					placeholder="courier"
 					options={["UPS", "USPS", "FedEx", "DHL"]}
 					selected={courier}
 					setSelected={setCourier}
+					error={errors.courier}
 				/>
-				<p>{errors.courier}</p>
 				<button
 					className="btn-normal-text"
 					onClick={() => {
@@ -125,7 +127,7 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 				>
 					cancel
 				</button>
-				<ButtonBlack onClick={handleSubmit}>save</ButtonBlack>
+				<ButtonBlack onClick={handleSubmit} errors={true}>save</ButtonBlack>
 			</div>
 		</Modal>
 	);

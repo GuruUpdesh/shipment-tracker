@@ -9,6 +9,7 @@
 @import "./infoModal";
 @import "./statusBar";
 @import "toast";
+@import "contextMenu";
 
 button {
   border: none;
@@ -20,7 +21,7 @@ button {
 input {
   border: none;
   border: 1px solid var(--clr-border-400);
-  border-radius: 20px;
+  border-radius: var(--br);
   padding: 0.5em 1em;
   background-color: var(--clr-bg-100);
   color: var(--clr-dark-400);

@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import Confirm from "../Components/modals/Confirm";
 import EditForm from "../Components/modals/EditForm";
 import Packages from "../Components/Package/Packages";
+import { motion } from "framer-motion";
 
 const MainPage = () => {
 	const navigate = useNavigate();
@@ -81,12 +82,18 @@ const MainPage = () => {
 			packagesRef={packagesRef}
 			setIsAddFormOpen={setIsAddFormOpen}
 			overflowState={isAddFormOpen || isInfoModalOpen}
+			isArchive={false}
 		>
 			<>
 				<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
-				{isAuthentic && (
-					<Packages setCurrentInfo={setCurrentInfo} setIsInfoModalOpen={setIsInfoModalOpen} setIsAddFormOpen={setIsAddFormOpen} ref={packagesRef} />
-				)}
+					{isAuthentic && (
+						<Packages
+							setCurrentInfo={setCurrentInfo}
+							setIsInfoModalOpen={setIsInfoModalOpen}
+							setIsAddFormOpen={setIsAddFormOpen}
+							ref={packagesRef}
+						/>
+					)}
 				{isAddFormOpen && (
 					<AddForm
 						isOpen={isAddFormOpen}

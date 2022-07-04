@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef, forwardRef, useImperativeHandle } from "react";
+import React, { useEffect, useLayoutEffect, useState, useRef, forwardRef, useImperativeHandle } from "react";
 import Package from "./Package";
 import { BiPlus } from "react-icons/bi";
 
@@ -16,14 +16,18 @@ const Packages = forwardRef((props, ref) => {
 		}
 	}, [loadingBlockIndex]);
 
-	useEffect(() => {
+	useLayoutEffect(() => {
 		fetchPackages();
 	}, []);
 
 	async function fetchPackages() {
 		const response = await fetch("/api/packages-data", {
 			method: "POST",
-			body: JSON.stringify({ email: localStorage.getItem("email"), id: localStorage.getItem("id") }),
+			body: JSON.stringify({
+				email: localStorage.getItem("email"),
+				id: localStorage.getItem("id"),
+				archive: props.isArchive ? true : false,
+			}),
 			headers: {
 				"Content-Type": "application/json",
 			},
@@ -35,7 +39,16 @@ const Packages = forwardRef((props, ref) => {
 
 		const jsonResponse = await response.json();
 		packagesList.current = jsonResponse;
-		console.log(jsonResponse);
+		if (props.isArchive) {
+			for (let i = 0; i < packagesList.current.length; i++) {
+				packagesList.current[i].inCurrentBlock = true
+				packagesList.current[i].error = false
+				packagesList.current[i].loading = false
+			}
+			console.log("settings filtered packages", packagesList.current)
+			setFilteredPackages(packagesList.current);
+			return
+		}
 		loadPackages(0);
 	}
 
@@ -51,7 +64,6 @@ const Packages = forwardRef((props, ref) => {
 		for (let i = loadingIndex * loadBlock; i < loadingIndex * loadBlock + loadBlock; i++) {
 			if (i < packagesList.current.length) {
 				packagesList.current[i].inCurrentBlock = true;
-				console.log(i);
 				loadPackage(packagesList.current[i]._id, i);
 			}
 		}
@@ -76,7 +88,7 @@ const Packages = forwardRef((props, ref) => {
 
 		const data = await response.json();
 		if (response.status !== 200) {
-            packagesList.current[index].errorMessage = data.message
+			packagesList.current[index].errorMessage = data.message;
 			packagesList.current[index].error = true;
 			setFilteredPackages([...packagesList.current]);
 			return;
@@ -124,6 +136,7 @@ const Packages = forwardRef((props, ref) => {
 
 	return (
 		<div className="package-wrapper" ref={packageWrapperRef}>
+			{props.isArchive && <h1>Archive</h1>}
 			<div className="grid-3row-layout">
 				{filteredPackages.map((currentPackage, index) => {
 					return (
@@ -132,22 +145,24 @@ const Packages = forwardRef((props, ref) => {
 							setCurrentInfo={props.setCurrentInfo}
 							setIsInfoModalOpen={props.setIsInfoModalOpen}
 							key={index}
+							isArchive={props.isArchive}
 						/>
 					);
 				})}
-				<button
-					onClick={() => {
-						props.setIsAddFormOpen(true);
-					}}
-					className="package-add-btn"
-				>
-					<BiPlus />
-				</button>
-				{!isLoaded && (
+				{(isLoaded && !props.isArchive) && (
+					<button
+						onClick={() => {
+							props.setIsAddFormOpen(true);
+						}}
+						className="package-add-btn"
+					>
+						<BiPlus />
+					</button>
+				)}
+				{(!isLoaded && !props.isArchive) && (
 					<button
 						className="btn-normal-text"
 						onClick={() => {
-							console.log(loadingBlockIndex * loadBlock, packagesList.current.length);
 							if ((loadingBlockIndex + 1) * loadBlock < packagesList.current.length) {
 								setLoadingBlockIndex(loadingBlockIndex + 1);
 							}
