@@ -35,7 +35,7 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 			let cur = transitHistory[i].location;
 			const location = cur.city + " " + cur.state + " " + cur.state;
 			const latLngData = await axios.get(
-				`https://maps.googleapis.com/maps/api/geocode/json?address=${location}}&key=AIzaSyCKa3w9Ee5Kyfdy8qeUX_j__6hsyqkpkXo`
+				`https://maps.googleapis.com/maps/api/geocode/json?address=${location}}&key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}`
 			);
 			const latLng = {};
 
@@ -59,7 +59,7 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 	// loaded?
 	const { isLoaded } = useJsApiLoader({
 		id: "google-map-script",
-		googleMapsApiKey: "AIzaSyCKa3w9Ee5Kyfdy8qeUX_j__6hsyqkpkXo",
+		googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
 	});
 
 	// map state
@@ -103,7 +103,7 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 			</GoogleMap>
 		</div>
 	) : (
-		<>LOADING</>
+		<></>
 	);
 }
 

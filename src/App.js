@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect, useLayoutEffect } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "./Styles/styles.css";
 import ContextMenu from "./Components/other/ContextMenu";
 import AnimatedRoutes from "./pages/AnimatedRoutes";
@@ -30,14 +30,14 @@ function App() {
 	}, [theme]);
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ThemeContext.Provider value={{ theme, setTheme }}>
 					<ContextMenu />
 					<AnimatedRoutes />
 				</ThemeContext.Provider>
 			</UserContext.Provider>
-		</BrowserRouter>
+		</HashRouter>
 	);
 }
 

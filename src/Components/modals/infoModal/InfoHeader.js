@@ -13,7 +13,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 	const cycleImgIndex = async () => {
 		const index = (imgIndex + 1) % header.photos.length;
 
-		const response = fetch("/api/update-img-index", {
+		const response = fetch(`${process.env.REACT_APP_API_URL}/api/update-img-index`, {
 			method: "POST",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),
@@ -29,7 +29,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 	};
 
 	const archive = async () => {
-		const response = fetch("/api/update-archived", {
+		const response = fetch(`${process.env.REACT_APP_API_URL}/api/update-archived`, {
 			method: "POST",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),

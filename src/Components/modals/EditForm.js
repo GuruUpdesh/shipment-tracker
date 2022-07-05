@@ -1,8 +1,8 @@
 import React, { useState, useRef } from "react";
 import Modal from "./Modal";
-import Input from "../Form/Input";
+import Input from "../Core/Form/Input";
 import { RiCloseFill } from "react-icons/ri";
-import Selector from "../Form/Selector";
+import Selector from "../Core/Form/Selector";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import { GoPackage } from "react-icons/go";
 import { BiEdit} from "react-icons/bi";
@@ -61,7 +61,7 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 	};
 
 	const editPackage = async () => {
-		const response = await fetch("/api/update", {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update`, {
 			method: "POST",
 			body: JSON.stringify({
 				email: localStorage.getItem("email"),

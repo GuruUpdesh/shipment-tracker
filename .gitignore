@@ -7,6 +7,9 @@
 .pnp.js
 /public
 
+#other
+.env
+
 # testing
 /coverage
 

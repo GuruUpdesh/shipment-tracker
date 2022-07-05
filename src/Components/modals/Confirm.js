@@ -5,7 +5,7 @@ import {RiCloseFill} from "react-icons/ri"
 
 const Confirm = ({ setIsOpen, header, notify, removePackage }) => {
 	const deletePackage = async () => {
-		const response = await fetch("/api/delete", {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/delete`, {
 			method: "DELETE",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),

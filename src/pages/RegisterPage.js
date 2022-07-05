@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Input from "../Components/Form/Input";
+import Input from "../Components/Core/Form/Input";
 import { useNavigate } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 
@@ -38,7 +38,7 @@ const RegisterPage = () => {
 	};
 
 	const register = async () => {
-		const response = await fetch("/api/register", {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/register`, {
 			method: "POST",
 			body: JSON.stringify({
 				email: email,

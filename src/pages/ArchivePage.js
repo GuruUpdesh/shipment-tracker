@@ -13,7 +13,7 @@ const ArchivePage = () => {
 	useEffect(() => {
 		authenticate();
 		async function authenticate() {
-			const response = await fetch("/api/authenticate", {
+			const response = await fetch(`${process.env.REACT_APP_API_URL}/api/authenticate`, {
 				method: "POST",
 				body: JSON.stringify({
 					email: localStorage.getItem("email"),

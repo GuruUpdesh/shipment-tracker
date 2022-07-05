@@ -66,7 +66,7 @@ const HomePage = () => {
 							factorY={0.1}
 							springConfig={{ stiffness: 20, damping: 3 }}
 						>
-							<img src="boxes/Small.png"></img>
+							<img src={ process.env.PUBLIC_URL + "/boxes/Small.png"}></img>
 						</MouseParallaxChild>
 						<MouseParallaxChild
 							className="image-container"
@@ -74,7 +74,7 @@ const HomePage = () => {
 							factorY={0.08}
 							springConfig={{ stiffness: 30, damping: 4 }}
 						>
-							<img src="boxes/Middle.png"></img>
+							<img src={process.env.PUBLIC_URL + "/boxes/Middle.png"}></img>
 						</MouseParallaxChild>
 						<MouseParallaxChild
 							className="image-container"
@@ -82,7 +82,7 @@ const HomePage = () => {
 							factorY={0.05}
 							springConfig={{ stiffness: 40, damping: 5 }}
 						>
-							<img src="boxes/Big.png"></img>
+							<img src={process.env.PUBLIC_URL + "/boxes/Big.png"}></img>
 						</MouseParallaxChild>
 					</MouseParallaxContainer>
 				</div>

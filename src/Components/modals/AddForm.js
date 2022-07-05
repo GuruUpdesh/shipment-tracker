@@ -1,14 +1,13 @@
 import React, { useState, useRef } from "react";
 import Modal from "./Modal";
-import Input from "../Form/Input";
+import Input from "../Core/Form/Input";
 import { RiCloseFill } from "react-icons/ri";
-import Selector from "../Form/Selector";
+import Selector from "../Core/Form/Selector";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import { GoPackage } from "react-icons/go";
 import { AiFillPlusCircle} from "react-icons/ai";
 import ButtonBlack from "../Core/ButtonBlack";
 import useEscape from "../../Hooks/useEscape";
-import useEnter from "../../Hooks/useEnter";
 
 
 const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
@@ -67,7 +66,7 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
   };
 
   const createPackage = async () => {
-    const response = await fetch("/api/add", {
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/api/add`, {
       method: "PUT",
       body: JSON.stringify({
         email: localStorage.getItem("email"),

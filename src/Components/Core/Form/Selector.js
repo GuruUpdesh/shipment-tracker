@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 import { BiChevronDown, BiChevronUp } from "react-icons/bi";
-import useOnClickOutside from "../../Hooks/useOnClickOutside";
+import useOnClickOutside from "../../../Hooks/useOnClickOutside";
 
 const Selector = ({ placeholder, options, selected, setSelected, error }) => {
 	const [isOpen, setIsOpen] = useState(false);

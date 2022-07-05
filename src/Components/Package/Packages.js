@@ -21,7 +21,7 @@ const Packages = forwardRef((props, ref) => {
 	}, []);
 
 	async function fetchPackages() {
-		const response = await fetch("/api/packages-data", {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/packages-data`, {
 			method: "POST",
 			body: JSON.stringify({
 				email: localStorage.getItem("email"),
@@ -75,7 +75,7 @@ const Packages = forwardRef((props, ref) => {
 		if (index === packagesList.current.length - 1) {
 			setIsLoaded(true);
 		}
-		const response = await fetch("/api/package-tracking-data", {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/package-tracking-data`, {
 			method: "POST",
 			body: JSON.stringify({
 				packageId: id,

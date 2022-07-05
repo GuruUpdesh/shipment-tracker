@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import ButtonBlack from "../Components/Core/ButtonBlack";
-import Input from "../Components/Form/Input";
+import Input from "../Components/Core/Form/Input";
 import MainLayout from "../Components/Layout/MainLayout";
 
 const TestPage = () => {

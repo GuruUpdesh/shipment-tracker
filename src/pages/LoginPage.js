@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import Input from "../Components/Form/Input";
+import Input from "../Components/Core/Form/Input";
 import { useNavigate } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 import ButtonBlack from "../Components/Core/ButtonBlack";
@@ -43,7 +43,7 @@ const LoginPage = () => {
 	};
 
 	const login = async () => {
-		const response = await fetch("/api/login", {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
 			method: "POST",
 			body: JSON.stringify({
 				email: email,
@@ -138,6 +138,7 @@ const LoginPage = () => {
 				<div
 					className="login-image-wrapper flex-center-column"
 					style={{
+						background: `url(${process.env.PUBLIC_URL + "/Login.png"})`,
 						transform: ` translateX(-1em) rotateY(${(-90 + x * 180) / 5}deg) rotateX(${(90 - y * 180) / 5}deg)`,
 						boxShadow: `${10 - 20 * x}px ${10 - 20 * y}px 10px var(--clr-bg-dark-400)`,
 					}}
