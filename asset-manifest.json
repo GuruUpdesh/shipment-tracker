@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Shipmentracker/static/css/main.e9377d6e.css",
-    "main.js": "/Shipmentracker/static/js/main.a62e618b.js",
-    "static/js/787.c2e0f42a.chunk.js": "/Shipmentracker/static/js/787.c2e0f42a.chunk.js",
-    "index.html": "/Shipmentracker/index.html",
-    "main.e9377d6e.css.map": "/Shipmentracker/static/css/main.e9377d6e.css.map",
-    "main.a62e618b.js.map": "/Shipmentracker/static/js/main.a62e618b.js.map",
-    "787.c2e0f42a.chunk.js.map": "/Shipmentracker/static/js/787.c2e0f42a.chunk.js.map"
+    "main.css": "/static/css/main.e9377d6e.css",
+    "main.js": "/static/js/main.235a645f.js",
+    "static/js/787.c2e0f42a.chunk.js": "/static/js/787.c2e0f42a.chunk.js",
+    "index.html": "/index.html",
+    "main.e9377d6e.css.map": "/static/css/main.e9377d6e.css.map",
+    "main.235a645f.js.map": "/static/js/main.235a645f.js.map",
+    "787.c2e0f42a.chunk.js.map": "/static/js/787.c2e0f42a.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e9377d6e.css",
-    "static/js/main.a62e618b.js"
+    "static/js/main.235a645f.js"
   ]
 }
