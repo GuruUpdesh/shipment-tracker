@@ -22,6 +22,7 @@ const Packages = forwardRef((props, ref) => {
 
 	async function fetchPackages() {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/packages-data`, {
+			credentials: 'include',
 			method: "POST",
 			body: JSON.stringify({
 				email: localStorage.getItem("email"),
@@ -76,6 +77,7 @@ const Packages = forwardRef((props, ref) => {
 			setIsLoaded(true);
 		}
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/package-tracking-data`, {
+			credentials: 'include',
 			method: "POST",
 			body: JSON.stringify({
 				packageId: id,
@@ -114,6 +116,7 @@ const Packages = forwardRef((props, ref) => {
 			loadPackage(packagesList.current[index].header.id, index);
 		},
 		removePackage(index) {
+			console.log("remove package", index)
 			for (let i = index + 1; i < packagesList.current.length; i++) {
 				packagesList.current[i].header.index = packagesList.current[i].header.index - 1;
 			}
@@ -121,11 +124,12 @@ const Packages = forwardRef((props, ref) => {
 			setFilteredPackages(packagesList.current);
 		},
 		addLoadingPackage(packageData) {
+			console.log(packageData)
 			for (let i = 0; i < packagesList.current.length; i++) {
 				packagesList.current[i].header.index = packagesList.current[i].header.index + 1;
 			}
 			packageData.loading = true;
-			packageData.currentBlock = true;
+			packageData.inCurrentBlock = true;
 			packagesList.current.unshift(packageData);
 			setFilteredPackages([...packagesList.current]);
 			loadPackage(packageData._id, 0);
@@ -146,6 +150,8 @@ const Packages = forwardRef((props, ref) => {
 							setIsInfoModalOpen={props.setIsInfoModalOpen}
 							key={index}
 							isArchive={props.isArchive}
+							notify={props.notify}
+							packagesRef={ref}
 						/>
 					);
 				})}

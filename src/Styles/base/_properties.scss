@@ -1,76 +1,3 @@
-// :root {
-//     --clr-bg-primary: #e4e4e4;
-// 	--clr-bg-secondary: #f2f2f2;
-// 	--clr-bg-light-grey: #e9e9e9;
-// 	--clr-primary: #41c3b4;
-// 	--clr-dark: #222834;
-// 	--clr-dark2: rgb(50, 56, 68) 4;
-// 	--clr-light-grey: #a4a4a4;
-// 	--clr-white: white;
-
-// 	--shadow-light: rgba(255, 255, 255, 0.25);
-// 	--shadow-light1: rgba(255, 255, 255, 0.5);
-// 	--shadow-white: white;
-
-// 	--shadow-dark: rgba(0, 0, 0, 0.5);
-// 	--shadow-dark1: rgba(0, 0, 0, 0.25);
-// 	--shadow-dark2: rgba(0, 0, 0, 0.15);
-// 	--shadow-dark3: rgba(0, 0, 0, 0.12);
-// }
-
-// :root {
-// 	--clr-white-100: white;
-// 	--clr-white-200: rgb(245, 245, 245);
-// 	--clr-white-400: #f2f2f2;
-// 	--clr-white-600: #F1F1F1;
-
-// 	--clr-grey-200: rgb(180, 180, 180);
-// 	--clr-grey-400: #535763;
-
-// 	--clr-primary-100: #7ef3b5;
-// 	--clr-primary-200: #30e283;
-// 	--clr-primary-400: #20CD70;
-// 	--clr-primary-500: #23ad63;
-// 	--clr-primary-900: #21382c;
-
-// 	--clr-dark-100: #3f505e;
-// 	--clr-dark-200: #303c46;
-// 	--clr-dark-400: #2A3137;
-// 	--clr-dark-500: #24292e;
-// 	--clr-dark-600: #202529;
-
-// 	--clr-border-100: rgba(204, 204, 204, 0.5);
-// 	--clr-border-200: rgba(0, 0, 0, 0.05);
-// 	--clr-border-400: rgba(0, 0, 0, 0.1);
-// 	--clr-border-600: rgba(0, 0, 0, 0.2);
-// 	--clr-border-800: rgba(0, 0, 0, 0.5);
-// 	--clr-border-900: rgba(0, 0, 0, 0.75);
-
-// 	--clr-warning: #fc0000;
-// 	--br-section-100: 22px;
-
-// 	--fs-small-100: 8px;
-// 	--fs-small-200: 10px;
-// 	--fs-small-300: 12px;
-// 	--fs-small-400: 14px;
-// 	--fs-small-600: 16px;
-// 	--fs-medium-200: 18px;
-// 	--fs-medium-400: 24px;
-// 	--fs-medium-600: 30px;
-// 	--fs-large-200: 36px;
-// 	--fs-large-400: 48px;
-// 	--fs-large-600: 60px;
-// 	--fs-large-800: 72px;
-// 	--fs-large-900: 84px;
-// 	--fs-ex-large-100: 96px;
-
-// 	//change notification properties
-// 	 --toastify-color-light: var(--clr-white-100) !important;
-// 	 --toastify-color-success: var(--clr-primary-400) !important;
-// 	 --toastify-text-color-light: var(--clr-border-800) !important;
-// 	 --toastify-color-error: var(--clr-warning) !important;
-// }
-
 $bpw-100: 500px;
 $bpw-200: 800px;
 $bpw-300: 1200px;
@@ -159,7 +86,6 @@ $bpw-600: 3000px;
 
 	// --------------------------
 
-	// --br: 22px;
 	--br: 5px;
 
 	// notification props override

@@ -92,6 +92,11 @@
 			opacity: 0;
 			line-height: 125%;
 
+			p {
+				white-space: nowrap;
+				font-size: var(--fs-small-200A);
+			}
+
 			&:after {
 				content: " ";
 				display: block;

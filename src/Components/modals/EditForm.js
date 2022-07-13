@@ -62,6 +62,7 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 
 	const editPackage = async () => {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update`, {
+			credentials: 'include',
 			method: "POST",
 			body: JSON.stringify({
 				email: localStorage.getItem("email"),
@@ -77,6 +78,7 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 		});
 
 		if (response.status === 200) {
+			setIsOpen(false)
 			notify(`successfully edited ${header.name}`, 2000, "success")
 			reloadPackage(header.index);
 			return

@@ -21,9 +21,11 @@ const MainPage = () => {
 
 	// on load
 	useEffect(() => {
+		console.log(process.env.REACT_APP_API_URL);
 		authenticate();
 		async function authenticate() {
 			const response = await fetch(`${process.env.REACT_APP_API_URL}/api/authenticate`, {
+				credentials: "include",
 				method: "POST",
 				body: JSON.stringify({
 					email: localStorage.getItem("email"),
@@ -43,11 +45,43 @@ const MainPage = () => {
 		}
 	}, []);
 
+	
 	const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 	const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 	const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 	const [isEditFormOpen, setIsEditFormOpen] = useState(false);
 	const [currentInfo, setCurrentInfo] = useState({});
+
+	useEffect(() => {
+		const handleShortCut = async (event) => {
+			if (event.keyCode === 65 && event.shiftKey && !isInfoModalOpen && !isConfirmOpen && !isEditFormOpen) {
+				console.log(document.activeElement.tagName.includes("input"))
+				if (!document.activeElement.className.includes("input")) {
+					setIsAddFormOpen(true)
+				}
+				const selected = await window.getSelection()
+				if (selected.focusNode.className.includes('input') && !isAddFormOpen) {
+					event.preventDefault()
+				}
+			}
+
+			// if (event.keyCode === 80 && event.ctrlKey) {
+			// 	event.preventDefault();
+			// 	// searchRef.current.focus(); 
+			// 	console.log(document.activeElement)
+			// }
+
+			if (event.keyCode === 27 && document.activeElement.className === "search-input") {
+				document.activeElement.blur();
+			}
+		};
+
+		window.addEventListener("keydown", handleShortCut);
+
+		return () => {
+			window.removeEventListener("keydown", handleShortCut);
+		};
+	}, [isAddFormOpen, isInfoModalOpen, isConfirmOpen, isEditFormOpen]);
 
 	const fade = cssTransition({
 		enter: "fade-up",
@@ -86,14 +120,15 @@ const MainPage = () => {
 		>
 			<>
 				<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
-					{isAuthentic && (
-						<Packages
-							setCurrentInfo={setCurrentInfo}
-							setIsInfoModalOpen={setIsInfoModalOpen}
-							setIsAddFormOpen={setIsAddFormOpen}
-							ref={packagesRef}
-						/>
-					)}
+				{isAuthentic && (
+					<Packages
+						setCurrentInfo={setCurrentInfo}
+						setIsInfoModalOpen={setIsInfoModalOpen}
+						setIsAddFormOpen={setIsAddFormOpen}
+						ref={packagesRef}
+						notify={notify}
+					/>
+				)}
 				{isAddFormOpen && (
 					<AddForm
 						isOpen={isAddFormOpen}

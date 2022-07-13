@@ -90,7 +90,7 @@ const StatusBar = ({ header, transitHistory }) => {
 
 	return (
 		<div className="status-bar-container">
-			{/* <h1>{statusBar.barPercentage}</h1> */}
+			<h1>{statusBar.barPercentage}</h1>
 			<div className="status-content flex-space-between">
 				<p>Package Shipped</p>
 				<p>Package in Transit</p>

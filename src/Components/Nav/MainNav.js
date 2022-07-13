@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { MdSettings } from "react-icons/md";
-import { BsFillArchiveFill} from "react-icons/bs";
+import { BsFillArchiveFill } from "react-icons/bs";
 import { GoPackage } from "react-icons/go";
 import { BiPlus } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
@@ -11,13 +11,12 @@ import ButtonBlack from "../Core/ButtonBlack";
 import { useNavigate } from "react-router-dom";
 
 const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
-	const navigate = useNavigate()
+	const navigate = useNavigate();
 	const [settingsOpen, setSettingsOpen] = useState(false);
 	function toggleSettingsMenu() {
 		setSettingsOpen(!settingsOpen);
 	}
 
-	const { isClearButton, setIsClearButton } = useState(false);
 	function search(value) {
 		console.log(packagesRef);
 		if (value === "") {
@@ -51,12 +50,20 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 					<span>settings</span>
 				</ButtonBlack>
 				{isArchive ? (
-					<ButtonBlack onClick={() => {navigate('/packages')}}>
+					<ButtonBlack
+						onClick={() => {
+							navigate("/packages");
+						}}
+					>
 						<GoPackage />
 						<span>packages</span>
 					</ButtonBlack>
 				) : (
-					<ButtonBlack onClick={() => {navigate('/archive')}}>
+					<ButtonBlack
+						onClick={() => {
+							navigate("/archive");
+						}}
+					>
 						<BsFillArchiveFill />
 						<span>archive</span>
 					</ButtonBlack>
@@ -65,6 +72,7 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 			<div>
 				<div className="search ">
 					<input
+						className="search-input"
 						value={searchValue}
 						placeholder="search"
 						type="text"
@@ -95,7 +103,9 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 					}}
 				>
 					<BiPlus />
-					<span>add</span>
+					<span>
+						add <p>{"(shift + a)"}</p>
+					</span>
 				</ButtonBlack>
 			</div>
 		</nav>

@@ -14,6 +14,7 @@ const ArchivePage = () => {
 		authenticate();
 		async function authenticate() {
 			const response = await fetch(`${process.env.REACT_APP_API_URL}/api/authenticate`, {
+				credentials: 'include',
 				method: "POST",
 				body: JSON.stringify({
 					email: localStorage.getItem("email"),

@@ -14,6 +14,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 		const index = (imgIndex + 1) % header.photos.length;
 
 		const response = fetch(`${process.env.REACT_APP_API_URL}/api/update-img-index`, {
+			credentials: 'include',
 			method: "POST",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),
@@ -30,6 +31,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 
 	const archive = async () => {
 		const response = fetch(`${process.env.REACT_APP_API_URL}/api/update-archived`, {
+			credentials: "include",
 			method: "POST",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),

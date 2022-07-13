@@ -88,7 +88,7 @@
 	li {
 		button {
 			color: var(--clr-border-800);
-			&:hover {
+			&:hover, &:focus {
 				color: var(--clr-dark-400);
 			}
 			&:active {

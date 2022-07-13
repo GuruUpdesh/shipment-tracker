@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import {AiOutlineLoading3Quarters} from "react-icons/ai"
+import navigate from "../../util/formNavigation";
 
 const ButtonBlack = ({ onClick, className, children, errors, load }) => {
 	const [x, setX] = useState(-500);
@@ -46,6 +47,7 @@ const ButtonBlack = ({ onClick, className, children, errors, load }) => {
 				clickHandler(e);
 			}}
 			ref={ref}
+			onKeyUp={(e) => navigate(e, ref)}
 		>
 			<div className="pulseContainer">
 				<div className="pulse" style={{ top: y, left: x }}></div>

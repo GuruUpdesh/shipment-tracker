@@ -20,7 +20,7 @@
 	height: 500px;
 	border-radius: var(--br);
 	overflow: hidden;
-	
+
 	&::after {
 		content: "";
 		width: 300px;
@@ -34,17 +34,17 @@
 		top: -200px;
 		transition: all 1s ease-in-out;
 	}
-	
+
 	&:hover {
 		&::after {
 			opacity: 1;
 		}
 	}
-	
+
 	background-color: red;
 	background-image: url("http://localhost:3000/Login.png");
 	background-size: cover;
-	
+
 	.header {
 		color: var(--clr-white-100);
 		text-align: center;
@@ -52,7 +52,7 @@
 		h3 {
 			font-size: var(--fs-medium-400);
 			margin-bottom: 0;
-			
+
 			animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 		}
 		p {
@@ -61,7 +61,7 @@
 			animation-delay: 0.2s;
 		}
 	}
-	
+
 	p {
 		opacity: 0.8;
 		color: var(--clr-white-100);
@@ -75,7 +75,7 @@
 			color: var(--clr-white-100);
 			opacity: 0.9;
 			text-decoration: underline;
-			
+
 			&:hover {
 				opacity: 1;
 			}
@@ -87,22 +87,53 @@
 	text-align: center;
 	position: relative;
 	z-index: 2;
-	
+
 	.login-block {
 		color: var(--clr-dark-400);
 		box-shadow: 5px 5px 10px var(--clr-bg-dark-400);
 		border-radius: var(--br);
 		background-color: var(--clr-bg-100);
 	}
-	
+
 	.form {
 		padding: 3em 2em;
-		
+
 		animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 		h1 {
 			font-size: var(--fs-medium-400);
 			font-weight: 400;
 			margin-bottom: 1em;
+		}
+
+		.login-options {
+			transform: translateY(2rem);
+			
+			p {
+				position: relative;
+				margin-bottom: 1rem;
+
+				&:before {
+					z-index: -1;
+					content: "";
+					width: 45%;
+					position: absolute;
+					background-color: var(--clr-border-600);
+					height: 1px;
+					left: 0;
+					top: calc(50% - 1px);
+				}
+
+				&:after {
+					z-index: -1;
+					content: "";
+					width: 45%;
+					position: absolute;
+					background-color: var(--clr-border-600);
+					height: 1px;
+					right: 0;
+					top: calc(50% - 1px);
+				}
+			}
 		}
 	}
 

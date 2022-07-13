@@ -41,14 +41,14 @@
 }
 
 @keyframes fadeLeft {
-    0% {
-        opacity: 0;
-        transform: translateX(-15px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
+	0% {
+		opacity: 0;
+		transform: translateX(-15px);
+	}
+	100% {
+		opacity: 1;
+		transform: translateX(0);
+	}
 }
 
 @keyframes textRevealLarge {
@@ -79,7 +79,7 @@
 		opacity: 0;
 	}
 	100% {
-		opacity: .4;
+		opacity: 0.4;
 		background-position: center;
 	}
 }
@@ -140,5 +140,20 @@
 	100% {
 		opacity: 1;
 		transform: scaleY(1) translateX(calc(-1em - 1px)) translateY(0.5em);
+	}
+}
+
+@keyframes arrow {
+	0% {
+		transform: translateY(50%) translateX(-15px) scaleX(0.95);
+		opacity: 0;
+	}
+	50% {
+		transform: translateY(50%) translateX(-5px) scaleX(1.05);
+		opacity: 1;
+	}
+	100% {
+		transform: translateY(50%) translateX(-15px) scaleX(0.95);
+		opacity: 0;
 	}
 }
