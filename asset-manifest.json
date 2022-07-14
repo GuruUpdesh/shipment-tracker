@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/Shipmentracker/static/css/main.ab28dffd.css",
-    "main.js": "/Shipmentracker/static/js/main.2e32b29f.js",
+    "main.css": "/Shipmentracker/static/css/main.c381ab7e.css",
+    "main.js": "/Shipmentracker/static/js/main.c3a1baf4.js",
     "static/js/787.c2e0f42a.chunk.js": "/Shipmentracker/static/js/787.c2e0f42a.chunk.js",
     "index.html": "/Shipmentracker/index.html",
-    "main.ab28dffd.css.map": "/Shipmentracker/static/css/main.ab28dffd.css.map",
-    "main.2e32b29f.js.map": "/Shipmentracker/static/js/main.2e32b29f.js.map",
+    "main.c381ab7e.css.map": "/Shipmentracker/static/css/main.c381ab7e.css.map",
+    "main.c3a1baf4.js.map": "/Shipmentracker/static/js/main.c3a1baf4.js.map",
     "787.c2e0f42a.chunk.js.map": "/Shipmentracker/static/js/787.c2e0f42a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.ab28dffd.css",
-    "static/js/main.2e32b29f.js"
+    "static/css/main.c381ab7e.css",
+    "static/js/main.c3a1baf4.js"
   ]
 }
