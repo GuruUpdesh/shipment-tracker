@@ -53,7 +53,6 @@
 	// font-size: var(--fs-me);
 	user-select: none;
 
-
 	.loading-icon {
 		display: inline;
 		transform: translateY(3px);
@@ -94,7 +93,7 @@
 
 			p {
 				white-space: nowrap;
-				font-size: var(--fs-small-200A);
+				font-size: var(--fs-small-200);
 			}
 
 			&:after {
@@ -216,5 +215,39 @@
 	}
 	100% {
 		transform: translateY(3px) rotate(300deg);
+	}
+}
+
+.btn-magnet {
+	background: linear-gradient(45deg, var(--clr-primary-400) 25%, var(--clr-primary-100));
+	background-size: 300%;
+	color: var(--clr-white-100);
+	border-radius: 55px;
+	font-size: var(--fs-medium-200);
+	font-weight: 300;
+	padding: 0.75em 2em;
+	transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+	margin: 20px;
+
+	p {
+		z-index: 2;
+	}
+
+	b {
+		margin-right: 1em;
+	}
+
+	svg {
+		transform: translateY(3px) scale(1.5);
+		transition: 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+	}
+
+	&:hover {
+		background-size: 100%;
+		box-shadow: -2px 2px 2px #35a86b;
+
+		svg {
+			transform: translateY(3px) scale(1.5) translateX(5px);
+		}
 	}
 }

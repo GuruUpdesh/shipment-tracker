@@ -1,76 +1,74 @@
-import React, { useState, useEffect, useLayoutEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import MainLayout from "../Components/Layout/MainLayout";
-import Package from "../Components/Package/Package";
 import AddForm from "../Components/modals/AddForm";
-import { ToastContainer, toast, cssTransition } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { BiPlus } from "react-icons/bi";
-import { BsCheck } from "react-icons/bs";
-import { AiOutlineWarning } from "react-icons/ai";
 import InfoModal from "../Components/modals/infoModal/InfoModal";
-import { useNavigate } from "react-router-dom";
 import Confirm from "../Components/modals/Confirm";
 import EditForm from "../Components/modals/EditForm";
 import Packages from "../Components/Package/Packages";
-import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
+import { PackagesContext, UserContext } from "../App";
+import authenticate from "../util/authenticate";
+import notify from "../util/notify";
 
 const MainPage = () => {
-	const navigate = useNavigate();
+	const { user, setUser } = useContext(UserContext);
 
-	const [isAuthentic, setIsAuthentic] = useState(false);
+	const navigate = useNavigate();
 
 	// on load
 	useEffect(() => {
-		console.log(process.env.REACT_APP_API_URL);
-		authenticate();
-		async function authenticate() {
-			const response = await fetch(`${process.env.REACT_APP_API_URL}/api/authenticate`, {
-				credentials: "include",
-				method: "POST",
-				body: JSON.stringify({
-					email: localStorage.getItem("email"),
-					id: localStorage.getItem("id"),
-				}),
-				headers: {
-					"Content-Type": "application/json",
-				},
-			});
-
-			if (response.status === 200) {
-				setIsAuthentic(true);
-				return;
+		authenticate(
+			() => {
+				setUser({ ...user, isAuth: true });
+			},
+			() => {
+				setUser({ ...user, isAuth: false });
+				notify("you must login before viewing packages", 3000, "warning")
+				navigate("/login");
 			}
-
-			navigate("/login");
-		}
+		);
 	}, []);
 
-	
+	// mobiles
 	const [isAddFormOpen, setIsAddFormOpen] = useState(false);
 	const [isInfoModalOpen, setIsInfoModalOpen] = useState(false);
 	const [isConfirmOpen, setIsConfirmOpen] = useState(false);
 	const [isEditFormOpen, setIsEditFormOpen] = useState(false);
+
+	// package information
+	const packagesRef = useRef();
 	const [currentInfo, setCurrentInfo] = useState({});
 
+	// shortcut handling
 	useEffect(() => {
 		const handleShortCut = async (event) => {
+			// add form (shift + a)
 			if (event.keyCode === 65 && event.shiftKey && !isInfoModalOpen && !isConfirmOpen && !isEditFormOpen) {
-				console.log(document.activeElement.tagName.includes("input"))
 				if (!document.activeElement.className.includes("input")) {
-					setIsAddFormOpen(true)
+					setIsAddFormOpen(true);
 				}
-				const selected = await window.getSelection()
-				if (selected.focusNode.className.includes('input') && !isAddFormOpen) {
-					event.preventDefault()
+				const selected = await window.getSelection();
+				if (selected.focusNode.className.includes("input") && !isAddFormOpen) {
+					event.preventDefault();
 				}
 			}
 
-			// if (event.keyCode === 80 && event.ctrlKey) {
-			// 	event.preventDefault();
-			// 	// searchRef.current.focus(); 
-			// 	console.log(document.activeElement)
-			// }
+			// quick open package 1-9 (alt + #)
+			if (49 <= event.keyCode && event.keyCode <= 57 && event.altKey) {
+				const packageIndex = event.keyCode - 49;
+				if (packagesRef.current.packageList.length <= packageIndex) {
+					return;
+				}
 
+				const selectedPackage = packagesRef.current.packageList[packageIndex];
+				if (!selectedPackage.header) {
+					return;
+				}
+				setCurrentInfo(selectedPackage);
+				setIsInfoModalOpen(true);
+			}
+
+			// escape to blur input
 			if (event.keyCode === 27 && document.activeElement.className === "search-input") {
 				document.activeElement.blur();
 			}
@@ -83,50 +81,20 @@ const MainPage = () => {
 		};
 	}, [isAddFormOpen, isInfoModalOpen, isConfirmOpen, isEditFormOpen]);
 
-	const fade = cssTransition({
-		enter: "fade-up",
-		exit: "fade-down",
-	});
-	const notify = (message, duration, type) => {
-		if (type === "success") {
-			toast.success(message, {
-				autoClose: duration,
-				closeOnClick: true,
-				pauseOnHover: false,
-				hideProgressBar: true,
-				icon: ({ theme, type }) => <BsCheck />,
-				transition: fade,
-			});
-		} else if (type === "warning") {
-			toast.error(message, {
-				autoClose: duration,
-				closeOnClick: true,
-				pauseOnHover: false,
-				icon: ({ theme, type }) => <AiOutlineWarning />,
-				transition: fade,
-			});
-		}
-	};
-
-	const packagesRef = useRef();
-
 	return (
 		<MainLayout
 			className={"site-padding"}
 			packagesRef={packagesRef}
 			setIsAddFormOpen={setIsAddFormOpen}
-			overflowState={isAddFormOpen || isInfoModalOpen}
 			isArchive={false}
 		>
 			<>
-				<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
-				{isAuthentic && (
+				{user.isAuth && (
 					<Packages
 						setCurrentInfo={setCurrentInfo}
 						setIsInfoModalOpen={setIsInfoModalOpen}
 						setIsAddFormOpen={setIsAddFormOpen}
 						ref={packagesRef}
-						notify={notify}
 					/>
 				)}
 				{isAddFormOpen && (
@@ -134,24 +102,21 @@ const MainPage = () => {
 						isOpen={isAddFormOpen}
 						setIsOpen={setIsAddFormOpen}
 						addLoadingPackage={packagesRef.current.addLoadingPackage}
-						notify={notify}
 					/>
 				)}
 				{isInfoModalOpen && (
 					<InfoModal
 						isOpen={isInfoModalOpen}
 						setIsOpen={setIsInfoModalOpen}
-						packageInfo={currentInfo}
-						notify={notify}
 						setIsConfirmOpen={setIsConfirmOpen}
 						setIsEditFormOpen={setIsEditFormOpen}
+						packageInfo={currentInfo}
 					/>
 				)}
 				{isConfirmOpen && (
 					<Confirm
-						header={currentInfo.header}
-						notify={notify}
 						setIsOpen={setIsConfirmOpen}
+						header={currentInfo.header}
 						removePackage={packagesRef.current.removePackage}
 					/>
 				)}
@@ -161,7 +126,6 @@ const MainPage = () => {
 						setIsOpen={setIsEditFormOpen}
 						header={currentInfo.header}
 						reloadPackage={packagesRef.current.reloadPackage}
-						notify={notify}
 					/>
 				)}
 			</>

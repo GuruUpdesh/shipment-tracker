@@ -1,3 +1,5 @@
+$transition: all .2s cubic-bezier(0.175, 0.885, 0.32, 1.275) .25s;
+
 .info-modal {
 	background-color: var(--clr-bg-100);
 	border-radius: var(--br);
@@ -48,12 +50,17 @@
 		background-color: var(--clr-bg-400);
 		padding: 1em 2em;
 		position: relative;
-		min-height: 200px;
+		// min-height: 200px;
+		height: 200px;
 		border-bottom: 1px solid var(--clr-border-600);
+		
+		transition: $transition;
 
 		.content-container {
 			z-index: 1;
 			text-align: center;
+
+			transition: $transition;
 
 			.packageIcon {
 				font-size: var(--fs-medium-200);
@@ -185,6 +192,11 @@
 			gap: .2em;
 		}
 
+		opacity: 1;
+		// height: fit-content;
+		transform: scaleY(1);
+		transition: $transition;
+
 		
 		button {
 			animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
@@ -209,6 +221,8 @@
 			padding: 0 1em;
 			max-height: 55vh;
 		}
+
+		transition: $transition;
 
 		
 		.btn-normal-text {
@@ -256,7 +270,6 @@
 			font-weight: 400;
 			text-align: center;
 			font-size: var(--fs-medium-400);
-			margin-bottom: 1em;
 			color: var(--clr-dark-400);
 		}
 
@@ -415,5 +428,27 @@
 			animation-delay: 0.5s;
 			background-color: var(--clr-warning);
 		}
+	}
+}
+
+.expand-history {
+	.header {
+		// min-height: 0px;
+		// max-height: 100px;
+		height: 100px;
+
+		.controls {
+			opacity: 0;
+			// height: 0px;
+			transform: scaleY(0);
+		}
+
+		.content-container {
+			transform: translateY(2rem) scale(.8);
+		}
+	}
+
+	.transit-history {
+		max-height: calc(50vh + 100px);
 	}
 }

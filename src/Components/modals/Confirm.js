@@ -1,12 +1,15 @@
 import React, { useRef } from "react";
 import Modal from "./Modal";
+import { RiCloseFill } from "react-icons/ri";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
-import {RiCloseFill} from "react-icons/ri"
+import useEscape from "../../Hooks/useEscape";
+import useEnter from "../../Hooks/useEnter";
+import notify from "../../util/notify";
 
-const Confirm = ({ setIsOpen, header, notify, removePackage }) => {
+const Confirm = ({ setIsOpen, header, removePackage }) => {
 	const deletePackage = async () => {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/delete`, {
-			credentials: 'include',
+			credentials: "include",
 			method: "DELETE",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),
@@ -19,21 +22,31 @@ const Confirm = ({ setIsOpen, header, notify, removePackage }) => {
 		});
 
 		if (response.status === 200) {
-			removePackage(header.index)
+			removePackage(header.index);
 			notify(`deleted ${header.name}`, 2000, "warning");
 		}
 
-        setIsOpen(false)
+		setIsOpen(false);
 	};
 
 	const ref = useRef();
 	useOnClickOutside(ref, () => {
 		setIsOpen(false);
 	});
+
+	useEscape(() => {
+		setIsOpen(false);
+	});
+
+	useEnter(() => {
+		if (!document.activeElement.className.includes("btn")) {
+			deletePackage();
+		}
+	});
 	return (
 		<Modal>
 			<div className="confirm-modal flex-center-column" ref={ref}>
-			<button
+				<button
 					className="btn-close btn-black"
 					onClick={() => {
 						setIsOpen(false);
@@ -41,14 +54,18 @@ const Confirm = ({ setIsOpen, header, notify, removePackage }) => {
 				>
 					<RiCloseFill />
 				</button>
-				
+
 				<div className="header">
 					<h1>Delete {header.name}?</h1>
 					<p>packages will be deleted forever</p>
 				</div>
 				<div className="content flex-evenly">
-					<button className="btn-normal-text" onClick={() => setIsOpen(false)}>cancel</button>
-					<button className="btn-black" onClick={deletePackage} >confirm</button>
+					<button className="btn-normal-text" onClick={() => setIsOpen(false)}>
+						cancel
+					</button>
+					<button className="btn-black" onClick={deletePackage}>
+						confirm
+					</button>
 				</div>
 			</div>
 		</Modal>

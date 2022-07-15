@@ -9,6 +9,7 @@ import { RiCloseFill } from "react-icons/ri";
 import Fuse from "fuse.js";
 import ButtonBlack from "../Core/ButtonBlack";
 import { useNavigate } from "react-router-dom";
+import { FaUser } from "react-icons/fa";
 
 const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 	const navigate = useNavigate();
@@ -17,13 +18,30 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 		setSettingsOpen(!settingsOpen);
 	}
 
+	const searchRef = useRef();
+
+	useEffect(() => {
+		const handleShortCut = (event) => {
+			if (event.keyCode === 80 && event.ctrlKey) {
+				event.preventDefault();
+				searchRef.current.focus();
+			}
+		};
+
+		window.addEventListener("keydown", handleShortCut);
+
+		return () => {
+			window.addEventListener("keydown", handleShortCut);
+		};
+	}, []);
+
 	function search(value) {
-		console.log(packagesRef);
 		if (value === "") {
 			return [];
 		}
-		const fuse = new Fuse(packagesRef.current.packageList, { keys: isArchive ? ["name"] : ["header.name"] });
+		const fuse = new Fuse(packagesRef.current.packageList, { keys: isArchive ? ["name"] : ["header.name"], threshold: 0.4, useExtendedSearch: true });
 		const result = fuse.search(value);
+		console.log(result);
 		const newPackages = [];
 		for (let i = 0; i < result.length; i++) {
 			newPackages.push(result[i].item);
@@ -45,29 +63,27 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 		<nav className="main-nav flex-space-between  site-padding">
 			{settingsOpen && <Settings settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen} />}
 			<div>
-				<ButtonBlack className="btn-settings" onClick={toggleSettingsMenu}>
-					<MdSettings />
-					<span>settings</span>
+				<ButtonBlack onClick={toggleSettingsMenu}>
+					<FaUser />
+					<span>user</span>
 				</ButtonBlack>
-				{isArchive ? (
-					<ButtonBlack
-						onClick={() => {
-							navigate("/packages");
-						}}
-					>
-						<GoPackage />
-						<span>packages</span>
-					</ButtonBlack>
-				) : (
-					<ButtonBlack
-						onClick={() => {
-							navigate("/archive");
-						}}
-					>
-						<BsFillArchiveFill />
-						<span>archive</span>
-					</ButtonBlack>
-				)}
+				<ButtonBlack
+					onClick={() => {
+						navigate(isArchive ? "/packages" : "/archive");
+					}}
+				>
+					{isArchive ? (
+						<>
+							<GoPackage />
+							<span>packages</span>
+						</>
+					) : (
+						<>
+							<BsFillArchiveFill />
+							<span>archive</span>
+						</>
+					)}
+				</ButtonBlack>
 			</div>
 			<div>
 				<div className="search ">
@@ -77,6 +93,7 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 						placeholder="search"
 						type="text"
 						onChange={(e) => searchHandler(e.target.value)}
+						ref={searchRef}
 					/>
 					<div className="search-icon">
 						<IoSearch />

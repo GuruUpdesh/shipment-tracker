@@ -9,6 +9,7 @@ import { BsQuestionLg, BsGithub, BsArchiveFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../App";
+import axios from "axios";
 // import pfp from "/images/pfp.jpg"
 
 const Settings = ({ settingsOpen, setSettingsOpen }) => {
@@ -28,8 +29,15 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 		document.documentElement.setAttribute("data-theme", theme === "light" ? "dark" : "light");
 	}
 
-	function logout() {
+	async function logout() {
 		localStorage.clear();
+
+		await axios.get(`${process.env.REACT_APP_API_URL}/api/logout`, {
+			withCredentials: true,
+			validateStatus: (status) => {
+				return status < 400;
+			},
+		});
 	}
 
 	useEffect(() => {
@@ -44,7 +52,7 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 				<div>
 					<div className="settings-header">
 						<div className="image-container">
-							<h1>{localStorage.getItem('email') && localStorage.getItem("email")[0].toUpperCase()}</h1>
+							<h1>{localStorage.getItem("email") && localStorage.getItem("email")[0].toUpperCase()}</h1>
 						</div>
 						<div className="content-container">
 							<h2>settings & help</h2>
@@ -62,7 +70,11 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 							</button>
 						</li>
 						<li>
-							<button onClick={() => {navigate("/archive")}}>
+							<button
+								onClick={() => {
+									navigate("/archive");
+								}}
+							>
 								archive <BsArchiveFill />
 							</button>
 						</li>

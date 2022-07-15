@@ -15,7 +15,7 @@ const LoginPage = () => {
 		function start() {
 			gapi.auth2.init({
 				clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-				scope: "",
+				cookiePolicy: 'none'
 			});
 		}
 
@@ -36,7 +36,7 @@ const LoginPage = () => {
 			return "error";
 		}
 
-		const result = await login();
+		await login();
 	};
 
 	const verify = () => {
@@ -57,7 +57,6 @@ const LoginPage = () => {
 	};
 
 	const handleGoogleLogin = async (googleData) => {
-		console.log(googleData);
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/google`, {
 			method: "POST",
 			body: JSON.stringify({
@@ -83,7 +82,7 @@ const LoginPage = () => {
 	};
 
 	async function getCookie(id) {
-		await axios.get(`${process.env.REACT_APP_API_URL}/api/cookie?id=${id}`, {
+		const result = await axios.get(`${process.env.REACT_APP_API_URL}/api/cookie?id=${id}`, {
 			withCredentials: true,
 			validateStatus: (status) => {
 				return status < 400;
@@ -102,11 +101,11 @@ const LoginPage = () => {
 				"Content-Type": "application/json",
 			},
 		});
-
+		
 		const jsonResponse = await response.json();
-
+		
 		if (response.status === 200) {
-			getCookie(jsonResponse.userData.id)
+			await getCookie(jsonResponse.userData.id)
 			localStorage.setItem("id", jsonResponse.userData.id);
 			localStorage.setItem("email", jsonResponse.userData.email);
 			navigate("/packages");
@@ -152,7 +151,6 @@ const LoginPage = () => {
 					<BsArrowLeft />
 				</button>
 				<div className="form login-block">
-					<form>
 
 					<h1>Login</h1>
 					{message !== "" && <p className="message">{message}</p>}
@@ -172,10 +170,9 @@ const LoginPage = () => {
 						error={errors.password}
 						autoFill={true}
 					/>
-					<ButtonBlack onClick={handleSubmit} errors={true} load={true}>
+					<ButtonBlack onClick={(e) => handleSubmit(e)} errors={true} load={true}>
 						login
 					</ButtonBlack>
-					</form>
 					<div className="login-options">
 						<p>or</p>
 						<GoogleLogin

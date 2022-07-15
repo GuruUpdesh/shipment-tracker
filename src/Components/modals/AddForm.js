@@ -10,8 +10,9 @@ import ButtonBlack from "../Core/ButtonBlack";
 import useEscape from "../../Hooks/useEscape";
 import ButtonText from "../Core/ButtonText";
 import useEnter from "../../Hooks/useEnter";
+import notify from "../../util/notify";
 
-const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
+const AddForm = ({ isOpen, setIsOpen, addLoadingPackage }) => {
 	const [courier, setCourier] = useState("");
 	const [name, setName] = useState("");
 	const [trackingNumber, setTrackingNumber] = useState("");
@@ -140,7 +141,7 @@ const AddForm = ({ isOpen, setIsOpen, notify, addLoadingPackage }) => {
 					error={errors.courier}
 				/>
 				<ButtonText onClick={() => setIsOpen(false)}>cancel</ButtonText>
-				<ButtonBlack onClick={handleSubmit} errors={true} load={true}>
+				<ButtonBlack className="btn-add" onClick={handleSubmit} errors={true} load={true}>
 					add
 				</ButtonBlack>
 			</div>

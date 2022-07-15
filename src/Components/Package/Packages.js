@@ -1,20 +1,15 @@
 import React, { useEffect, useLayoutEffect, useState, useRef, forwardRef, useImperativeHandle } from "react";
 import Package from "./Package";
 import { BiPlus } from "react-icons/bi";
+import { UserContext } from "../../App";
+import ButtonText from "../Core/ButtonText";
 
 const Packages = forwardRef((props, ref) => {
-	const loadBlock = 20;
 	const packagesList = useRef([]);
 
 	const [filteredPackages, setFilteredPackages] = useState([]);
-	const [loadingBlockIndex, setLoadingBlockIndex] = useState(0);
-	const [isLoaded, setIsLoaded] = useState(false);
-
-	useEffect(() => {
-		if (loadingBlockIndex > 0) {
-			loadPackages(loadingBlockIndex);
-		}
-	}, [loadingBlockIndex]);
+	const [finishedLoading, setFinishedLoading] = useState(false);
+	const [startedLoading, setStartedLoading] = useState(false);
 
 	useLayoutEffect(() => {
 		fetchPackages();
@@ -22,7 +17,7 @@ const Packages = forwardRef((props, ref) => {
 
 	async function fetchPackages() {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/packages-data`, {
-			credentials: 'include',
+			credentials: "include",
 			method: "POST",
 			body: JSON.stringify({
 				email: localStorage.getItem("email"),
@@ -38,32 +33,26 @@ const Packages = forwardRef((props, ref) => {
 			return;
 		}
 
+		setStartedLoading(true);
 		const jsonResponse = await response.json();
 		packagesList.current = jsonResponse;
 		if (props.isArchive) {
 			for (let i = 0; i < packagesList.current.length; i++) {
-				packagesList.current[i].inCurrentBlock = true
-				packagesList.current[i].error = false
-				packagesList.current[i].loading = false
+				packagesList.current[i].inCurrentBlock = true;
+				packagesList.current[i].error = false;
+				packagesList.current[i].loading = false;
 			}
-			console.log("settings filtered packages", packagesList.current)
 			setFilteredPackages(packagesList.current);
-			return
+			return;
 		}
-		loadPackages(0);
+		loadPackages();
 	}
 
-	function loadPackages(loadingIndex) {
+	function loadPackages() {
 		for (let i = 0; i < packagesList.current.length; i++) {
 			if (!packagesList.current[i].inCurrentBlock) {
 				packagesList.current[i].loading = true;
 				packagesList.current[i].error = false;
-				packagesList.current[i].inCurrentBlock = false;
-			}
-		}
-		// we want to load packages in groups of 20
-		for (let i = loadingIndex * loadBlock; i < loadingIndex * loadBlock + loadBlock; i++) {
-			if (i < packagesList.current.length) {
 				packagesList.current[i].inCurrentBlock = true;
 				loadPackage(packagesList.current[i]._id, i);
 			}
@@ -73,11 +62,8 @@ const Packages = forwardRef((props, ref) => {
 	}
 
 	async function loadPackage(id, index) {
-		if (index === packagesList.current.length - 1) {
-			setIsLoaded(true);
-		}
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/package-tracking-data`, {
-			credentials: 'include',
+			credentials: "include",
 			method: "POST",
 			body: JSON.stringify({
 				packageId: id,
@@ -116,7 +102,7 @@ const Packages = forwardRef((props, ref) => {
 			loadPackage(packagesList.current[index].header.id, index);
 		},
 		removePackage(index) {
-			console.log("remove package", index)
+			console.log("remove package", index);
 			for (let i = index + 1; i < packagesList.current.length; i++) {
 				packagesList.current[i].header.index = packagesList.current[i].header.index - 1;
 			}
@@ -124,7 +110,7 @@ const Packages = forwardRef((props, ref) => {
 			setFilteredPackages(packagesList.current);
 		},
 		addLoadingPackage(packageData) {
-			console.log(packageData)
+			console.log(packageData);
 			for (let i = 0; i < packagesList.current.length; i++) {
 				packagesList.current[i].header.index = packagesList.current[i].header.index + 1;
 			}
@@ -134,52 +120,68 @@ const Packages = forwardRef((props, ref) => {
 			setFilteredPackages([...packagesList.current]);
 			loadPackage(packageData._id, 0);
 		},
+		finishedLoading() {
+			setFinishedLoading(true);
+		},
 	}));
 
 	const packageWrapperRef = useRef();
 
 	return (
-		<div className="package-wrapper" ref={packageWrapperRef}>
-			{props.isArchive && <h1>Archive</h1>}
-			<div className="grid-3row-layout">
-				{filteredPackages.map((currentPackage, index) => {
-					return (
-						<Package
-							packageInfo={currentPackage}
-							setCurrentInfo={props.setCurrentInfo}
-							setIsInfoModalOpen={props.setIsInfoModalOpen}
-							key={index}
-							isArchive={props.isArchive}
-							notify={props.notify}
-							packagesRef={ref}
-						/>
-					);
-				})}
-				{(isLoaded && !props.isArchive) && (
-					<button
-						onClick={() => {
-							props.setIsAddFormOpen(true);
-						}}
-						className="package-add-btn"
-					>
-						<BiPlus />
-					</button>
+		<>
+			<div className="package-wrapper" ref={packageWrapperRef}>
+				{/* {props.isArchive && <h1>Archive</h1>} */}
+				{startedLoading && filteredPackages.length !== 0 && (
+					<div className="grid-3row-layout">
+						{filteredPackages.map((currentPackage, index) => {
+							return (
+								<Package
+									packageInfo={currentPackage}
+									setCurrentInfo={props.setCurrentInfo}
+									setIsInfoModalOpen={props.setIsInfoModalOpen}
+									key={index}
+									isArchive={props.isArchive}
+									packagesRef={ref}
+								/>
+							);
+						})}
+						{finishedLoading && !props.isArchive && (
+							<button
+								onClick={() => {
+									props.setIsAddFormOpen(true);
+								}}
+								className="package-add-btn"
+							>
+								<BiPlus />
+							</button>
+						)}
+					</div>
 				)}
-				{(!isLoaded && !props.isArchive) && (
-					<button
-						className="btn-normal-text"
-						onClick={() => {
-							if ((loadingBlockIndex + 1) * loadBlock < packagesList.current.length) {
-								setLoadingBlockIndex(loadingBlockIndex + 1);
-							}
-						}}
-					>
-						load more
-					</button>
+				{!startedLoading && (
+					<div className="package-message">
+						<p>fetching package information {`${startedLoading}`}</p>
+					</div>
+				)}
+				{filteredPackages.length === 0 && startedLoading && filteredPackages === packagesList.current && (
+					<div className="package-message">
+						<div className="content-container">
+							<h3>welcome to shipmentracker</h3>
+							<p className="sub">to get started simply</p>
+							<ButtonText>add a package</ButtonText>
+							<p className="or">or</p>
+							<p className="sub">if this is your first time</p>
+							<ButtonText>take a tour</ButtonText>
+						</div>
+					</div>
+				)}
+				{filteredPackages.length === 0 && filteredPackages.length !== packagesList.current.length && (
+					<div className="package-message">
+						<p>can not find anything matching that search</p>
+					</div>
 				)}
 			</div>
-		</div>
+		</>
 	);
 });
 
-export default Packages;
+export default React.memo(Packages);

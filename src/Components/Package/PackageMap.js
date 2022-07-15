@@ -14,16 +14,17 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 	const [style, setStyle] = useState(mapStyle);
 	const { theme } = useContext(ThemeContext);
 	useEffect(() => {
-		if (theme === 'light') {
-			setStyle(mapStyle)
+		if (theme === "light") {
+			setStyle(mapStyle);
 		} else {
-			setStyle(mapStylesDark)
+			setStyle(mapStylesDark);
 		}
 	}, [theme]);
 
 	const options = {
 		styles: style,
 		disableDefaultUI: true,
+		tabIndex: -1
 	};
 	const [path, setPath] = useState([]);
 	const createPath = async () => {
@@ -87,6 +88,7 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 				onLoad={onLoad}
 				onUnmount={onUnmount}
 				clickableIcons={false}
+				keyboardShortcuts={false}
 			>
 				{/* Child components, such as markers, info windows, etc. */}
 				{drawLines && (

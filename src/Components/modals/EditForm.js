@@ -5,12 +5,13 @@ import { RiCloseFill } from "react-icons/ri";
 import Selector from "../Core/Form/Selector";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import { GoPackage } from "react-icons/go";
-import { BiEdit} from "react-icons/bi";
+import { BiEdit } from "react-icons/bi";
 import ButtonBlack from "../Core/ButtonBlack";
 import useEscape from "../../Hooks/useEscape";
 import useEnter from "../../Hooks/useEnter";
+import notify from "../../util/notify";
 
-const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
+const EditForm = ({ isOpen, setIsOpen, header, reloadPackage }) => {
 	const [courier, setCourier] = useState(header.courier);
 	const [name, setName] = useState(header.name);
 	const [trackingNumber, setTrackingNumber] = useState(header.trackingNumber);
@@ -23,16 +24,16 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 	const handleSubmit = async () => {
 		const valid = verify();
 		if (!valid) {
-			return 'error';
+			return "error";
 		}
 
 		const result = await editPackage();
 		if (result) {
 			setIsOpen(false);
-			return
+			return;
 		}
 
-		return 'error'
+		return "error";
 	};
 
 	const verify = () => {
@@ -62,7 +63,7 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 
 	const editPackage = async () => {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/update`, {
-			credentials: 'include',
+			credentials: "include",
 			method: "POST",
 			body: JSON.stringify({
 				email: localStorage.getItem("email"),
@@ -78,13 +79,13 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 		});
 
 		if (response.status === 200) {
-			setIsOpen(false)
-			notify(`successfully edited ${header.name}`, 2000, "success")
+			setIsOpen(false);
+			notify(`successfully edited ${header.name}`, 2000, "success");
 			reloadPackage(header.index);
-			return
+			return;
 		}
 		const jsonResponse = await response.json();
-		notify(jsonResponse.message, 2000, "warning")
+		notify(jsonResponse.message, 2000, "warning");
 		console.log(jsonResponse);
 	};
 
@@ -92,7 +93,9 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 	useOnClickOutside(ref, () => setIsOpen(false));
 
 	// useEnter(() => {handleSubmit()})
-	useEscape(() => {setIsOpen(false)})
+	useEscape(() => {
+		setIsOpen(false);
+	});
 	return (
 		<Modal>
 			<div className="add-form" ref={ref}>
@@ -112,8 +115,20 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 					<h1>Edit Package</h1>
 					<p>change your package details</p>
 				</div>
-				<Input placeholder={"name"} value={name} setValue={setName} type="text" autoFocus={true} error={errors.name}/>
-				<Input placeholder={"tracking number"} value={trackingNumber} setValue={setTrackingNumber} type="text" error={errors.trackingNumber}/>
+				<Input
+					placeholder={"name"}
+					value={name}
+					setValue={setName}
+					type="text"
+					autoFocus={true}
+					error={errors.name}				/>
+				<Input
+					placeholder={"tracking number"}
+					value={trackingNumber}
+					setValue={setTrackingNumber}
+					type="text"
+					error={errors.trackingNumber}
+				/>
 				<Selector
 					placeholder="courier"
 					options={["UPS", "USPS", "FedEx", "DHL"]}
@@ -129,7 +144,9 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage, notify }) => {
 				>
 					cancel
 				</button>
-				<ButtonBlack onClick={handleSubmit} errors={true}>save</ButtonBlack>
+				<ButtonBlack onClick={handleSubmit} errors={true}>
+					save
+				</ButtonBlack>
 			</div>
 		</Modal>
 	);

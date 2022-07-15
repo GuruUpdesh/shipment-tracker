@@ -15,10 +15,10 @@
 	box-shadow: 0 0 35px rgba(0, 0, 0, 0.2);
 	z-index: 200;
 	transform-origin: left;
-	
+
 	opacity: 0;
 	animation: slideInRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-	
+
 	.content-wrapper {
 		display: flex;
 		flex-direction: column;
@@ -31,6 +31,7 @@
 	}
 	.settings-header {
 		display: flex;
+		animation: fadeLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 
 		align-items: center;
 		.image-container {
@@ -46,7 +47,7 @@
 
 			h1 {
 				color: var(--clr-white-100);
-				opacity: .5;
+				opacity: 0.5;
 				font-size: 30px;
 				font-weight: 400;
 				// font-style: italic;
@@ -56,6 +57,8 @@
 		}
 
 		.content-container {
+			animation: fadeLeft 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+			animation-delay: 0.15s;
 			display: inline-block;
 			margin-left: 1em;
 			max-width: 160px;
@@ -91,6 +94,8 @@
 		text-align: left;
 		text-transform: capitalize;
 		transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+		animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 		svg {
 			float: right;
 			margin-left: 1ch;
@@ -127,6 +132,7 @@
 		border-top: 1px solid var(--clr-border-600);
 		font-weight: 600;
 		text-align: left;
+		animation: fadeUp .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 
 		.question {
 			color: var(--clr-dark-400);
@@ -144,16 +150,16 @@
 		}
 
 		.theme-buttons {
-			// background-color: rgb(238, 238, 238);
+
 			border-radius: var(--br);
 			position: relative;
 			padding: 4px;
-			outline: 1px solid var(--clr-white-100);
+			outline: 1px solid var(--clr-bg-100);
 
 			.highlighter {
 				background-color: var(--clr-highlighter);
-				mix-blend-mode: overlay;
-				// opacity: .5;
+				// mix-blend-mode: overlay;
+				opacity: .1;
 				position: absolute;
 				left: unset;
 				top: 4px;
@@ -186,7 +192,7 @@
 				transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 				margin: 5px;
 				background-color: var(--clr-bg-400);
-				transition: all .3s cubic-bezier(0.075, 0.82, 0.165, 1);
+				transition: all 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
 				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 				// border: 1px solid var(--clr-white-100);
 
@@ -226,6 +232,14 @@
 	}
 
 	li {
+		animation: fadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+
+		$n: 10;
+		@for $x from 1 through $n {
+			&:nth-child(#{$x}) {
+				animation-delay: 50ms * ($x - 1);
+			}
+		}
 		button {
 			color: var(--clr-dark-400);
 			font-size: var(--fs-medium-200);
@@ -240,6 +254,8 @@
 			user-select: none;
 
 			transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+			animation: none;
+
 
 			svg {
 				float: left;
@@ -250,14 +266,13 @@
 				fill: var(--clr-dark-400);
 			}
 
-				outline: 1px solid transparent;
+			outline: 1px solid transparent;
 			&:hover {
 				color: var(--clr-primary-400);
 				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
-
 				svg {
-					fill: var(--clr-primary-400)
+					fill: var(--clr-primary-400);
 				}
 			}
 
@@ -281,7 +296,7 @@
 
 @keyframes slideInRight {
 	0% {
-		transform: translateX(-3rem) scaleX(.8);
+		transform: translateX(-3rem) scaleX(0.8);
 		opacity: 0;
 	}
 	25% {

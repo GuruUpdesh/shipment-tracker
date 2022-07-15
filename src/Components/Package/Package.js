@@ -2,12 +2,20 @@ import React, { useState, useEffect } from "react";
 import PackageMap from "./PackageMap";
 import { InView } from "react-intersection-observer";
 import { BsTruck } from "react-icons/bs";
-import { AiOutlineWarning, AiOutlineHome } from "react-icons/ai";
+import { AiOutlineWarning, AiOutlineHome, AiOutlineDelete } from "react-icons/ai";
 import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import ButtonBlack from "../Core/ButtonBlack";
 import { BiUndo } from "react-icons/bi";
+import notify from "../../util/notify";
 
-const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, notify, packagesRef }) => {
+const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, packagesRef }) => {
+	useEffect(() => {
+		if (!packageInfo.loading && !isArchive) {
+			if (packageInfo.header.index === packagesRef.current.packageList.length - 1) {
+				packagesRef.current.finishedLoading();
+			}
+		}
+	}, [packageInfo]);
 	async function deletePackageWithError() {
 		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/delete`, {
 			credentials: "include",
@@ -21,21 +29,24 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, n
 			},
 		});
 
-		if (response.status === 200 ) {
-
+		if (response.status === 200) {
 			//todo add index to error package
-			packagesRef.current.removePackage(packageInfo.index)
-			notify(`deleted ${packageInfo.name}`)
+			packagesRef.current.removePackage(packageInfo.index);
+			notify(`deleted ${packageInfo.name}`);
 		}
 	}
 
 	function copyInfo() {
-		navigator.clipboard.writeText(JSON.stringify({name: packageInfo.name, trackingNumber: packageInfo.trackingNumber, courier: packageInfo.courier}));
+		navigator.clipboard.writeText(
+			JSON.stringify({
+				name: packageInfo.name,
+				trackingNumber: packageInfo.trackingNumber,
+				courier: packageInfo.courier,
+			})
+		);
 	}
 
-	return !packageInfo.inCurrentBlock ? (
-		<>not in block</>
-	) : packageInfo.error ? (
+	return packageInfo.error ? (
 		<div className="package-container error-package-container">
 			<div className="package-header">
 				<div className="content-wrapper">
@@ -52,12 +63,14 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, n
 			</div>
 		</div>
 	) : packageInfo.loading ? (
-		<div className="package-loading-container" />
+		<div className="package-loading-container">
+			<div className="package-loading-background"></div>
+		</div>
 	) : (
 		<InView>
 			{({ inView, ref, entry }) => (
 				<div
-					className={"package-container "}
+					className={"package-container " + (isArchive ? "archive-package" : "")}
 					ref={ref}
 					onClick={() => {
 						if (!isArchive) {
@@ -82,13 +95,19 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, n
 									{isArchive ? packageInfo.trackingNumber : packageInfo.header.status}
 								</p>
 							</div>
-							<HiOutlineArrowNarrowRight />
+							{!isArchive && <HiOutlineArrowNarrowRight />}
 						</div>
 						{isArchive && (
-							<ButtonBlack>
-								<BiUndo />
-								<span>unarchive</span>
-							</ButtonBlack>
+							<>
+								<ButtonBlack>
+									<AiOutlineDelete />
+									<span>delete</span>
+								</ButtonBlack>
+								<ButtonBlack>
+									<BiUndo />
+									<span>unarchive</span>
+								</ButtonBlack>
+							</>
 						)}
 					</div>
 					{!isArchive && (

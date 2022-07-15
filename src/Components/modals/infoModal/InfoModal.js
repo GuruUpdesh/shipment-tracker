@@ -1,14 +1,14 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Modal from "../Modal";
 import useOnClickOutside from "../../../Hooks/useOnClickOutside";
 import StatusBar from "./StatusBar";
-import { FiCopy } from "react-icons/fi";
 import { BsArrowRight } from "react-icons/bs";
 import InfoHeader from "./InfoHeader";
 import { getTrackingUrl } from "tracking-number-validation";
 import HelpIcon from "../../other/HelpIcon";
+import notify from "../../../util/notify";
 
-const InfoModal = ({ isOpen, setIsOpen, packageInfo, notify, setIsConfirmOpen, setIsEditFormOpen }) => {
+const InfoModal = ({ isOpen, setIsOpen, packageInfo, setIsConfirmOpen, setIsEditFormOpen }) => {
 	const ref = useRef();
 	const { header, transitHistory } = packageInfo;
 
@@ -21,24 +21,53 @@ const InfoModal = ({ isOpen, setIsOpen, packageInfo, notify, setIsConfirmOpen, s
 		window.open(link, "_blank").focus();
 	}
 
+	// header state change on scroll pos
+	const [headerShrink, setHeaderShrink] = useState(false);
+
+	const [scrollPos, setScrollPos] = useState(0);
+	const onScroll = (e) => {
+		setScrollPos(e.target.scrollTop);
+	};
+
+	useEffect(() => {
+		if (scrollPos < 25) {
+			setHeaderShrink(false);
+		} else {
+			setHeaderShrink(true);
+		}
+	}, [scrollPos]);
+
+	const [mapToggle, setMapToggle] = useState(false);
+
 	return (
-		<Modal>
-			<div className="info-modal" ref={ref}>
+		<Modal key={packageInfo.header.id}>
+			<div className={"info-modal " + ((headerShrink && !mapToggle) ? "expand-history" : "")} ref={ref}>
 				<InfoHeader
 					header={header}
 					transitHistory={transitHistory}
 					setIsOpen={setIsOpen}
 					setIsConfirmOpen={setIsConfirmOpen}
 					setIsEditFormOpen={setIsEditFormOpen}
+					mapToggle={mapToggle}
+					setMapToggle={setMapToggle}
 				/>
-				<div className="transit-history">
+				<div
+					className="transit-history"
+					onMouseEnter={() => {
+						if (scrollPos > 25) {
+							setHeaderShrink(true);
+						}
+					}}
+					onMouseLeave={() => setHeaderShrink(false)}
+					onScroll={onScroll}
+				>
 					<h1>Transit History</h1>
 					<div className="transit-sub-content">
 						<HelpIcon
 							message={
 								"We use a basic algorithm to guess where your package is in its journey. We do not guarantee the accuracy of this information. For more up to date information visit the couriers tracking page directly by clicking the button below."
 							}
-							direction={'left'}
+							direction={"left"}
 						/>
 						<button
 							className="btn-normal-text"

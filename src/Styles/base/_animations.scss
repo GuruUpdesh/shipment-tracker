@@ -51,6 +51,28 @@
 	}
 }
 
+@keyframes scaleUpFadeUp {
+	0% {
+		opacity: 0;
+		transform: translateY(15px) scale(0);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
+@keyframes scaleUpFadeDown {
+	0% {
+		opacity: 0;
+		transform: translateY(-15px) scale(0.9);
+	}
+	100% {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
+}
+
 @keyframes textRevealLarge {
 	0% {
 		opacity: 0;

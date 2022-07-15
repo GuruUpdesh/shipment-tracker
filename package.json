@@ -24,6 +24,7 @@
     "react-parallax-mouse": "^1.7.3",
     "react-router-dom": "^6.2.2",
     "react-scripts": "5.0.0",
+    "react-shepherd": "^4.1.0",
     "react-toastify": "^8.2.0",
     "tracking-number-validation": "^2.0.2",
     "web-vitals": "^2.1.4"

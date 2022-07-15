@@ -7,14 +7,14 @@ import { BiEdit, BiArrowBack } from "react-icons/bi";
 import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 import { UserContext } from "../../../App";
 
-const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIsEditFormOpen }) => {
+const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIsEditFormOpen, mapToggle, setMapToggle }) => {
 	const [imgIndex, setImgIndex] = useState(header.imgIndex);
 
 	const cycleImgIndex = async () => {
 		const index = (imgIndex + 1) % header.photos.length;
 
 		const response = fetch(`${process.env.REACT_APP_API_URL}/api/update-img-index`, {
-			credentials: 'include',
+			credentials: "include",
 			method: "POST",
 			body: JSON.stringify({
 				id: localStorage.getItem("id"),
@@ -44,9 +44,44 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 		});
 	};
 
-	const ref = useRef();
+	useEffect(() => {
+		const handleShortCut = async (event) => {
 
-	const [mapToggle, setMapToggle] = useState(false);
+			//delete
+			if (event.keyCode === 88 && event.shiftKey) {
+				setIsConfirmOpen(true);
+				setIsOpen(false);
+			}
+
+			//edit
+			if (event.keyCode === 69 && event.shiftKey) {
+				setIsEditFormOpen(true);
+				setIsOpen(false);
+
+				const selected = await window.getSelection();
+				if (selected.focusNode.className.includes("input")) {
+					event.preventDefault();
+				}
+			}
+
+			// archive
+
+			// mark as delivered
+
+			// change image
+			if (event.keyCode === 73 && event.shiftKey) {
+				cycleImgIndex();
+			}
+		};
+
+		window.addEventListener("keydown", handleShortCut);
+
+		return () => {
+			window.removeEventListener("keydown", handleShortCut);
+		};
+	});
+
+	const ref = useRef();
 
 	const { user } = useContext(UserContext);
 
@@ -106,15 +141,21 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 					<div className="controls flex-evenly">
 						<button className="btn-black" onClick={cycleImgIndex}>
 							<AiOutlineSwap />
-							<span>change image</span>
+							<span>
+								change image<p>{"(shift + i)"}</p>
+							</span>
 						</button>
 						<button className="btn-black">
 							<AiOutlineCheckSquare />
-							<span>mark as delivered</span>
+							<span>
+								mark as delivered<p>{"(shift + d)"}</p>
+							</span>
 						</button>
 						<button className="btn-black" onClick={archive}>
 							<RiInboxArchiveLine />
-							<span>archive</span>
+							<span>
+								archive<p>{"(shift + a)"}</p>
+							</span>
 						</button>
 						<button
 							className="btn-black"
@@ -124,7 +165,9 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 							}}
 						>
 							<BiEdit />
-							<span>edit</span>
+							<span>
+								edit<p>{"(shift + e)"}</p>
+							</span>
 						</button>
 						<button
 							className="btn-black"
@@ -134,7 +177,9 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 							}}
 						>
 							<AiOutlineDelete />
-							<span>delete</span>
+							<span>
+								delete <p>{"(shift + x)"}</p>
+							</span>
 						</button>
 					</div>
 				</>

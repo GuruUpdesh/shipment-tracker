@@ -6,6 +6,7 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 import { motion } from "framer-motion";
 import ButtonBlack from "../Components/Core/ButtonBlack";
+import ButtonMagnet from "../Components/Core/ButtonMagnet";
 
 const HomePage = () => {
 	const navigate = useNavigate();
@@ -26,6 +27,7 @@ const HomePage = () => {
 				>
 					login
 				</button> */}
+				{/* <ButtonMagnet>test</ButtonMagnet> */}
 				{localStorage.getItem("id") ? (
 					<ButtonBlack
 						onClick={() => {
@@ -50,18 +52,17 @@ const HomePage = () => {
           </div> */}
 					<div className="content-wrapper">
 						<h1>Tracking Made Simple</h1>
-						<button
-							onClick={() => {
+
+						<ButtonMagnet onClick={() => {
 								if (localStorage.getItem("id")) {
 									navigate("/packages");
 								} else {
 									navigate("/register");
 								}
-							}}
-						>
+							}}>
 							{localStorage.getItem("id") ? <>view your <b>packages</b></> : <>get started it's <b>free</b></>}
 							<HiOutlineArrowNarrowRight />
-						</button>
+						</ButtonMagnet>
 					</div>
 					<MouseParallaxContainer inverted={true} useWindowMouseEvents={true} className="box-images-container">
 						<MouseParallaxChild
