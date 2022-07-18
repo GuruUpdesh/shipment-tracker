@@ -1,5 +1,16 @@
 @import "./selector";
 @import "./input";
+@import "./checkbox";
+
+
+.form-inputs-wrapper {
+	margin-bottom: 1rem;
+
+	img {
+		height: 134px;
+		width: 236px;
+	}
+}
 
 .add-form {
 	background-color: var(--clr-bg-100);
@@ -23,6 +34,7 @@
 		margin-top: 1em;
 		margin-bottom: 0;
 	}
+
 
 	.btn-normal-text {
 		margin-top: 2em;

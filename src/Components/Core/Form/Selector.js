@@ -23,7 +23,7 @@ const Selector = ({ placeholder, options, selected, setSelected, error }) => {
 			>
 				<button
 				className="btn-selector"
-					onKeyUp={(e) => {
+					onKeyDown={(e) => {
 						if (!isOpen) {
 							navigate(e, outerRef);
 							return;

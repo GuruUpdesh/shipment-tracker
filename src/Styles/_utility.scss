@@ -61,6 +61,14 @@
 		animation: loading 1s linear forwards infinite;
 	}
 
+	img {
+		width: var(--fs-medium-400);
+		height: var(--fs-medium-400);
+		display: inline-block;
+		position: absolute;
+		transform: translate(1ch, 0px);
+	}
+
 	svg {
 		display: block;
 	}

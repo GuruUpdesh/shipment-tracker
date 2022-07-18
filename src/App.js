@@ -3,7 +3,7 @@ import { HashRouter } from "react-router-dom";
 import "./Styles/styles.css";
 import ContextMenu from "./Components/other/ContextMenu";
 import AnimatedRoutes from "./pages/AnimatedRoutes";
-import authenticate from "./util/authenticate";
+import authenticate from "./features/authentication/services/authenticate";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css"
 
@@ -25,8 +25,6 @@ function App() {
 			if (!userInfo.isAuth) {
 				localStorage.clear()
 			}
-
-			console.log(userInfo)
 			setUser(userInfo);
 		}
 		// theme check 
@@ -38,6 +36,8 @@ function App() {
 			setTheme("dark");
 		}
 	}, []);
+
+	useEffect(() => {console.log(user)}, [user])
 
 	useEffect(() => {
 		localStorage.setItem("theme", theme);

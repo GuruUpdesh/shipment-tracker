@@ -95,8 +95,11 @@ const AddForm = ({ isOpen, setIsOpen, addLoadingPackage }) => {
 	const ref = useRef();
 	useOnClickOutside(ref, () => setIsOpen(false));
 	useEnter(() => {
-    console.log(document.activeElement.className)
-		if (!document.activeElement.className.includes("btn") && document.activeElement.className !== "option" && !document.activeElement.className.includes("select")) {
+		if (
+			!document.activeElement.className.includes("btn") &&
+			document.activeElement.className !== "option" &&
+			!document.activeElement.className.includes("select")
+		) {
 			ref.current.children[6].click();
 		}
 	});

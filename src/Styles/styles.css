@@ -1879,16 +1879,20 @@ select {
   color: var(--clr-primary-400);
   font-size: var(--fs-small-400);
 }
-.input-container svg {
+.input-container .eye {
   position: absolute;
   top: 4px;
   right: 1em;
   transform: translateY(50%);
   opacity: 0.5;
 }
-.input-container svg:hover {
+.input-container .eye:hover {
   cursor: pointer;
   opacity: 1;
+}
+.input-container .matches {
+  transform: translateY(2px);
+  color: var(--clr-primary-400);
 }
 
 .full-input span {
@@ -1907,6 +1911,48 @@ select {
 }
 .input-error p {
   font-size: var(--fs-small-300);
+}
+
+.checkbox-container {
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 1ch;
+}
+.checkbox-container .checkbox {
+  width: var(--fs-small-400);
+  height: var(--fs-small-400);
+  border-radius: var(--br);
+  background-color: var(--clr-bg-400);
+  border: 1px solid var(--clr-border-200);
+  cursor: pointer;
+  color: var(--clr-bg-100);
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.checkbox-container .checkbox:hover {
+  border: 1px solid var(--clr-border-400);
+}
+.checkbox-container .checkbox svg {
+  font-size: var(--fs-small-400);
+  display: block;
+  transform: translate(-1px, -1px);
+}
+.checkbox-container .checked {
+  background-color: var(--clr-primary-400);
+}
+.checkbox-container .checked:hover {
+  background-color: var(--clr-primary-500);
+}
+.checkbox-container .label {
+  font-size: var(--fs-small-300);
+}
+
+.form-inputs-wrapper {
+  margin-bottom: 1rem;
+}
+.form-inputs-wrapper img {
+  height: 134px;
+  width: 236px;
 }
 
 .add-form {
@@ -3204,6 +3250,13 @@ input:focus-visible {
   -webkit-animation: loading 1s linear forwards infinite;
           animation: loading 1s linear forwards infinite;
 }
+.btn-black img {
+  width: var(--fs-medium-400);
+  height: var(--fs-medium-400);
+  display: inline-block;
+  position: absolute;
+  transform: translate(1ch, 0px);
+}
 .btn-black svg {
   display: block;
 }
@@ -3760,6 +3813,7 @@ input:focus-visible {
 }
 .login-container .form {
   padding: 3em 2em;
+  z-index: 2;
   -webkit-animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
           animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
@@ -3803,6 +3857,10 @@ input:focus-visible {
           animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
   -webkit-animation-delay: 0.3s;
           animation-delay: 0.3s;
+}
+.login-container .login-footer p {
+  font-size: var(--fs-small-300);
+  opacity: 0.5;
 }
 .login-container .back {
   margin-bottom: 1em;

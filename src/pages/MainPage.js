@@ -7,7 +7,7 @@ import EditForm from "../Components/modals/EditForm";
 import Packages from "../Components/Package/Packages";
 import { useNavigate } from "react-router-dom";
 import { PackagesContext, UserContext } from "../App";
-import authenticate from "../util/authenticate";
+import authenticate from "../features/authentication/services/authenticate";
 import notify from "../util/notify";
 
 const MainPage = () => {

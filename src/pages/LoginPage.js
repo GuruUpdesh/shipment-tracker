@@ -1,120 +1,11 @@
-import React, { useState, useRef, useEffect } from "react";
-import Input from "../Components/Core/Form/Input";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
-import ButtonBlack from "../Components/Core/ButtonBlack";
-import axios from "axios";
-import validateEmail from "../util/validateEmail";
 import { motion } from "framer-motion";
-import { GoogleLogin } from "react-google-login";
-import { gapi } from "gapi-script";
-import { AiOutlineGoogle } from "react-icons/ai";
+import LoginForm from "../features/authentication/components/LoginForm";
+import ButtonText from "../Components/Core/ButtonText";
 
 const LoginPage = () => {
-	useEffect(() => {
-		function start() {
-			gapi.auth2.init({
-				clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-				cookiePolicy: 'none'
-			});
-		}
-
-		gapi.load("client:auth2", start);
-	}, []);
-
-	const [email, setEmail] = useState("");
-	const [password, setPassword] = useState("");
-	const [errors, setErrors] = useState({
-		email: null,
-		password: null,
-	});
-	const [message, setMessage] = useState("");
-
-	const handleSubmit = async () => {
-		const valid = verify();
-		if (!valid) {
-			return "error";
-		}
-
-		await login();
-	};
-
-	const verify = () => {
-		const tempErrors = { email: null, password: null };
-
-		if (password === "") {
-			tempErrors.password = "password is required";
-		}
-
-		tempErrors.email = validateEmail(email);
-		setErrors(tempErrors);
-
-		if (tempErrors.email === null && tempErrors.password === null) {
-			return true;
-		}
-
-		return false;
-	};
-
-	const handleGoogleLogin = async (googleData) => {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/auth/google`, {
-			method: "POST",
-			body: JSON.stringify({
-				token: googleData.tokenId,
-			}),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		const jsonResponse = await response.json();
-
-		if (response.status === 200) {
-			getCookie(jsonResponse.userData.id)
-			localStorage.setItem("id", jsonResponse.userData.id);
-			localStorage.setItem("email", jsonResponse.userData.email);
-			navigate("/packages");
-			return;
-		}
-	};
-
-	const handleGoogleFailure = (result) => {
-		console.log(result);
-	};
-
-	async function getCookie(id) {
-		const result = await axios.get(`${process.env.REACT_APP_API_URL}/api/cookie?id=${id}`, {
-			withCredentials: true,
-			validateStatus: (status) => {
-				return status < 400;
-			},
-		});
-	}
-
-	const login = async () => {
-		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
-			method: "POST",
-			body: JSON.stringify({
-				email: email,
-				password: password,
-			}),
-			headers: {
-				"Content-Type": "application/json",
-			},
-		});
-		
-		const jsonResponse = await response.json();
-		
-		if (response.status === 200) {
-			await getCookie(jsonResponse.userData.id)
-			localStorage.setItem("id", jsonResponse.userData.id);
-			localStorage.setItem("email", jsonResponse.userData.email);
-			navigate("/packages");
-			return;
-		}
-		setMessage(jsonResponse.message);
-		return "error";
-	};
-
 	const [x, setX] = useState(0);
 	const [y, setY] = useState(0);
 
@@ -150,48 +41,10 @@ const LoginPage = () => {
 				>
 					<BsArrowLeft />
 				</button>
-				<div className="form login-block">
-
-					<h1>Login</h1>
-					{message !== "" && <p className="message">{message}</p>}
-					<Input
-						placeholder={"email"}
-						value={email}
-						setValue={setEmail}
-						type={"text"}
-						error={errors.email}
-						autoFill={true}
-					/>
-					<Input
-						placeholder={"password"}
-						value={password}
-						setValue={setPassword}
-						type={"password"}
-						error={errors.password}
-						autoFill={true}
-					/>
-					<ButtonBlack onClick={(e) => handleSubmit(e)} errors={true} load={true}>
-						login
-					</ButtonBlack>
-					<div className="login-options">
-						<p>or</p>
-						<GoogleLogin
-							clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-							render={(renderProps) => (
-								<ButtonBlack onClick={renderProps.onClick} disabled={renderProps.disabled}>
-									<AiOutlineGoogle />
-									<span>login using google</span>
-								</ButtonBlack>
-							)}
-							buttonText="Login"
-							onSuccess={handleGoogleLogin}
-							onFailure={handleGoogleFailure}
-							cookiePolicy={"single_host_origin"}
-						/>
-					</div>
-				</div>
-				<div className="login-footer login-block">
-					<button className="btn-normal-text" onClick={() => {navigate("/register")}}>create account</button>
+				<LoginForm />
+				<div className="login-footer login-block flex-column">
+					<p>don't have an account?</p>
+					<ButtonText onClick={() => {navigate("/register")}}>create account</ButtonText>
 				</div>
 			</div>
 			<div className="perspective-wrapper">

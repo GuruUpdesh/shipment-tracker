@@ -19,15 +19,6 @@ const HomePage = () => {
 		>
 			<nav className="homepage-nav">
 				<h3>shipmentracker</h3>
-				{/* <button
-					className="btn-black"
-					onClick={() => {
-						navigate("/login");
-					}}
-				>
-					login
-				</button> */}
-				{/* <ButtonMagnet>test</ButtonMagnet> */}
 				{localStorage.getItem("id") ? (
 					<ButtonBlack
 						onClick={() => {
@@ -48,8 +39,6 @@ const HomePage = () => {
 			</nav>
 			<section className="hero">
 				<div className="heroContainer">
-					{/* <div className="imageContainer">
-          </div> */}
 					<div className="content-wrapper">
 						<h1>Tracking Made Simple</h1>
 

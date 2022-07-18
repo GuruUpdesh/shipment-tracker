@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import {AiOutlineLoading3Quarters} from "react-icons/ai"
+import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import navigate from "../../util/formNavigation";
 
 const ButtonBlack = ({ onClick, className, children, errors, load }) => {
@@ -47,13 +47,13 @@ const ButtonBlack = ({ onClick, className, children, errors, load }) => {
 				clickHandler(e);
 			}}
 			ref={ref}
-			onKeyUp={(e) => navigate(e, ref)}
+			onKeyDown={(e) => navigate(e, ref)}
 		>
 			<div className="pulseContainer">
 				<div className="pulse" style={{ top: y, left: x }}></div>
 			</div>
 			{children}
-			{loading && <AiOutlineLoading3Quarters className="loading-icon"/>}
+			{loading && <img src={process.env.PUBLIC_URL + "/loading.svg"} />}
 		</button>
 	);
 };

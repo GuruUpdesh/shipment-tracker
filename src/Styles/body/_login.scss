@@ -97,6 +97,7 @@
 
 	.form {
 		padding: 3em 2em;
+		z-index: 2;
 
 		animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 		h1 {
@@ -144,6 +145,11 @@
 
 		animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 		animation-delay: 0.3s;
+
+		p {
+			font-size: var(--fs-small-300);
+			opacity: 0.5;
+		}
 	}
 
 	.back {
