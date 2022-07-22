@@ -2,15 +2,13 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import useOnClickOutside from "../../Hooks/useOnClickOutside";
 import HelpIcon from "../other/HelpIcon";
 import { IoMdExit, IoIosMoon } from "react-icons/io";
-import { RiShareForwardFill } from "react-icons/ri";
 import { IoSunny } from "react-icons/io5";
-import { MdPeopleAlt } from "react-icons/md";
 import { BsQuestionLg, BsGithub, BsArchiveFill } from "react-icons/bs";
 import { AiFillHome } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 import { ThemeContext } from "../../App";
-import axios from "axios";
-// import pfp from "/images/pfp.jpg"
+import logout from "../../features/authentication/services/logout";
+import useUser from "../../context/useUser";
 
 const Settings = ({ settingsOpen, setSettingsOpen }) => {
 	const navigate = useNavigate();
@@ -22,22 +20,10 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 		setTimeout(() => setSettingsOpen(false), 200);
 	}
 
-	// const [theme, setTheme] = useLocalStorage("theme", "light");
 	const { theme, setTheme } = useContext(ThemeContext);
 	function toggleTheme() {
 		setTheme(theme === "light" ? "dark" : "light");
 		document.documentElement.setAttribute("data-theme", theme === "light" ? "dark" : "light");
-	}
-
-	async function logout() {
-		localStorage.clear();
-
-		await axios.get(`${process.env.REACT_APP_API_URL}/api/logout`, {
-			withCredentials: true,
-			validateStatus: (status) => {
-				return status < 400;
-			},
-		});
 	}
 
 	useEffect(() => {
@@ -46,6 +32,8 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 
 	const settingsRef = useRef();
 	useOnClickOutside(settingsRef, closeSettingsMenu);
+
+	const {user, setUser} = useUser()
 	return (
 		<div className={"nav-settings " + (playCloseAnimation ? "nav-settings-close" : "")} ref={settingsRef}>
 			<div className="content-wrapper">
@@ -98,7 +86,7 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 					<button
 						className="logout"
 						onClick={() => {
-							logout();
+							logout(user, setUser)
 							navigate("/login");
 						}}
 					>

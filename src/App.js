@@ -2,32 +2,22 @@ import { useState, createContext, useEffect, useLayoutEffect, useRef } from "rea
 import { HashRouter } from "react-router-dom";
 import "./Styles/styles.css";
 import ContextMenu from "./Components/other/ContextMenu";
-import AnimatedRoutes from "./pages/AnimatedRoutes";
-import authenticate from "./features/authentication/services/authenticate";
+import Routes from "./pages/Routes";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css"
+import "react-toastify/dist/ReactToastify.css";
 
 export const ThemeContext = createContext(null);
 export const UserContext = createContext(null);
 
 function App() {
 	const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
-	const [user, setUser] = useState({});
+	const [user, setUser] = useState({
+		isMobile: /Mobi/i.test(window.navigator.userAgent),
+		isAuth: localStorage.getItem("jwtToken") ? true : false,
+	});
 
 	useLayoutEffect(() => {
-		fetchUserInfo()
-		async function fetchUserInfo() {
-			const userInfo = {
-				isMobile: /Mobi/i.test(window.navigator.userAgent),
-				isAuth: await authenticate(),
-			};
-			
-			if (!userInfo.isAuth) {
-				localStorage.clear()
-			}
-			setUser(userInfo);
-		}
-		// theme check 
+		// theme check
 		if (
 			window.matchMedia &&
 			window.matchMedia("(prefers-color-scheme: dark)").matches &&
@@ -37,14 +27,16 @@ function App() {
 		}
 	}, []);
 
-	useEffect(() => {console.log(user)}, [user])
+	useEffect(() => {
+		console.log(user);
+	}, [user]);
 
 	useEffect(() => {
 		localStorage.setItem("theme", theme);
 		document.documentElement.setAttribute("data-theme", theme);
 	}, [theme]);
 
-	const packagesRef = useRef()
+	const packagesRef = useRef();
 
 	return (
 		<HashRouter>
@@ -52,7 +44,7 @@ function App() {
 				<ThemeContext.Provider value={{ theme, setTheme }}>
 					<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
 					<ContextMenu />
-					<AnimatedRoutes />
+					<Routes />
 				</ThemeContext.Provider>
 			</UserContext.Provider>
 		</HashRouter>

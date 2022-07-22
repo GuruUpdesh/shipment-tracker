@@ -7,6 +7,7 @@ import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse
 import { motion } from "framer-motion";
 import ButtonBlack from "../Components/Core/ButtonBlack";
 import ButtonMagnet from "../Components/Core/ButtonMagnet";
+import PerspectiveWrapper from "../Components/Core/PerspectiveWrapper";
 
 const HomePage = () => {
 	const navigate = useNavigate();
@@ -42,14 +43,24 @@ const HomePage = () => {
 					<div className="content-wrapper">
 						<h1>Tracking Made Simple</h1>
 
-						<ButtonMagnet onClick={() => {
+						<ButtonMagnet
+							onClick={() => {
 								if (localStorage.getItem("id")) {
 									navigate("/packages");
 								} else {
 									navigate("/register");
 								}
-							}}>
-							{localStorage.getItem("id") ? <>view your <b>packages</b></> : <>get started it's <b>free</b></>}
+							}}
+						>
+							{localStorage.getItem("id") ? (
+								<>
+									view your <b>packages</b>
+								</>
+							) : (
+								<>
+									get started it's <b>free</b>
+								</>
+							)}
 							<HiOutlineArrowNarrowRight />
 						</ButtonMagnet>
 					</div>

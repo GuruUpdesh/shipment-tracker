@@ -7,8 +7,9 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import ButtonBlack from "../Core/ButtonBlack";
 import { BiUndo } from "react-icons/bi";
 import notify from "../../util/notify";
+import PerspectiveWrapper from "../Core/PerspectiveWrapper";
 
-const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, packagesRef }) => {
+const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, packagesRef, mouse }) => {
 	useEffect(() => {
 		if (!packageInfo.loading && !isArchive) {
 			if (packageInfo.header.index === packagesRef.current.packageList.length - 1) {
@@ -67,74 +68,78 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, p
 			<div className="package-loading-background"></div>
 		</div>
 	) : (
-		<InView>
-			{({ inView, ref, entry }) => (
-				<div
-					className={"package-container " + (isArchive ? "archive-package" : "")}
-					ref={ref}
-					onClick={() => {
-						if (!isArchive) {
-							setCurrentInfo(packageInfo);
-							setIsInfoModalOpen(true);
-						}
-					}}
-				>
-					<div className={"package-header "}>
-						{!isArchive && (
-							<div
-								className="package-img"
-								style={{
-									backgroundImage: `url(${packageInfo.header.photos[packageInfo.header.imgIndex]})`,
-								}}
-							></div>
-						)}
-						<div className="content-container">
-							<div className="content-wrapper">
-								<h3 className="package-name">{isArchive ? packageInfo.name : packageInfo.header.name}</h3>
-								<p className="package-status">
-									{isArchive ? packageInfo.trackingNumber : packageInfo.header.status}
-								</p>
+		<PerspectiveWrapper mouse={mouse}>
+			<InView>
+				{({ inView, ref, entry }) => (
+					<div
+						className={"package-container " + (isArchive ? "archive-package" : "")}
+						ref={ref}
+						onClick={() => {
+							if (!isArchive) {
+								setCurrentInfo(packageInfo);
+								setIsInfoModalOpen(true);
+							}
+						}}
+					>
+						<div className={"package-header "}>
+							{!isArchive && (
+								<div
+									className="package-img"
+									style={{
+										backgroundImage: `url(${packageInfo.header.photos[packageInfo.header.imgIndex]})`,
+									}}
+								></div>
+							)}
+							<div className="content-container">
+								<div className="content-wrapper">
+									<h3 className="package-name">
+										{isArchive ? packageInfo.name : packageInfo.header.name}
+									</h3>
+									<p className="package-status">
+										{isArchive ? packageInfo.trackingNumber : packageInfo.header.status}
+									</p>
+								</div>
+								{!isArchive && <HiOutlineArrowNarrowRight />}
 							</div>
-							{!isArchive && <HiOutlineArrowNarrowRight />}
+							{isArchive && (
+								<>
+									<ButtonBlack>
+										<AiOutlineDelete />
+										<span>delete</span>
+									</ButtonBlack>
+									<ButtonBlack>
+										<BiUndo />
+										<span>unarchive</span>
+									</ButtonBlack>
+								</>
+							)}
 						</div>
-						{isArchive && (
+						{!isArchive && (
 							<>
-								<ButtonBlack>
-									<AiOutlineDelete />
-									<span>delete</span>
-								</ButtonBlack>
-								<ButtonBlack>
-									<BiUndo />
-									<span>unarchive</span>
-								</ButtonBlack>
+								<div className="marker"></div>
+								<PackageMap center={packageInfo.header.coordinates} zoom={10} />
+								<div className={"bottom-right-indicators " + (inView ? "" : "display-none")}>
+									{packageInfo.header.eta && packageInfo.header.status.includes("transit") && (
+										<div className="indicator">
+											<BsTruck />
+										</div>
+									)}
+									{packageInfo.header.status.includes("delivered") && (
+										<div className="indicator">
+											<AiOutlineHome />
+										</div>
+									)}
+
+									{packageInfo.header.eta && !packageInfo.header.status.includes("deliver") && (
+										<div className="indicator">{packageInfo.header.eta}</div>
+									)}
+								</div>
 							</>
 						)}
 					</div>
-					{!isArchive && (
-						<>
-							<div className="marker"></div>
-							<PackageMap center={packageInfo.header.coordinates} zoom={10} />
-							<div className={"bottom-right-indicators " + (inView ? "" : "display-none")}>
-								{packageInfo.header.eta && packageInfo.header.status.includes("transit") && (
-									<div className="indicator">
-										<BsTruck />
-									</div>
-								)}
-								{packageInfo.header.status.includes("delivered") && (
-									<div className="indicator">
-										<AiOutlineHome />
-									</div>
-								)}
-
-								{packageInfo.header.eta && !packageInfo.header.status.includes("deliver") && (
-									<div className="indicator">{packageInfo.header.eta}</div>
-								)}
-							</div>
-						</>
-					)}
-				</div>
-			)}
-		</InView>
+				)}
+			</InView>
+		</PerspectiveWrapper>
 	);
 };
 

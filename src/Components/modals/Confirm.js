@@ -17,7 +17,7 @@ const Confirm = ({ setIsOpen, header, removePackage }) => {
 			}),
 			headers: {
 				"Content-Type": "application/json",
-				"x-access-token": `${localStorage.getItem("token")}`,
+				"Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
 			},
 		});
 

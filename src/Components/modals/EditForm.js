@@ -75,6 +75,7 @@ const EditForm = ({ isOpen, setIsOpen, header, reloadPackage }) => {
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
 			},
 		});
 

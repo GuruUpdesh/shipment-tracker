@@ -1,33 +1,14 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import MainLayout from "../Components/Layout/MainLayout";
 import AddForm from "../Components/modals/AddForm";
 import InfoModal from "../Components/modals/infoModal/InfoModal";
 import Confirm from "../Components/modals/Confirm";
 import EditForm from "../Components/modals/EditForm";
 import Packages from "../Components/Package/Packages";
-import { useNavigate } from "react-router-dom";
-import { PackagesContext, UserContext } from "../App";
-import authenticate from "../features/authentication/services/authenticate";
-import notify from "../util/notify";
+import useUser from "../context/useUser";
 
 const MainPage = () => {
-	const { user, setUser } = useContext(UserContext);
-
-	const navigate = useNavigate();
-
-	// on load
-	useEffect(() => {
-		authenticate(
-			() => {
-				setUser({ ...user, isAuth: true });
-			},
-			() => {
-				setUser({ ...user, isAuth: false });
-				notify("you must login before viewing packages", 3000, "warning")
-				navigate("/login");
-			}
-		);
-	}, []);
+	const { user } = useUser();
 
 	// mobiles
 	const [isAddFormOpen, setIsAddFormOpen] = useState(false);

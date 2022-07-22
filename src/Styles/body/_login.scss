@@ -1,18 +1,18 @@
 .login-wrapper {
 	height: 100vh;
 	background-color: var(--clr-bg-400);
-}
-
-.perspective-wrapper {
-	perspective: 1000px;
-	perspective-origin: 50% 50%;
-	animation: fadeRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-	animation-delay: 0.3s;
-
-	@media (max-width: 1000px) {
-		display: none;
+	.perspective-wrapper {
+		perspective: 1000px;
+		perspective-origin: 50% 50%;
+		animation: fadeRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+		animation-delay: 0.3s;
+	
+		@media (max-width: 1000px) {
+			display: none;
+		}
 	}
 }
+
 
 .login-image-wrapper {
 	width: 500px;

@@ -1,12 +1,27 @@
-import axios from "axios";
+export default async function getJwtToken(id, email) {
+	try {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/cookie`, {
+			method: "POST",
+			body: JSON.stringify({
+				id: id,
+				email: email,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
 
-export default async function getJwtToken(id, rememberMe) {
-	const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/cookie?id=${id}&remember=${rememberMe ? '1' : "0"}`, {
-		withCredentials: true,
-		validateStatus: (status) => {
-			return status < 400;
-		},
-	});
+		const jsonResponse = await response.json();
 
-	return response.status === 304 ? true : false
+		if (response.status === 200) {
+			const jwtToken = jsonResponse.jwtToken;
+			localStorage.setItem("jwtToken", jwtToken);
+			return true;
+		}
+
+		return false;
+	} catch (error) {
+		console.log(error);
+		return false;
+	}
 }

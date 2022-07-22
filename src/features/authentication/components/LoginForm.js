@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Input from "../../../Components/Core/Form/Input";
 import CheckBox from "../../../Components/Core/Form/CheckBox";
 import ButtonBlack from "../../../Components/Core/ButtonBlack";
@@ -13,7 +13,7 @@ import passwordVerification from "../verification/passwordVerification";
 import detectErrors from "../verification/detectErrors";
 import googleLogin from "../services/googleLogin";
 import useEnter from "../../../Hooks/useEnter";
-import { UserContext } from "../../../App";
+import useUser from "../../../context/useUser";
 
 function LoginForm() {
 	const navigate = useNavigate();
@@ -44,7 +44,7 @@ function LoginForm() {
 	// is loading
 	const [isWaitingForGoogle, setIsWaitingForGoogle] = useState(false);
 
-	const {user, setUser} = useContext(UserContext)
+	const {user, setUser} = useUser()
 
 	async function handleSubmit() {
 		const areInputsValid = verify();
@@ -64,7 +64,7 @@ function LoginForm() {
 			return "error";
 		}
 
-		const jwtResult = await getJwtToken(loginResult.userData.id, rememberMe);
+		const jwtResult = await getJwtToken(loginResult.userData.id, loginResult.userData.email);
 
 		if (!jwtResult) {
 			setErrorMessage("there was a cookie problem");
@@ -109,12 +109,11 @@ function LoginForm() {
 			if (loginResult.message) {
 				setErrorMessage(loginResult.message);
 			}
-			setIsWaitingForGoogle(false)
 			setUser({...user, isAuth: false})
 			return "error";
 		}
 
-		const jwtResult = await getJwtToken(loginResult.userData.id, true);
+		const jwtResult = await getJwtToken(loginResult.userData.id, loginResult.userData.email);
 
 		if (!jwtResult) {
 			setErrorMessage("there was a cookie problem");
@@ -122,7 +121,7 @@ function LoginForm() {
 			return "error";
 		}
 
-		setUser({...user, isAuth: false})
+		setUser({...user, isAuth: true})
 		localStorage.setItem("id", loginResult.userData.id);
 		localStorage.setItem("email", loginResult.userData.email);
 		navigate("/packages");

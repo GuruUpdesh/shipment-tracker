@@ -76,20 +76,20 @@ const ContextMenu = () => {
 					)}
 
 					<li onClick={() => navigate(-1)} className="line">
-						<IoMdArrowBack />
 						backward
+						<IoMdArrowBack />
 					</li>
 					<li onClick={() => navigate(1)}>
-						<IoMdArrowForward />
 						forward
+						<IoMdArrowForward />
 					</li>
 					<li
 						onClick={() => {
 							window.location.reload();
 						}}
 					>
-						<AiOutlineReload />
 						reload
+						<AiOutlineReload />
 					</li>
 					<li
 						className={"line "}
@@ -97,8 +97,8 @@ const ContextMenu = () => {
 							document.execCommand("copy");
 						}}
 					>
-						<IoCopy />
 						copy
+						<IoCopy />
 					</li>
 					{document.activeElement.type === "text" && (
 						<li className="disabled">
@@ -107,10 +107,15 @@ const ContextMenu = () => {
 					)}
 					{(location.pathname === "/packages" || location.pathname === "/archive") && (
 						<>
-							<li className="line">add package</li>
-							<li>edit package</li>
-							<li>archive package</li>
-							<li>delete package</li>
+							<li className="line">
+								add
+								<HiPlus />
+							</li>
+							<li>
+								edit <MdEdit />
+							</li>
+							<li>archive</li>
+							<li>delete </li>
 						</>
 					)}
 				</ul>

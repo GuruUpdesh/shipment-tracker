@@ -1,20 +1,26 @@
 export default async function login(email, password) {
-	const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
-		method: "POST",
-		body: JSON.stringify({
-			email: email,
-			password: password,
-		}),
-		headers: {
-			"Content-Type": "application/json",
-		},
-	});
+	try {
 
-	const jsonResponse = await response.json();
-
-	if (response.status === 200) {
-		return {success: true, message: jsonResponse.message, userData: {id: jsonResponse.userData.id, email: jsonResponse.userData.email}}
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/login`, {
+			method: "POST",
+			body: JSON.stringify({
+				email: email,
+				password: password,
+			}),
+			headers: {
+				"Content-Type": "application/json",
+			},
+		});
+	
+		const jsonResponse = await response.json();
+	
+		if (response.status === 200) {
+			return {success: true, message: jsonResponse.message, userData: {id: jsonResponse.userData.id, email: jsonResponse.userData.email}}
+		}
+	
+		return {success: false, message: jsonResponse.message, userData: {}};
+	} catch (error) {
+		console.log(error)
+		return {success: false, message: error, userData: {}};
 	}
-
-	return {success: false, message: jsonResponse.message, userData: {}};
 }

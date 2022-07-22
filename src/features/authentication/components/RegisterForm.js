@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import ButtonBlack from "../../../Components/Core/ButtonBlack";
 import Input from "../../../Components/Core/Form/Input";
 import getJwtToken from "../services/getJwtToken";
@@ -13,7 +13,7 @@ import { GoogleLogin } from "react-google-login";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { gapi } from "gapi-script";
 import googleRegister from "../services/googleRegister";
-import { UserContext } from "../../../App";
+import useUser from "../../../context/useUser";
 
 function RegisterForm() {
 	const navigate = useNavigate();
@@ -40,8 +40,7 @@ function RegisterForm() {
 	// error handling
 	const [errors, setErrors] = useState({ name: null, email: null, password: null, confirmPassword: null });
 
-	const { user, setUser } = useContext(UserContext);
-
+	const { user, setUser } = useUser();
 	async function handleSubmit() {
 		const areInputsValid = verify();
 
@@ -59,7 +58,7 @@ function RegisterForm() {
 			return "error";
 		}
 
-		const jwtResult = await getJwtToken(registerResult.userData.id, true);
+		const jwtResult = await getJwtToken(registerResult.userData.id, registerResult.userData.email);
 
 		if (!jwtResult) {
 			setErrorMessage("there was a cookie problem");
@@ -91,13 +90,14 @@ function RegisterForm() {
 	}
 
 	async function handleGoogleRegister(googleData, success) {
+		console.log(googleData, success)
 		if (!success) {
-			
 			setErrorMessage("google register failures");
 			return "error";
 		}
 
 		const registerResult = await googleRegister(googleData);
+		console.log("regRes:", registerResult)
 
 		if (!registerResult.success) {
 			if (registerResult.message) {
@@ -107,7 +107,7 @@ function RegisterForm() {
 			return "error";
 		}
 
-		const jwtResult = await getJwtToken(registerResult.userData.id, true);
+		const jwtResult = await getJwtToken(registerResult.userData.id, registerResult.userData.email);
 
 		if (!jwtResult) {
 			setErrorMessage("there was a cookie problem");

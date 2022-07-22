@@ -4,6 +4,7 @@ import { ThemeContext } from "../../App";
 import mapStyle from "../../Styles/Components/Package/mapStyle";
 import mapStylesDark from "../../Styles/Components/Package/mapStylesDark";
 import axios from "axios";
+import { Bezier } from "bezier-js";
 
 const containerStyle = {
 	width: "auto",
@@ -24,7 +25,7 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 	const options = {
 		styles: style,
 		disableDefaultUI: true,
-		tabIndex: -1
+		tabIndex: -1,
 	};
 	const [path, setPath] = useState([]);
 	const createPath = async () => {
@@ -50,7 +51,32 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 
 			path.push(latLng);
 		}
-		setPath(path);
+
+		// setPath(path);
+		const curvedPath = [];
+		for (let i = 0; i < path.length - 1; i++) {
+			const latLngStart = path[i];
+			const latLngEnd = path[i + 1];
+			plot_curve(latLngStart.lat, latLngStart.lng, latLngEnd.lat, latLngEnd.lng);
+		}
+
+		function plot_curve(x1, y1, x2, y2) {
+			const ang1 = 0.52;
+			const ang2 = 0.5;
+			const len = Math.hypot(x2 - x1, y2 - y1);
+			const midPoint = {lat: (x1 + x2)/2, lng: (y1 + y2)/2}
+			const ax1 = Math.cos(ang1) * len * (1 / 3);
+			const ay2 = Math.sin(ang2) * len * (1 / 3);
+
+			const curve = new Bezier({x: x1, y: y1}, {x: midPoint.lat + ax1, y: midPoint.lng + ay2}, {x: x2, y: y2}).getLUT(100)
+			for (let i = 0; i < curve.length; i++) {
+				delete Object.assign(curve[i], { ["lat"]: curve[i]["x"] })["x"];
+				delete Object.assign(curve[i], { ["lng"]: curve[i]["y"] })["y"];
+				curvedPath.push(curve[i]);
+			}
+		}
+
+		setPath(curvedPath);
 	};
 
 	useEffect(() => {

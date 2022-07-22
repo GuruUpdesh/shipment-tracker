@@ -76,7 +76,7 @@ const AddForm = ({ isOpen, setIsOpen, addLoadingPackage }) => {
 			}),
 			headers: {
 				"Content-Type": "application/json",
-				"x-access-token": `${localStorage.getItem("token")}`,
+				"Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
 			},
 		});
 

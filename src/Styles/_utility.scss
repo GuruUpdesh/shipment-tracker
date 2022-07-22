@@ -4,6 +4,24 @@
 	display: none !important;
 }
 
+.perspective-wrapper {
+	perspective: 1000px;
+	perspective-origin: 50% 50%;
+	
+	&:hover {
+		z-index: 2;
+	}
+	
+	div {
+		transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+
+		&:hover {
+			transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+			// z-index: 2;
+		}
+	}
+}
+
 .site-padding {
 	// $padding: math.div(100vw, 8);
 	$padding: clamp(1rem, 4vw, 8rem);

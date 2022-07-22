@@ -3,6 +3,7 @@ import Package from "./Package";
 import { BiPlus } from "react-icons/bi";
 import { UserContext } from "../../App";
 import ButtonText from "../Core/ButtonText";
+import useMouse from "@react-hook/mouse-position";
 
 const Packages = forwardRef((props, ref) => {
 	const packagesList = useRef([]);
@@ -26,6 +27,7 @@ const Packages = forwardRef((props, ref) => {
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
 			},
 		});
 
@@ -71,6 +73,7 @@ const Packages = forwardRef((props, ref) => {
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
 			},
 		});
 
@@ -125,7 +128,9 @@ const Packages = forwardRef((props, ref) => {
 		},
 	}));
 
-	const packageWrapperRef = useRef();
+	const packageWrapperRef = useRef()
+
+	const mouse = useMouse(packageWrapperRef, { fps: 60 });
 
 	return (
 		<>
@@ -142,6 +147,7 @@ const Packages = forwardRef((props, ref) => {
 									key={index}
 									isArchive={props.isArchive}
 									packagesRef={ref}
+									mouse={mouse}
 								/>
 							);
 						})}

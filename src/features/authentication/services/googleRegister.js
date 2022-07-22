@@ -1,23 +1,28 @@
-import axios from "axios";
-
 export default async function googleRegister(googleData) {
 	try {
-		const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/register/google`, {
+		const response = await fetch(`${process.env.REACT_APP_API_URL}/api/register/google`, {
+			method: "POST",
+			body: JSON.stringify({
+				token: googleData.tokenId,
+			}),
 			headers: {
 				"Content-Type": "application/json",
 			},
-			token: googleData.tokenId,
 		});
+
+		const jsonResponse = await response.json();
 
 		if (response.status === 201) {
 			return {
 				success: true,
-				message: response.data.message,
-				userData: { id: response.data.userData.id, email: response.data.userData.email },
+				message: jsonResponse.message,
+				userData: { id: jsonResponse.userData.id, email: jsonResponse.userData.email },
 			};
 		}
+
+		return { success: false, message: jsonResponse.message, userData: {} };
 	} catch (error) {
-        const {response} = error
-		return { success: false, message: response.data.message, userData: {} };
+		console.log(error);
+		return { success: false, message: error, userData: {} };
 	}
 }

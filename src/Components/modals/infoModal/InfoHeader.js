@@ -23,6 +23,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
 			},
 		});
 		header.imgIndex = index;
@@ -40,6 +41,7 @@ const InfoHeader = ({ header, transitHistory, setIsOpen, setIsConfirmOpen, setIs
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				"Authorization": `Bearer ${localStorage.getItem("jwtToken")}`
 			},
 		});
 	};
