@@ -9,23 +9,23 @@ import emailVerification from "../verification/emailVerification";
 import passwordVerification from "../verification/passwordVerification";
 import detectErrors from "../verification/detectErrors";
 import register from "../services/register";
-import { gapi } from "gapi-script";
+// import { gapi } from "gapi-script";
 import googleRegister from "../services/googleRegister";
 import useUser from "../../../context/useUser";
 
 function RegisterForm() {
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		function start() {
-			gapi.auth2.init({
-				clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-				cookiePolicy: "none",
-			});
-		}
+	// useEffect(() => {
+	// 	function start() {
+	// 		gapi.auth2.init({
+	// 			clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+	// 			cookiePolicy: "none",
+	// 		});
+	// 	}
 
-		gapi.load("client:auth2", start);
-	}, []);
+	// 	gapi.load("client:auth2", start);
+	// }, []);
 
 	const [errorMessage, setErrorMessage] = useState("");
 

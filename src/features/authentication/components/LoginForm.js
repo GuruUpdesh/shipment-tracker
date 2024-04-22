@@ -2,8 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import Input from "../../../Components/Core/Form/Input";
 import CheckBox from "../../../Components/Core/Form/CheckBox";
 import ButtonBlack from "../../../Components/Core/ButtonBlack";
-import { gapi } from "gapi-script";
-import { AiOutlineGoogle } from "react-icons/ai";
+// import { gapi } from "gapi-script";
 import { useNavigate } from "react-router-dom";
 import login from "../services/login";
 import getJwtToken from "../services/getJwtToken";
@@ -17,16 +16,16 @@ import useUser from "../../../context/useUser";
 function LoginForm() {
 	const navigate = useNavigate();
 
-	useEffect(() => {
-		function start() {
-			gapi.auth2.init({
-				clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-				cookiePolicy: "none",
-			});
-		}
+	// useEffect(() => {
+	// 	function start() {
+	// 		gapi.auth2.init({
+	// 			clientId: process.env.REACT_APP_GOOGLE_CLIENT_ID,
+	// 			cookiePolicy: "none",
+	// 		});
+	// 	}
 
-		gapi.load("client:auth2", start);
-	}, []);
+	// 	gapi.load("client:auth2", start);
+	// }, []);
 
 	const [errorMessage, setErrorMessage] = useState("");
 

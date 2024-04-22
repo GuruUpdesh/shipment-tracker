@@ -2,7 +2,6 @@
   "name": "shipment-tracker",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://guruupdesh.github.io/Shipmentracker/",
   "dependencies": {
     "@react-google-maps/api": "^2.19.3",
     "@react-hook/mouse-position": "^4.1.3",
