@@ -5,7 +5,6 @@
 .README.md
 /.pnp
 .pnp.js
-/public
 
 #other
 .env
