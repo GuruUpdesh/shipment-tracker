@@ -27,6 +27,7 @@ const Package = ({ packageInfo, setCurrentInfo, setIsInfoModalOpen, isArchive, p
 			}),
 			headers: {
 				"Content-Type": "application/json",
+				Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
 			},
 		});
 

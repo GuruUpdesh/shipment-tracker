@@ -74,15 +74,6 @@
   --clr-border-900: rgba(255, 255, 255, 0.9);
 }
 
-@-webkit-keyframes fadeIn {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-
 @keyframes fadeIn {
   0% {
     opacity: 0;
@@ -91,30 +82,10 @@
     opacity: 1;
   }
 }
-@-webkit-keyframes fadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 @keyframes fadeUp {
   0% {
     opacity: 0;
     transform: translateY(15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-@-webkit-keyframes fadeDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px);
   }
   100% {
     opacity: 1;
@@ -131,27 +102,7 @@
     transform: translateY(0);
   }
 }
-@-webkit-keyframes fadeRight {
-  0% {
-    opacity: 0;
-    transform: translateX(-15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
 @keyframes fadeRight {
-  0% {
-    opacity: 0;
-    transform: translateX(-15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0);
-  }
-}
-@-webkit-keyframes fadeLeft {
   0% {
     opacity: 0;
     transform: translateX(-15px);
@@ -171,30 +122,10 @@
     transform: translateX(0);
   }
 }
-@-webkit-keyframes scaleUpFadeUp {
-  0% {
-    opacity: 0;
-    transform: translateY(15px) scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
 @keyframes scaleUpFadeUp {
   0% {
     opacity: 0;
     transform: translateY(15px) scale(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-@-webkit-keyframes scaleUpFadeDown {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px) scale(0.9);
   }
   100% {
     opacity: 1;
@@ -211,16 +142,6 @@
     transform: translateY(0) scale(1);
   }
 }
-@-webkit-keyframes textRevealLarge {
-  0% {
-    opacity: 0;
-    transform: translateY(3rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 @keyframes textRevealLarge {
   0% {
     opacity: 0;
@@ -229,15 +150,6 @@
   100% {
     opacity: 1;
     transform: translateY(0);
-  }
-}
-@-webkit-keyframes circlePulse {
-  6% {
-    opacity: 0.5;
-  }
-  100% {
-    transform: scale(5);
-    opacity: 0;
   }
 }
 @keyframes circlePulse {
@@ -249,15 +161,6 @@
     opacity: 0;
   }
 }
-@-webkit-keyframes backgroundPosition {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0.4;
-    background-position: center;
-  }
-}
 @keyframes backgroundPosition {
   0% {
     opacity: 0;
@@ -265,30 +168,6 @@
   100% {
     opacity: 0.4;
     background-position: center;
-  }
-}
-@-webkit-keyframes btnLabels {
-  0% {
-    opacity: 0;
-    transform: translate(-50%, -2px) scaleY(0.75);
-  }
-  2% {
-    opacity: 0;
-  }
-  12% {
-    opacity: 1;
-    transform: translate(-50%, 8px) scaleY(1);
-  }
-  88% {
-    opacity: 1;
-    transform: translate(-50%, 8px) scaleY(1);
-  }
-  98% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 0;
-    transform: translate(-50%, -2px) scaleY(0.75);
   }
 }
 @keyframes btnLabels {
@@ -315,17 +194,6 @@
     transform: translate(-50%, -2px) scaleY(0.75);
   }
 }
-@-webkit-keyframes btnFocus {
-  0% {
-    transform: translateY(0);
-  }
-  75% {
-    transform: translateY(-3px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
 @keyframes btnFocus {
   0% {
     transform: translateY(0);
@@ -335,16 +203,6 @@
   }
   100% {
     transform: translateY(0);
-  }
-}
-@-webkit-keyframes transitHistoryBubble {
-  0% {
-    opacity: 0;
-    transform: translateX(-25%) translateY(3rem);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-25%);
   }
 }
 @keyframes transitHistoryBubble {
@@ -357,16 +215,6 @@
     transform: translateX(-25%);
   }
 }
-@-webkit-keyframes list {
-  0% {
-    opacity: 0;
-    transform: scaleY(0) translateX(calc(-1em - 1px)) translateY(0.5em);
-  }
-  100% {
-    opacity: 1;
-    transform: scaleY(1) translateX(calc(-1em - 1px)) translateY(0.5em);
-  }
-}
 @keyframes list {
   0% {
     opacity: 0;
@@ -375,20 +223,6 @@
   100% {
     opacity: 1;
     transform: scaleY(1) translateX(calc(-1em - 1px)) translateY(0.5em);
-  }
-}
-@-webkit-keyframes arrow {
-  0% {
-    transform: translateY(50%) translateX(-15px) scaleX(0.95);
-    opacity: 0;
-  }
-  50% {
-    transform: translateY(50%) translateX(-5px) scaleX(1.05);
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(50%) translateX(-15px) scaleX(0.95);
-    opacity: 0;
   }
 }
 @keyframes arrow {
@@ -522,12 +356,10 @@ select {
     scroll-behavior: auto;
   }
   *,
-*::before,
-*::after {
-    -webkit-animation-duration: 0.01ms !important;
-            animation-duration: 0.01ms !important;
-    -webkit-animation-iteration-count: 1 !important;
-            animation-iteration-count: 1 !important;
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
@@ -540,15 +372,13 @@ select {
   position: absolute;
   width: 100%;
   top: 0;
-  -webkit-animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .main-nav button {
   border-radius: 100%;
   padding: 1em 1em;
   position: relative;
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 @media (max-width: 500px) {
   .main-nav button {
@@ -587,8 +417,7 @@ select {
 }
 .main-nav .search {
   position: relative;
-  -webkit-animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
 }
 .main-nav .search input {
   text-indent: 3ch;
@@ -600,9 +429,6 @@ select {
   z-index: 2;
 }
 .main-nav .search input::-moz-placeholder {
-  font-style: italic;
-}
-.main-nav .search input:-ms-input-placeholder {
   font-style: italic;
 }
 .main-nav .search input::placeholder {
@@ -638,13 +464,11 @@ select {
   transition: opacity 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
   z-index: 3;
   color: var(--clr-dark-400);
-  -webkit-animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
 .nav-settings-close {
-  -webkit-animation: slideOutLeft 50ms linear forwards !important;
-          animation: slideOutLeft 50ms linear forwards !important;
+  animation: slideOutLeft 50ms linear forwards !important;
 }
 
 .nav-settings {
@@ -661,8 +485,7 @@ select {
   z-index: 200;
   transform-origin: left;
   opacity: 0;
-  -webkit-animation: slideInRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: slideInRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: slideInRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 .nav-settings .content-wrapper {
   display: flex;
@@ -677,8 +500,7 @@ select {
 }
 .nav-settings .settings-header {
   display: flex;
-  -webkit-animation: fadeLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
   align-items: center;
   margin-top: 0.5em;
   margin-bottom: 1em;
@@ -701,15 +523,12 @@ select {
   font-weight: 400;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   pointer-events: none;
 }
 .nav-settings .settings-header .content-container {
-  -webkit-animation: fadeLeft 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeLeft 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
+  animation: fadeLeft 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.15s;
   display: inline-block;
   margin-left: 1em;
   max-width: 160px;
@@ -739,8 +558,7 @@ select {
   text-align: left;
   text-transform: capitalize;
   transition: all 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
-  -webkit-animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
   color: var(--clr-dark-400);
   border-radius: 6px;
   outline: 1px solid transparent;
@@ -772,8 +590,7 @@ select {
   border-top: 1px solid var(--clr-border-600);
   font-weight: 600;
   text-align: left;
-  -webkit-animation: fadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .nav-settings .theme-toggler .question {
   color: var(--clr-dark-400);
@@ -854,48 +671,37 @@ select {
   background-color: var(--clr-bg-100);
 }
 .nav-settings li {
-  -webkit-animation: fadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .nav-settings li:nth-child(1) {
-  -webkit-animation-delay: 0ms;
-          animation-delay: 0ms;
+  animation-delay: 0ms;
 }
 .nav-settings li:nth-child(2) {
-  -webkit-animation-delay: 50ms;
-          animation-delay: 50ms;
+  animation-delay: 50ms;
 }
 .nav-settings li:nth-child(3) {
-  -webkit-animation-delay: 100ms;
-          animation-delay: 100ms;
+  animation-delay: 100ms;
 }
 .nav-settings li:nth-child(4) {
-  -webkit-animation-delay: 150ms;
-          animation-delay: 150ms;
+  animation-delay: 150ms;
 }
 .nav-settings li:nth-child(5) {
-  -webkit-animation-delay: 200ms;
-          animation-delay: 200ms;
+  animation-delay: 200ms;
 }
 .nav-settings li:nth-child(6) {
-  -webkit-animation-delay: 250ms;
-          animation-delay: 250ms;
+  animation-delay: 250ms;
 }
 .nav-settings li:nth-child(7) {
-  -webkit-animation-delay: 300ms;
-          animation-delay: 300ms;
+  animation-delay: 300ms;
 }
 .nav-settings li:nth-child(8) {
-  -webkit-animation-delay: 350ms;
-          animation-delay: 350ms;
+  animation-delay: 350ms;
 }
 .nav-settings li:nth-child(9) {
-  -webkit-animation-delay: 400ms;
-          animation-delay: 400ms;
+  animation-delay: 400ms;
 }
 .nav-settings li:nth-child(10) {
-  -webkit-animation-delay: 450ms;
-          animation-delay: 450ms;
+  animation-delay: 450ms;
 }
 .nav-settings li button {
   color: var(--clr-dark-400);
@@ -910,11 +716,9 @@ select {
   text-transform: capitalize;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
-  -webkit-animation: none;
-          animation: none;
+  animation: none;
   outline: 1px solid transparent;
 }
 .nav-settings li button svg {
@@ -945,20 +749,6 @@ select {
   border-bottom: 1px solid var(--clr-border-400);
 }
 
-@-webkit-keyframes slideInRight {
-  0% {
-    transform: translateX(-3rem) scaleX(0.8);
-    opacity: 0;
-  }
-  25% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(0) scaleX(1);
-  }
-}
-
 @keyframes slideInRight {
   0% {
     transform: translateX(-3rem) scaleX(0.8);
@@ -970,20 +760,6 @@ select {
   100% {
     opacity: 1;
     transform: translateX(0) scaleX(1);
-  }
-}
-@-webkit-keyframes slideOutLeft {
-  0% {
-    opacity: 1;
-    transform: translateX(0) scaleX(1);
-  }
-  75% {
-    opacity: 0;
-    transform: translateX(-50%);
-  }
-  100% {
-    transform: translateX(-50%) scaleX(0);
-    opacity: 0;
   }
 }
 @keyframes slideOutLeft {
@@ -1025,10 +801,8 @@ select {
   width: 200px;
   z-index: 1000000;
   opacity: 0;
-  -webkit-animation: helpPopUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: helpPopUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  -webkit-animation-delay: 200ms;
-          animation-delay: 200ms;
+  animation: helpPopUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 200ms;
 }
 .help-icon div:after {
   content: " ";
@@ -1056,22 +830,10 @@ select {
 }
 
 .help-left div {
-  -webkit-animation: helpPopUpLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: helpPopUpLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: helpPopUpLeft 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .help-left div:after {
   right: 1em;
-}
-
-@-webkit-keyframes helpPopUp {
-  0% {
-    opacity: 0;
-    transform: translateY(calc(-100% - 0.5em)) scaleY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(calc(-100% - 0.5em)) scaleY(1);
-  }
 }
 
 @keyframes helpPopUp {
@@ -1082,16 +844,6 @@ select {
   100% {
     opacity: 1;
     transform: translateY(calc(-100% - 0.5em)) scaleY(1);
-  }
-}
-@-webkit-keyframes helpPopUpLeft {
-  0% {
-    opacity: 0;
-    transform: translateX(-88%) translateY(calc(-100% - 0.5em)) scaleY(0);
-  }
-  100% {
-    opacity: 1;
-    transform: translateX(-88%) translateY(calc(-100% - 0.5em)) scaleY(1);
   }
 }
 @keyframes helpPopUpLeft {
@@ -1168,8 +920,7 @@ select {
   background-color: var(--clr-primary-400);
   position: absolute;
   z-index: 1;
-  -webkit-animation: circlePulse 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards infinite;
-          animation: circlePulse 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards infinite;
+  animation: circlePulse 2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards infinite;
 }
 .package-container .package-header {
   display: flex;
@@ -1199,10 +950,8 @@ select {
   top: 50%;
   color: var(--clr-bg-100);
   opacity: 0;
-  -webkit-animation: arrow 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
-          animation: arrow 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: arrow 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) infinite;
+  animation-delay: 0.2s;
 }
 .package-container .package-header .content-wrapper {
   width: 100%;
@@ -1215,34 +964,27 @@ select {
   max-width: 60%;
   overflow: hidden;
   text-overflow: ellipsis;
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   white-space: nowrap;
   font-weight: 500;
   color: var(--clr-dark-400);
-  -webkit-animation: fadeRight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeRight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.1s;
-          animation-delay: 0.1s;
+  animation: fadeRight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.1s;
 }
 .package-container .package-header .content-wrapper .package-status {
   cursor: auto;
   font-size: var(--fs-small-400);
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   color: var(--clr-border-800);
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.2s;
 }
 .package-container .maps-wrapper {
   pointer-events: none;
   background-color: var(--clr-bg-100);
-  -webkit-animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
 }
 .package-container .bottom-right-indicators {
   display: flex;
@@ -1257,36 +999,29 @@ select {
   border-radius: var(--br);
   font-size: var(--fs-small-200);
   margin-left: 5px;
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .package-container .bottom-right-indicators .indicator:nth-child(1) {
-  -webkit-animation-delay: 0ms;
-          animation-delay: 0ms;
+  animation-delay: 0ms;
 }
 .package-container .bottom-right-indicators .indicator:nth-child(2) {
-  -webkit-animation-delay: 200ms;
-          animation-delay: 200ms;
+  animation-delay: 200ms;
 }
 .package-container .bottom-right-indicators .indicator:nth-child(3) {
-  -webkit-animation-delay: 400ms;
-          animation-delay: 400ms;
+  animation-delay: 400ms;
 }
 .package-container .bottom-right-indicators .indicator:nth-child(4) {
-  -webkit-animation-delay: 600ms;
-          animation-delay: 600ms;
+  animation-delay: 600ms;
 }
 .package-container .bottom-right-indicators .indicator:nth-child(5) {
-  -webkit-animation-delay: 800ms;
-          animation-delay: 800ms;
+  animation-delay: 800ms;
 }
 
 .package-loading-container {
   height: 200px;
   border-radius: 20px;
   position: relative;
-  -webkit-animation: packageEnter 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: packageEnter 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: packageEnter 0.75s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .package-loading-container .package-loading-background {
   position: absolute;
@@ -1296,17 +1031,7 @@ select {
   height: 100%;
   background: linear-gradient(45deg, var(--clr-bg-400) 0%, var(--clr-bg-400) 33%, var(--clr-bg-100) 45%, var(--clr-bg-100) 57%, var(--clr-bg-400) 58%);
   background-size: 400%;
-  -webkit-animation: packageLoad 1s linear infinite;
-          animation: packageLoad 1s linear infinite;
-}
-
-@-webkit-keyframes packageLoad {
-  0% {
-    background-position: bottom left;
-  }
-  100% {
-    background-position: top right;
-  }
+  animation: packageLoad 1s linear infinite;
 }
 
 @keyframes packageLoad {
@@ -1315,16 +1040,6 @@ select {
   }
   100% {
     background-position: top right;
-  }
-}
-@-webkit-keyframes packageEnter {
-  0% {
-    opacity: 0;
-    transform: translateY(-15px);
-  }
-  100% {
-    opacity: 1;
-    transform: translateY(0px);
   }
 }
 @keyframes packageEnter {
@@ -1351,10 +1066,8 @@ select {
   align-items: center;
   font-size: 20px;
   min-height: 204px;
-  -webkit-animation: fadeLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.25s;
-          animation-delay: 0.25s;
+  animation: fadeLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.25s;
 }
 @media (max-width: 800px) {
   .package-add-btn {
@@ -1362,8 +1075,7 @@ select {
     height: 20px !important;
     min-height: unset;
     margin-bottom: 12vh;
-    -webkit-animation: fadeDown 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-            animation: fadeDown 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+    animation: fadeDown 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
   }
 }
 .package-add-btn svg {
@@ -1416,7 +1128,6 @@ select {
 .error-package-container .package-header .content-wrapper .package-name {
   text-align: center;
   color: var(--clr-warning);
-  min-width: -webkit-fit-content;
   min-width: -moz-fit-content;
   min-width: fit-content;
 }
@@ -1440,7 +1151,6 @@ select {
   color: var(--clr-dark-400);
 }
 .package-message .content-container {
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
 }
@@ -1585,7 +1295,6 @@ select {
   color: var(--clr-dark-400);
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   padding: 0;
   width: 100%;
@@ -1613,7 +1322,6 @@ select {
   padding: 0;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   background-color: inherit;
   width: calc(100% + 2px);
@@ -1623,13 +1331,11 @@ select {
   padding-top: 0.5em;
   border-radius: 0 0 var(--br) var(--br);
   transform-origin: top;
-  -webkit-animation: list 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: list 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: list 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .selector-container .selector li {
   opacity: 0;
-  -webkit-animation: fadeRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: fadeRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: fadeRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 .selector-container .selector li button {
   color: var(--clr-border-800);
@@ -1642,204 +1348,154 @@ select {
   transform: translateY(2px);
 }
 .selector-container .selector li:nth-child(1) {
-  -webkit-animation-delay: 0ms;
-          animation-delay: 0ms;
+  animation-delay: 0ms;
 }
 .selector-container .selector li:nth-child(2) {
-  -webkit-animation-delay: 50ms;
-          animation-delay: 50ms;
+  animation-delay: 50ms;
 }
 .selector-container .selector li:nth-child(3) {
-  -webkit-animation-delay: 100ms;
-          animation-delay: 100ms;
+  animation-delay: 100ms;
 }
 .selector-container .selector li:nth-child(4) {
-  -webkit-animation-delay: 150ms;
-          animation-delay: 150ms;
+  animation-delay: 150ms;
 }
 .selector-container .selector li:nth-child(5) {
-  -webkit-animation-delay: 200ms;
-          animation-delay: 200ms;
+  animation-delay: 200ms;
 }
 .selector-container .selector li:nth-child(6) {
-  -webkit-animation-delay: 250ms;
-          animation-delay: 250ms;
+  animation-delay: 250ms;
 }
 .selector-container .selector li:nth-child(7) {
-  -webkit-animation-delay: 300ms;
-          animation-delay: 300ms;
+  animation-delay: 300ms;
 }
 .selector-container .selector li:nth-child(8) {
-  -webkit-animation-delay: 350ms;
-          animation-delay: 350ms;
+  animation-delay: 350ms;
 }
 .selector-container .selector li:nth-child(9) {
-  -webkit-animation-delay: 400ms;
-          animation-delay: 400ms;
+  animation-delay: 400ms;
 }
 .selector-container .selector li:nth-child(10) {
-  -webkit-animation-delay: 450ms;
-          animation-delay: 450ms;
+  animation-delay: 450ms;
 }
 .selector-container .selector li:nth-child(11) {
-  -webkit-animation-delay: 500ms;
-          animation-delay: 500ms;
+  animation-delay: 500ms;
 }
 .selector-container .selector li:nth-child(12) {
-  -webkit-animation-delay: 550ms;
-          animation-delay: 550ms;
+  animation-delay: 550ms;
 }
 .selector-container .selector li:nth-child(13) {
-  -webkit-animation-delay: 600ms;
-          animation-delay: 600ms;
+  animation-delay: 600ms;
 }
 .selector-container .selector li:nth-child(14) {
-  -webkit-animation-delay: 650ms;
-          animation-delay: 650ms;
+  animation-delay: 650ms;
 }
 .selector-container .selector li:nth-child(15) {
-  -webkit-animation-delay: 700ms;
-          animation-delay: 700ms;
+  animation-delay: 700ms;
 }
 .selector-container .selector li:nth-child(16) {
-  -webkit-animation-delay: 750ms;
-          animation-delay: 750ms;
+  animation-delay: 750ms;
 }
 .selector-container .selector li:nth-child(17) {
-  -webkit-animation-delay: 800ms;
-          animation-delay: 800ms;
+  animation-delay: 800ms;
 }
 .selector-container .selector li:nth-child(18) {
-  -webkit-animation-delay: 850ms;
-          animation-delay: 850ms;
+  animation-delay: 850ms;
 }
 .selector-container .selector li:nth-child(19) {
-  -webkit-animation-delay: 900ms;
-          animation-delay: 900ms;
+  animation-delay: 900ms;
 }
 .selector-container .selector li:nth-child(20) {
-  -webkit-animation-delay: 950ms;
-          animation-delay: 950ms;
+  animation-delay: 950ms;
 }
 .selector-container .selector li:nth-child(21) {
-  -webkit-animation-delay: 1000ms;
-          animation-delay: 1000ms;
+  animation-delay: 1000ms;
 }
 .selector-container .selector li:nth-child(22) {
-  -webkit-animation-delay: 1050ms;
-          animation-delay: 1050ms;
+  animation-delay: 1050ms;
 }
 .selector-container .selector li:nth-child(23) {
-  -webkit-animation-delay: 1100ms;
-          animation-delay: 1100ms;
+  animation-delay: 1100ms;
 }
 .selector-container .selector li:nth-child(24) {
-  -webkit-animation-delay: 1150ms;
-          animation-delay: 1150ms;
+  animation-delay: 1150ms;
 }
 .selector-container .selector li:nth-child(25) {
-  -webkit-animation-delay: 1200ms;
-          animation-delay: 1200ms;
+  animation-delay: 1200ms;
 }
 .selector-container .selector li:nth-child(26) {
-  -webkit-animation-delay: 1250ms;
-          animation-delay: 1250ms;
+  animation-delay: 1250ms;
 }
 .selector-container .selector li:nth-child(27) {
-  -webkit-animation-delay: 1300ms;
-          animation-delay: 1300ms;
+  animation-delay: 1300ms;
 }
 .selector-container .selector li:nth-child(28) {
-  -webkit-animation-delay: 1350ms;
-          animation-delay: 1350ms;
+  animation-delay: 1350ms;
 }
 .selector-container .selector li:nth-child(29) {
-  -webkit-animation-delay: 1400ms;
-          animation-delay: 1400ms;
+  animation-delay: 1400ms;
 }
 .selector-container .selector li:nth-child(30) {
-  -webkit-animation-delay: 1450ms;
-          animation-delay: 1450ms;
+  animation-delay: 1450ms;
 }
 .selector-container .selector li:nth-child(31) {
-  -webkit-animation-delay: 1500ms;
-          animation-delay: 1500ms;
+  animation-delay: 1500ms;
 }
 .selector-container .selector li:nth-child(32) {
-  -webkit-animation-delay: 1550ms;
-          animation-delay: 1550ms;
+  animation-delay: 1550ms;
 }
 .selector-container .selector li:nth-child(33) {
-  -webkit-animation-delay: 1600ms;
-          animation-delay: 1600ms;
+  animation-delay: 1600ms;
 }
 .selector-container .selector li:nth-child(34) {
-  -webkit-animation-delay: 1650ms;
-          animation-delay: 1650ms;
+  animation-delay: 1650ms;
 }
 .selector-container .selector li:nth-child(35) {
-  -webkit-animation-delay: 1700ms;
-          animation-delay: 1700ms;
+  animation-delay: 1700ms;
 }
 .selector-container .selector li:nth-child(36) {
-  -webkit-animation-delay: 1750ms;
-          animation-delay: 1750ms;
+  animation-delay: 1750ms;
 }
 .selector-container .selector li:nth-child(37) {
-  -webkit-animation-delay: 1800ms;
-          animation-delay: 1800ms;
+  animation-delay: 1800ms;
 }
 .selector-container .selector li:nth-child(38) {
-  -webkit-animation-delay: 1850ms;
-          animation-delay: 1850ms;
+  animation-delay: 1850ms;
 }
 .selector-container .selector li:nth-child(39) {
-  -webkit-animation-delay: 1900ms;
-          animation-delay: 1900ms;
+  animation-delay: 1900ms;
 }
 .selector-container .selector li:nth-child(40) {
-  -webkit-animation-delay: 1950ms;
-          animation-delay: 1950ms;
+  animation-delay: 1950ms;
 }
 .selector-container .selector li:nth-child(41) {
-  -webkit-animation-delay: 2000ms;
-          animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 .selector-container .selector li:nth-child(42) {
-  -webkit-animation-delay: 2050ms;
-          animation-delay: 2050ms;
+  animation-delay: 2050ms;
 }
 .selector-container .selector li:nth-child(43) {
-  -webkit-animation-delay: 2100ms;
-          animation-delay: 2100ms;
+  animation-delay: 2100ms;
 }
 .selector-container .selector li:nth-child(44) {
-  -webkit-animation-delay: 2150ms;
-          animation-delay: 2150ms;
+  animation-delay: 2150ms;
 }
 .selector-container .selector li:nth-child(45) {
-  -webkit-animation-delay: 2200ms;
-          animation-delay: 2200ms;
+  animation-delay: 2200ms;
 }
 .selector-container .selector li:nth-child(46) {
-  -webkit-animation-delay: 2250ms;
-          animation-delay: 2250ms;
+  animation-delay: 2250ms;
 }
 .selector-container .selector li:nth-child(47) {
-  -webkit-animation-delay: 2300ms;
-          animation-delay: 2300ms;
+  animation-delay: 2300ms;
 }
 .selector-container .selector li:nth-child(48) {
-  -webkit-animation-delay: 2350ms;
-          animation-delay: 2350ms;
+  animation-delay: 2350ms;
 }
 .selector-container .selector li:nth-child(49) {
-  -webkit-animation-delay: 2400ms;
-          animation-delay: 2400ms;
+  animation-delay: 2400ms;
 }
 .selector-container .selector li:nth-child(50) {
-  -webkit-animation-delay: 2450ms;
-          animation-delay: 2450ms;
+  animation-delay: 2450ms;
 }
 
 .active-selector {
@@ -1856,7 +1512,6 @@ select {
 
 .input-container {
   position: relative;
-  width: -webkit-min-content;
   width: -moz-min-content;
   width: min-content;
   margin-bottom: 1em;
@@ -1959,7 +1614,6 @@ select {
   background-color: var(--clr-bg-100);
   padding: 4em 4em;
   border-radius: var(--br);
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   display: flex;
@@ -1968,8 +1622,7 @@ select {
   max-width: 100vw;
   border: 1px solid var(--clr-border-400);
   opacity: 0;
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 @media (max-width: 1200px) {
   .add-form {
@@ -1984,39 +1637,29 @@ select {
 .add-form .btn-normal-text {
   margin-top: 2em;
   margin-bottom: 0.5em;
-  -webkit-animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation-delay: 0.3s;
 }
 .add-form .input-container {
-  -webkit-animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-  -webkit-animation-delay: 50ms;
-          animation-delay: 50ms;
+  animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation-delay: 50ms;
 }
 .add-form .input-container:first-child {
-  -webkit-animation-delay: 0;
-          animation-delay: 0;
+  animation-delay: 0;
 }
 .add-form .selector-container {
-  -webkit-animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-  -webkit-animation-delay: 100ms;
-          animation-delay: 100ms;
+  animation: fadeUp 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation-delay: 100ms;
 }
 .add-form .selector {
   z-index: 10;
 }
 .add-form .btn-close {
-  -webkit-animation: fadeLeft 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeLeft 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation: fadeLeft 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
 }
 .add-form .btn-black:last-child {
-  -webkit-animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.15s;
-          animation-delay: 0.15s;
+  animation: fadeDown 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.15s;
 }
 .add-form .header {
   display: flex;
@@ -2025,8 +1668,7 @@ select {
   color: var(--clr-dark-400);
 }
 .add-form .header div {
-  -webkit-animation: scaleUpFadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: scaleUpFadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: scaleUpFadeUp 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .add-form .header svg {
   text-align: center;
@@ -2042,8 +1684,7 @@ select {
 .add-form .header h1 {
   font-size: var(--fs-medium-600);
   font-weight: 400;
-  -webkit-animation: fadeDown 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeDown 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation: fadeDown 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
 }
 .add-form .header p {
   margin: 0;
@@ -2052,28 +1693,23 @@ select {
   max-width: 200px;
   text-align: center;
   margin-bottom: 2em;
-  -webkit-animation: fadeDown 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: fadeDown 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-  -webkit-animation-delay: 0.01s;
-          animation-delay: 0.01s;
+  animation: fadeDown 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation-delay: 0.01s;
 }
 
 .info-modal {
   background-color: var(--clr-bg-100);
   border-radius: var(--br);
   overflow: hidden;
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   border: 1px solid var(--clr-border-400);
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   max-width: 90vw;
   min-width: 30vw;
   opacity: 0;
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 @media (max-width: 2300px) {
   .info-modal {
@@ -2137,8 +1773,7 @@ select {
   font-weight: 400;
   text-transform: capitalize;
   opacity: 0;
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .info-modal .header .content-container p {
   max-width: 300px;
@@ -2146,10 +1781,8 @@ select {
   font-size: var(--fs-small-400);
   color: var(--clr-border-900);
   opacity: 0;
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.2s;
 }
 .info-modal .header #mouse-parallax-container {
   z-index: 0;
@@ -2179,8 +1812,7 @@ select {
   background-size: cover;
   background-position: bottom center;
   opacity: 0.5;
-  -webkit-animation: backgroundPosition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: backgroundPosition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: backgroundPosition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
   transition: all 0.2s linear;
 }
 .info-modal .header .gradient {
@@ -2192,8 +1824,7 @@ select {
   left: 0;
   z-index: 1;
   opacity: 0;
-  -webkit-animation: fadeIn 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: fadeIn 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: fadeIn 0.3s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 .info-modal .header button {
   z-index: 3;
@@ -2203,16 +1834,13 @@ select {
 }
 .info-modal .map .content-container {
   position: absolute;
-  -webkit-animation: contentTransition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: contentTransition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: contentTransition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 .info-modal .map .content-container .title {
   opacity: 1;
   margin-bottom: 85px;
-  -webkit-animation: h1Transition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: h1Transition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: h1Transition 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation-delay: 0.2s;
 }
 .info-modal .map .maps-wrapper {
   display: block;
@@ -2246,24 +1874,19 @@ select {
   }
 }
 .info-modal .controls button {
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .info-modal .controls button:nth-child(2) {
-  -webkit-animation-delay: 50ms;
-          animation-delay: 50ms;
+  animation-delay: 50ms;
 }
 .info-modal .controls button:nth-child(3) {
-  -webkit-animation-delay: 100ms;
-          animation-delay: 100ms;
+  animation-delay: 100ms;
 }
 .info-modal .controls button:nth-child(4) {
-  -webkit-animation-delay: 150ms;
-          animation-delay: 150ms;
+  animation-delay: 150ms;
 }
 .info-modal .controls button:nth-child(5) {
-  -webkit-animation-delay: 200ms;
-          animation-delay: 200ms;
+  animation-delay: 200ms;
 }
 .info-modal .transit-history {
   overflow-y: scroll;
@@ -2283,10 +1906,8 @@ select {
   margin-top: 1em;
   font-size: var(--fs-small-600);
   opacity: 0;
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.3s;
 }
 .info-modal .transit-history .btn-close {
   bottom: 1em;
@@ -2294,10 +1915,8 @@ select {
   padding: 0.5em 1em;
   z-index: 5;
   font-size: var(--fs-small-300);
-  -webkit-animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: fadeUp 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.2s;
 }
 .info-modal .transit-history .btn-close svg {
   display: none;
@@ -2342,207 +1961,157 @@ select {
 .info-modal .transit-history ul li {
   margin-bottom: 2em;
   position: relative;
-  -webkit-animation: fadeLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeLeft 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   opacity: 0;
   box-shadow: 0px 0 0 var(--clr-primary-400);
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .info-modal .transit-history ul li:nth-child(2) {
-  -webkit-animation-delay: 50ms;
-          animation-delay: 50ms;
+  animation-delay: 50ms;
 }
 .info-modal .transit-history ul li:nth-child(3) {
-  -webkit-animation-delay: 100ms;
-          animation-delay: 100ms;
+  animation-delay: 100ms;
 }
 .info-modal .transit-history ul li:nth-child(4) {
-  -webkit-animation-delay: 150ms;
-          animation-delay: 150ms;
+  animation-delay: 150ms;
 }
 .info-modal .transit-history ul li:nth-child(5) {
-  -webkit-animation-delay: 200ms;
-          animation-delay: 200ms;
+  animation-delay: 200ms;
 }
 .info-modal .transit-history ul li:nth-child(6) {
-  -webkit-animation-delay: 250ms;
-          animation-delay: 250ms;
+  animation-delay: 250ms;
 }
 .info-modal .transit-history ul li:nth-child(7) {
-  -webkit-animation-delay: 300ms;
-          animation-delay: 300ms;
+  animation-delay: 300ms;
 }
 .info-modal .transit-history ul li:nth-child(8) {
-  -webkit-animation-delay: 350ms;
-          animation-delay: 350ms;
+  animation-delay: 350ms;
 }
 .info-modal .transit-history ul li:nth-child(9) {
-  -webkit-animation-delay: 400ms;
-          animation-delay: 400ms;
+  animation-delay: 400ms;
 }
 .info-modal .transit-history ul li:nth-child(10) {
-  -webkit-animation-delay: 450ms;
-          animation-delay: 450ms;
+  animation-delay: 450ms;
 }
 .info-modal .transit-history ul li:nth-child(11) {
-  -webkit-animation-delay: 500ms;
-          animation-delay: 500ms;
+  animation-delay: 500ms;
 }
 .info-modal .transit-history ul li:nth-child(12) {
-  -webkit-animation-delay: 550ms;
-          animation-delay: 550ms;
+  animation-delay: 550ms;
 }
 .info-modal .transit-history ul li:nth-child(13) {
-  -webkit-animation-delay: 600ms;
-          animation-delay: 600ms;
+  animation-delay: 600ms;
 }
 .info-modal .transit-history ul li:nth-child(14) {
-  -webkit-animation-delay: 650ms;
-          animation-delay: 650ms;
+  animation-delay: 650ms;
 }
 .info-modal .transit-history ul li:nth-child(15) {
-  -webkit-animation-delay: 700ms;
-          animation-delay: 700ms;
+  animation-delay: 700ms;
 }
 .info-modal .transit-history ul li:nth-child(16) {
-  -webkit-animation-delay: 750ms;
-          animation-delay: 750ms;
+  animation-delay: 750ms;
 }
 .info-modal .transit-history ul li:nth-child(17) {
-  -webkit-animation-delay: 800ms;
-          animation-delay: 800ms;
+  animation-delay: 800ms;
 }
 .info-modal .transit-history ul li:nth-child(18) {
-  -webkit-animation-delay: 850ms;
-          animation-delay: 850ms;
+  animation-delay: 850ms;
 }
 .info-modal .transit-history ul li:nth-child(19) {
-  -webkit-animation-delay: 900ms;
-          animation-delay: 900ms;
+  animation-delay: 900ms;
 }
 .info-modal .transit-history ul li:nth-child(20) {
-  -webkit-animation-delay: 950ms;
-          animation-delay: 950ms;
+  animation-delay: 950ms;
 }
 .info-modal .transit-history ul li:nth-child(21) {
-  -webkit-animation-delay: 1000ms;
-          animation-delay: 1000ms;
+  animation-delay: 1000ms;
 }
 .info-modal .transit-history ul li:nth-child(22) {
-  -webkit-animation-delay: 1050ms;
-          animation-delay: 1050ms;
+  animation-delay: 1050ms;
 }
 .info-modal .transit-history ul li:nth-child(23) {
-  -webkit-animation-delay: 1100ms;
-          animation-delay: 1100ms;
+  animation-delay: 1100ms;
 }
 .info-modal .transit-history ul li:nth-child(24) {
-  -webkit-animation-delay: 1150ms;
-          animation-delay: 1150ms;
+  animation-delay: 1150ms;
 }
 .info-modal .transit-history ul li:nth-child(25) {
-  -webkit-animation-delay: 1200ms;
-          animation-delay: 1200ms;
+  animation-delay: 1200ms;
 }
 .info-modal .transit-history ul li:nth-child(26) {
-  -webkit-animation-delay: 1250ms;
-          animation-delay: 1250ms;
+  animation-delay: 1250ms;
 }
 .info-modal .transit-history ul li:nth-child(27) {
-  -webkit-animation-delay: 1300ms;
-          animation-delay: 1300ms;
+  animation-delay: 1300ms;
 }
 .info-modal .transit-history ul li:nth-child(28) {
-  -webkit-animation-delay: 1350ms;
-          animation-delay: 1350ms;
+  animation-delay: 1350ms;
 }
 .info-modal .transit-history ul li:nth-child(29) {
-  -webkit-animation-delay: 1400ms;
-          animation-delay: 1400ms;
+  animation-delay: 1400ms;
 }
 .info-modal .transit-history ul li:nth-child(30) {
-  -webkit-animation-delay: 1450ms;
-          animation-delay: 1450ms;
+  animation-delay: 1450ms;
 }
 .info-modal .transit-history ul li:nth-child(31) {
-  -webkit-animation-delay: 1500ms;
-          animation-delay: 1500ms;
+  animation-delay: 1500ms;
 }
 .info-modal .transit-history ul li:nth-child(32) {
-  -webkit-animation-delay: 1550ms;
-          animation-delay: 1550ms;
+  animation-delay: 1550ms;
 }
 .info-modal .transit-history ul li:nth-child(33) {
-  -webkit-animation-delay: 1600ms;
-          animation-delay: 1600ms;
+  animation-delay: 1600ms;
 }
 .info-modal .transit-history ul li:nth-child(34) {
-  -webkit-animation-delay: 1650ms;
-          animation-delay: 1650ms;
+  animation-delay: 1650ms;
 }
 .info-modal .transit-history ul li:nth-child(35) {
-  -webkit-animation-delay: 1700ms;
-          animation-delay: 1700ms;
+  animation-delay: 1700ms;
 }
 .info-modal .transit-history ul li:nth-child(36) {
-  -webkit-animation-delay: 1750ms;
-          animation-delay: 1750ms;
+  animation-delay: 1750ms;
 }
 .info-modal .transit-history ul li:nth-child(37) {
-  -webkit-animation-delay: 1800ms;
-          animation-delay: 1800ms;
+  animation-delay: 1800ms;
 }
 .info-modal .transit-history ul li:nth-child(38) {
-  -webkit-animation-delay: 1850ms;
-          animation-delay: 1850ms;
+  animation-delay: 1850ms;
 }
 .info-modal .transit-history ul li:nth-child(39) {
-  -webkit-animation-delay: 1900ms;
-          animation-delay: 1900ms;
+  animation-delay: 1900ms;
 }
 .info-modal .transit-history ul li:nth-child(40) {
-  -webkit-animation-delay: 1950ms;
-          animation-delay: 1950ms;
+  animation-delay: 1950ms;
 }
 .info-modal .transit-history ul li:nth-child(41) {
-  -webkit-animation-delay: 2000ms;
-          animation-delay: 2000ms;
+  animation-delay: 2000ms;
 }
 .info-modal .transit-history ul li:nth-child(42) {
-  -webkit-animation-delay: 2050ms;
-          animation-delay: 2050ms;
+  animation-delay: 2050ms;
 }
 .info-modal .transit-history ul li:nth-child(43) {
-  -webkit-animation-delay: 2100ms;
-          animation-delay: 2100ms;
+  animation-delay: 2100ms;
 }
 .info-modal .transit-history ul li:nth-child(44) {
-  -webkit-animation-delay: 2150ms;
-          animation-delay: 2150ms;
+  animation-delay: 2150ms;
 }
 .info-modal .transit-history ul li:nth-child(45) {
-  -webkit-animation-delay: 2200ms;
-          animation-delay: 2200ms;
+  animation-delay: 2200ms;
 }
 .info-modal .transit-history ul li:nth-child(46) {
-  -webkit-animation-delay: 2250ms;
-          animation-delay: 2250ms;
+  animation-delay: 2250ms;
 }
 .info-modal .transit-history ul li:nth-child(47) {
-  -webkit-animation-delay: 2300ms;
-          animation-delay: 2300ms;
+  animation-delay: 2300ms;
 }
 .info-modal .transit-history ul li:nth-child(48) {
-  -webkit-animation-delay: 2350ms;
-          animation-delay: 2350ms;
+  animation-delay: 2350ms;
 }
 .info-modal .transit-history ul li:nth-child(49) {
-  -webkit-animation-delay: 2400ms;
-          animation-delay: 2400ms;
+  animation-delay: 2400ms;
 }
 .info-modal .transit-history ul li:nth-child(50) {
-  -webkit-animation-delay: 2450ms;
-          animation-delay: 2450ms;
+  animation-delay: 2450ms;
 }
 .info-modal .transit-history ul li:hover p {
   color: var(--clr-border-900);
@@ -2574,20 +2143,8 @@ select {
   top: 0;
   transform: translateX(-25%);
   border-radius: 10px;
-  -webkit-animation: transitHistoryBubble 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: transitHistoryBubble 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation: transitHistoryBubble 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
   transition: background-color 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-
-@-webkit-keyframes contentTransition {
-  0% {
-    top: 50%;
-    left: 50%;
-  }
-  100% {
-    top: 1em;
-    left: 1.5em;
-  }
 }
 
 @keyframes contentTransition {
@@ -2598,15 +2155,6 @@ select {
   100% {
     top: 1em;
     left: 1.5em;
-  }
-}
-@-webkit-keyframes h1Transition {
-  0% {
-    font-weight: 300;
-  }
-  100% {
-    font-size: var(--fs-medium-400);
-    font-weight: 800;
   }
 }
 @keyframes h1Transition {
@@ -2622,18 +2170,15 @@ select {
   background-color: var(--clr-bg-100);
   border-radius: var(--br);
   overflow: hidden;
-  height: -webkit-min-content;
   height: -moz-min-content;
   height: min-content;
   border: 1px solid var(--clr-border-400);
-  width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
   max-width: 90vw;
   min-width: 30vw;
   opacity: 0;
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
   padding: 2em 1em;
 }
 .confirm-modal .header {
@@ -2647,18 +2192,15 @@ select {
   font-weight: 400;
   text-transform: capitalize;
   opacity: 0;
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .confirm-modal .header p {
   margin: 0;
   font-size: var(--fs-small-400);
   color: var(--clr-border-900);
   opacity: 0;
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.2s;
 }
 .confirm-modal .content {
   width: 100%;
@@ -2667,16 +2209,12 @@ select {
 .confirm-modal .content .btn-normal-text {
   padding: 1em;
   opacity: 0;
-  -webkit-animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  -webkit-animation-delay: 0.1s;
-          animation-delay: 0.1s;
+  animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.1s;
 }
 .confirm-modal .content .btn-black {
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.5s;
   background-color: var(--clr-warning);
 }
 
@@ -2696,10 +2234,8 @@ select {
 
 .status-bar-container {
   margin-bottom: 3em;
-  -webkit-animation: fadeRight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeRight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.165s;
-          animation-delay: 0.165s;
+  animation: fadeRight 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.165s;
 }
 .status-bar-container .status-bar {
   position: relative;
@@ -2744,8 +2280,7 @@ select {
 }
 .status-bar-container .status-bar .circles .filled {
   color: var(--clr-white-100);
-  -webkit-animation: circleFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: circleFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: circleFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 .status-bar-container .status-bar .circles .filled:after {
   content: "";
@@ -2756,16 +2291,12 @@ select {
   background-color: var(--clr-bg-100);
   box-shadow: 0 0 10px 5px var(--clr-bg-100);
   border: 1px solid rgba(255, 255, 255, 0.486);
-  -webkit-animation: circleAfterFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: circleAfterFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-  -webkit-animation-delay: inherit;
-          animation-delay: inherit;
+  animation: circleAfterFill 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation-delay: inherit;
 }
 .status-bar-container .status-bar .circles .filled svg {
-  -webkit-animation: circleCheck 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-          animation: circleCheck 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
-  -webkit-animation-delay: inherit;
-          animation-delay: inherit;
+  animation: circleCheck 0.5s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+  animation-delay: inherit;
 }
 .status-bar-container .status-bar .bar {
   z-index: 0;
@@ -2776,10 +2307,8 @@ select {
   top: 25%;
   background-size: 200%;
   background-position: 100%;
-  -webkit-animation: statusBar 1s linear forwards;
-          animation: statusBar 1s linear forwards;
-  -webkit-animation-delay: 0.1647s;
-          animation-delay: 0.1647s;
+  animation: statusBar 1s linear forwards;
+  animation-delay: 0.1647s;
   transform: translateY(25%);
 }
 .status-bar-container .status-icons {
@@ -2804,38 +2333,12 @@ select {
   margin-bottom: 1em;
 }
 
-@-webkit-keyframes statusBar {
-  0% {
-    background-position: 100%;
-  }
-  100% {
-    background-position: 0;
-  }
-}
-
 @keyframes statusBar {
   0% {
     background-position: 100%;
   }
   100% {
     background-position: 0;
-  }
-}
-@-webkit-keyframes circleAfterFill {
-  0% {
-    width: 10px;
-    height: 10px;
-    background-color: var(--clr-bg-100);
-    box-shadow: 0 0 10px 5px var(--clr-bg-100);
-    border: 1px solid rgba(255, 255, 255, 0.486);
-  }
-  100% {
-    mix-blend-mode: overlay;
-    width: 12px;
-    height: 12px;
-    border-radius: 100%;
-    box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
-    background-color: rgba(255, 255, 255, 0.75);
   }
 }
 @keyframes circleAfterFill {
@@ -2853,26 +2356,6 @@ select {
     border-radius: 100%;
     box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.75);
     background-color: rgba(255, 255, 255, 0.75);
-  }
-}
-@-webkit-keyframes circleFill {
-  0% {
-    background-color: var(--clr-grey-200);
-    transform: scale(1);
-  }
-  30% {
-    transform: scale(1);
-    box-shadow: 0 0 0 var(--clr-primary-100);
-  }
-  60% {
-    transform: scale(1.2);
-    box-shadow: 0 0 20px var(--clr-primary-100);
-  }
-  100% {
-    transform: scale(1);
-    background-color: var(--clr-primary-400);
-    border: 1px solid var(--clr-primary-100);
-    box-shadow: 0 0 0 var(--clr-primary-100);
   }
 }
 @keyframes circleFill {
@@ -2893,16 +2376,6 @@ select {
     background-color: var(--clr-primary-400);
     border: 1px solid var(--clr-primary-100);
     box-shadow: 0 0 0 var(--clr-primary-100);
-  }
-}
-@-webkit-keyframes circleCheck {
-  0% {
-    opacity: 0;
-    transform: scale(2);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 @keyframes circleCheck {
@@ -2939,17 +2412,6 @@ select {
   bottom: 0 !important;
 }
 
-@-webkit-keyframes swipeUp {
-  0% {
-    transform: translateY(3em);
-    opacity: 0;
-  }
-  100% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
 @keyframes swipeUp {
   0% {
     transform: translateY(3em);
@@ -2961,22 +2423,7 @@ select {
   }
 }
 .fade-up {
-  -webkit-animation: swipeUp 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) both;
-          animation: swipeUp 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) both;
-}
-
-@-webkit-keyframes swipeDown {
-  0% {
-    transform: translateY(0);
-    opacity: 1;
-  }
-  10% {
-    opacity: 1;
-  }
-  100% {
-    transform: translateY(3em);
-    opacity: 0;
-  }
+  animation: swipeUp 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) both;
 }
 
 @keyframes swipeDown {
@@ -2993,8 +2440,7 @@ select {
   }
 }
 .fade-down {
-  -webkit-animation: swipeDown 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: swipeDown 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: swipeDown 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 
 .menu {
@@ -3011,13 +2457,11 @@ select {
   text-align: left;
   overflow: hidden;
   transform-origin: top;
-  -webkit-animation: searchList 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: searchList 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: searchList 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 .menu .disabled {
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   pointer-events: none;
   cursor: default;
@@ -3049,15 +2493,13 @@ select {
   background-size: 500%;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
   background-position-x: 100%;
   display: flex;
   justify-content: space-between;
   gap: 3ch;
   opacity: 0;
-  -webkit-animation: fadeRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: fadeRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation: fadeRight 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .menu ul li:hover {
   cursor: pointer;
@@ -3071,57 +2513,37 @@ select {
   height: 0;
 }
 .menu ul li:nth-child(2) {
-  -webkit-animation-delay: 15ms;
-          animation-delay: 15ms;
+  animation-delay: 15ms;
 }
 .menu ul li:nth-child(3) {
-  -webkit-animation-delay: 40ms;
-          animation-delay: 40ms;
+  animation-delay: 40ms;
 }
 .menu ul li:nth-child(4) {
-  -webkit-animation-delay: 65ms;
-          animation-delay: 65ms;
+  animation-delay: 65ms;
 }
 .menu ul li:nth-child(5) {
-  -webkit-animation-delay: 90ms;
-          animation-delay: 90ms;
+  animation-delay: 90ms;
 }
 .menu ul li:nth-child(6) {
-  -webkit-animation-delay: 115ms;
-          animation-delay: 115ms;
+  animation-delay: 115ms;
 }
 .menu ul li:nth-child(7) {
-  -webkit-animation-delay: 140ms;
-          animation-delay: 140ms;
+  animation-delay: 140ms;
 }
 .menu ul li:nth-child(8) {
-  -webkit-animation-delay: 165ms;
-          animation-delay: 165ms;
+  animation-delay: 165ms;
 }
 .menu ul li:nth-child(9) {
-  -webkit-animation-delay: 190ms;
-          animation-delay: 190ms;
+  animation-delay: 190ms;
 }
 .menu ul li:nth-child(10) {
-  -webkit-animation-delay: 215ms;
-          animation-delay: 215ms;
+  animation-delay: 215ms;
 }
 .menu ul li:nth-child(11) {
-  -webkit-animation-delay: 240ms;
-          animation-delay: 240ms;
+  animation-delay: 240ms;
 }
 .menu ul li:nth-child(12) {
-  -webkit-animation-delay: 265ms;
-          animation-delay: 265ms;
-}
-
-@-webkit-keyframes searchList {
-  0% {
-    transform: scaleY(0);
-  }
-  100% {
-    transform: scaleY(1);
-  }
+  animation-delay: 265ms;
 }
 
 @keyframes searchList {
@@ -3266,15 +2688,13 @@ input:focus-visible {
   position: relative;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
 }
 .btn-black .loading-icon {
   display: inline;
   transform: translateY(3px);
   margin-left: 1ch;
-  -webkit-animation: loading 1s linear forwards infinite;
-          animation: loading 1s linear forwards infinite;
+  animation: loading 1s linear forwards infinite;
 }
 .btn-black img {
   width: var(--fs-medium-400);
@@ -3307,10 +2727,8 @@ input:focus-visible {
   padding: 0.5em 1em;
   font-size: var(--fs-small-400);
   border-radius: 20px;
-  -webkit-animation: btnLabels 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: btnLabels 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: btnLabels 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  animation-delay: 0.2s;
   opacity: 0;
   line-height: 125%;
 }
@@ -3357,42 +2775,18 @@ input:focus-visible {
   outline: 1px solid var(--clr-primary-400);
 }
 .btn-black:focus .pulse {
-  -webkit-animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
-          animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+  animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
 }
 .btn-black:active {
   background-color: var(--clr-primary-400);
   transform: translateY(2px);
 }
 .btn-black:active .pulse {
-  -webkit-animation: none;
-          animation: none;
+  animation: none;
 }
 
 .btn-error {
-  -webkit-animation: btnError 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-          animation: btnError 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-}
-
-@-webkit-keyframes btnError {
-  0% {
-    transform: translateX(0);
-    background-color: var(--clr-dark-400-true);
-  }
-  25% {
-    transform: translateX(-3px);
-  }
-  50% {
-    transform: translateX(3px);
-    background-color: var(--clr-warning);
-  }
-  75% {
-    transform: translateX(-3px);
-  }
-  100% {
-    transform: translateX(0);
-    background-color: var(--clr-dark-400-true);
-  }
+  animation: btnError 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 
 @keyframes btnError {
@@ -3441,15 +2835,6 @@ input:focus-visible {
   background-color: var(--clr-warning);
 }
 
-@-webkit-keyframes loading {
-  0% {
-    transform: translateY(3px) rotate(0);
-  }
-  100% {
-    transform: translateY(3px) rotate(300deg);
-  }
-}
-
 @keyframes loading {
   0% {
     transform: translateY(3px) rotate(0);
@@ -3493,6 +2878,17 @@ input:focus-visible {
   padding: 30px;
   position: relative;
   z-index: 2;
+}
+.hero .hero-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  left: 0;
+  top: 0;
+  z-index: -1;
+  opacity: 0.25;
 }
 .hero .heroContainer {
   height: 700px;
@@ -3544,80 +2940,6 @@ input:focus-visible {
 .hero .heroContainer button:hover svg {
   transform: translateY(3px) scale(1.5) translateX(5px);
 }
-.hero .box-images-container {
-  pointer-events: none;
-  position: absolute !important;
-  right: -20%;
-  top: -10%;
-  width: 1750px;
-  height: 10px;
-  overflow: visible !important;
-  z-index: -1;
-  -webkit-animation: fadeIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.5s;
-          animation-delay: 0.5s;
-}
-@media (max-width: 2300px) {
-  .hero .box-images-container {
-    width: 1300px;
-  }
-}
-@media (max-width: 1800px) {
-  .hero .box-images-container {
-    width: 800px;
-    top: 30%;
-  }
-}
-@media (max-width: 800px) {
-  .hero .box-images-container {
-    transform: rotate(-15deg);
-    right: -100%;
-  }
-}
-.hero .box-images-container .image-container {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  overflow: visible;
-  z-index: -1;
-}
-.hero .box-images-container img {
-  z-index: -1;
-}
-.hero .box-images-container img:first-child {
-  -webkit-animation: boxFloating 5s ease-in-out infinite;
-          animation: boxFloating 5s ease-in-out infinite;
-}
-.hero .box-images-container img:nth-child(2) {
-  -webkit-animation: boxFloating 6s ease-in-out infinite;
-          animation: boxFloating 6s ease-in-out infinite;
-  -webkit-animation-delay: 1s;
-          animation-delay: 1s;
-}
-.hero .box-images-container img:nth-child(3) {
-  -webkit-animation: boxFloating 8s ease-in-out infinite;
-          animation: boxFloating 8s ease-in-out infinite;
-  -webkit-animation-delay: 2s;
-          animation-delay: 2s;
-}
-
-@-webkit-keyframes boxFloating {
-  0% {
-    transform: translate(0, 0);
-  }
-  25% {
-    transform: translate(10px, 4px);
-  }
-  50% {
-    transform: translate(5px, -4px);
-  }
-  75% {
-    transform: translate(0px, -15px);
-  }
-}
 
 @keyframes boxFloating {
   0% {
@@ -3652,7 +2974,6 @@ input:focus-visible {
   background-color: var(--clr-bg-400);
   border-radius: var(--br);
   overflow: hidden;
-  width: -webkit-max-content;
   width: -moz-max-content;
   width: max-content;
   padding: 1em;
@@ -3676,8 +2997,7 @@ input:focus-visible {
   max-width: 1920px;
 }
 .courier-slider-container .courier-images .image {
-  -webkit-animation: scroll 10s linear forwards infinite;
-          animation: scroll 10s linear forwards infinite;
+  animation: scroll 10s linear forwards infinite;
   pointer-events: none;
   height: 60px;
   background-size: contain;
@@ -3687,17 +3007,7 @@ input:focus-visible {
   min-width: 160px;
   -webkit-user-select: none;
      -moz-user-select: none;
-      -ms-user-select: none;
           user-select: none;
-}
-
-@-webkit-keyframes scroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-640px);
-  }
 }
 
 @keyframes scroll {
@@ -3751,10 +3061,8 @@ input:focus-visible {
 .login-wrapper .perspective-wrapper {
   perspective: 1000px;
   perspective-origin: 50% 50%;
-  -webkit-animation: fadeRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation: fadeRight 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.3s;
 }
 @media (max-width: 1000px) {
   .login-wrapper .perspective-wrapper {
@@ -3796,15 +3104,12 @@ input:focus-visible {
 .login-image-wrapper .header h3 {
   font-size: var(--fs-medium-400);
   margin-bottom: 0;
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .login-image-wrapper .header p {
   margin-bottom: 2em;
-  -webkit-animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: fadeUp 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.2s;
 }
 .login-image-wrapper p {
   opacity: 0.8;
@@ -3839,8 +3144,7 @@ input:focus-visible {
 .login-container .form {
   padding: 3em 2em;
   z-index: 2;
-  -webkit-animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .login-container .form h1 {
   font-size: var(--fs-medium-400);
@@ -3878,10 +3182,8 @@ input:focus-visible {
   margin-top: 1em;
   padding: 1em 2em;
   display: flex;
-  -webkit-animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.3s;
-          animation-delay: 0.3s;
+  animation: fadeDown 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.3s;
 }
 .login-container .login-footer p {
   font-size: var(--fs-small-300);
@@ -3890,10 +3192,8 @@ input:focus-visible {
 .login-container .back {
   margin-bottom: 1em;
   padding: 1em 2em;
-  -webkit-animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.2s;
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .login-container .back:hover {
@@ -3932,8 +3232,7 @@ input:focus-visible {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  -webkit-animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
 }
 .register-container .back {
   box-shadow: 5px 5px 10px var(--clr-border-600);
@@ -3943,10 +3242,8 @@ input:focus-visible {
   background-color: var(--clr-white-100);
   display: flex;
   flex-direction: column;
-  -webkit-animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-          animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-  -webkit-animation-delay: 0.2s;
-          animation-delay: 0.2s;
+  animation: fadeUp 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+  animation-delay: 0.2s;
   transition: all 1s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .register-container .back:hover {
@@ -3977,4 +3274,4 @@ input:focus-visible {
 }
 .test-page .input-container {
   margin: 2rem;
-}
+}/*# sourceMappingURL=styles.css.map */

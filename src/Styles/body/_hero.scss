@@ -5,6 +5,17 @@
 	position: relative;
 	z-index: 2;
 
+	.hero-image {
+		position: absolute;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		left:0;
+		top: 0;
+		z-index: -1;
+		opacity: 0.25;
+	}
+
 	.heroContainer {
 		height: 700px;
 		background-color: var(--clr-bg-400);
@@ -60,59 +71,8 @@
 			}
 		}
 	}
-
-	.box-images-container {
-		pointer-events: none;
-		position: absolute !important;
-		right: -20%;
-		top: -10%;
-		width: 1750px;
-		height: 10px;
-		overflow: visible !important;
-		z-index: -1;
-
-		animation: fadeIn 1s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
-		animation-delay: 0.5s;
-		@media (max-width: $bpw-500) {
-			width: 1300px;
-		}
-
-		@media (max-width: $bpw-400) {
-			width: 800px;
-			top: 30%;
-		}
-
-		@media (max-width: $bpw-200) {
-			transform: rotate(-15deg);
-			right: -100%;
-		}
-
-		.image-container {
-			position: absolute;
-			width: 100%;
-			height: 100%;
-			top: 0;
-			left: 0;
-			overflow: visible;
-			z-index: -1;
-		}
-
-		img {
-			z-index: -1;
-			&:first-child {
-				animation: boxFloating 5s ease-in-out infinite;
-			}
-			&:nth-child(2) {
-				animation: boxFloating 6s ease-in-out infinite;
-				animation-delay: 1s;
-			}
-			&:nth-child(3) {
-				animation: boxFloating 8s ease-in-out infinite;
-				animation-delay: 2s;
-			}
-		}
-	}
 }
+
 
 @keyframes boxFloating {
 	0% {

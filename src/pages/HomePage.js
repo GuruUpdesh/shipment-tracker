@@ -3,7 +3,6 @@ import { HiOutlineArrowNarrowRight } from "react-icons/hi";
 import { useNavigate } from "react-router-dom";
 import CourierSlider from "../Components/other/CourierSlider";
 import { HiOutlineChevronRight } from "react-icons/hi";
-import { MouseParallaxContainer, MouseParallaxChild } from "react-parallax-mouse";
 import { motion } from "framer-motion";
 import ButtonBlack from "../Components/Core/ButtonBlack";
 import ButtonMagnet from "../Components/Core/ButtonMagnet";
@@ -64,32 +63,7 @@ const HomePage = () => {
 							<HiOutlineArrowNarrowRight />
 						</ButtonMagnet>
 					</div>
-					<MouseParallaxContainer inverted={true} useWindowMouseEvents={true} className="box-images-container">
-						<MouseParallaxChild
-							className="image-container"
-							factorX={0.1}
-							factorY={0.1}
-							springConfig={{ stiffness: 20, damping: 3 }}
-						>
-							<img src={process.env.PUBLIC_URL + "/boxes/Small.png"}></img>
-						</MouseParallaxChild>
-						<MouseParallaxChild
-							className="image-container"
-							factorX={0.08}
-							factorY={0.08}
-							springConfig={{ stiffness: 30, damping: 4 }}
-						>
-							<img src={process.env.PUBLIC_URL + "/boxes/Middle.png"}></img>
-						</MouseParallaxChild>
-						<MouseParallaxChild
-							className="image-container"
-							factorX={0.02}
-							factorY={0.05}
-							springConfig={{ stiffness: 40, damping: 5 }}
-						>
-							<img src={process.env.PUBLIC_URL + "/boxes/Big.png"}></img>
-						</MouseParallaxChild>
-					</MouseParallaxContainer>
+					<img className="hero-image" src={process.env.PUBLIC_URL + "/boxes-copy.webp"}/>
 				</div>
 			</section>
 			<div className="hero-grid-section">
@@ -101,7 +75,7 @@ const HomePage = () => {
 				</div>
 				<CourierSlider />
 			</div>
-			<section className="footer">
+			{/* <section className="footer">
 				<div>
 					<ul>
 						<li className="title">Login & Register</li>
@@ -126,7 +100,7 @@ const HomePage = () => {
 						<p>Copyright © 2022 Shipmentracker</p>
 					</div>
 				</div>
-			</section>
+			</section> */}
 		</motion.main>
 	);
 };
