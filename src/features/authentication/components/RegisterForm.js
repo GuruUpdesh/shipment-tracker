@@ -9,8 +9,6 @@ import emailVerification from "../verification/emailVerification";
 import passwordVerification from "../verification/passwordVerification";
 import detectErrors from "../verification/detectErrors";
 import register from "../services/register";
-import { GoogleLogin } from "react-google-login";
-import { AiOutlineGoogle } from "react-icons/ai";
 import { gapi } from "gapi-script";
 import googleRegister from "../services/googleRegister";
 import useUser from "../../../context/useUser";
@@ -149,23 +147,6 @@ function RegisterForm() {
 			<ButtonBlack onClick={handleSubmit} errors={true} load={true}>
 				register
 			</ButtonBlack>
-
-			<div className="login-options">
-				<p>or</p>
-				<GoogleLogin
-					clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-					render={(renderProps) => (
-						<ButtonBlack onClick={renderProps.onClick} disabled={renderProps.disabled}>
-							<AiOutlineGoogle />
-							<span>register using google</span>
-						</ButtonBlack>
-					)}
-					buttonText="Register"
-					onSuccess={(googleData) => handleGoogleRegister(googleData, true)}
-					onFailure={(googleData) => handleGoogleRegister(googleData, false)}
-					cookiePolicy={"single_host_origin"}
-				/>
-			</div>
 		</div>
 	);
 }

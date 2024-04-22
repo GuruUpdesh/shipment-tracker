@@ -2,7 +2,6 @@ import React, { useState, useEffect, useRef } from "react";
 import Input from "../../../Components/Core/Form/Input";
 import CheckBox from "../../../Components/Core/Form/CheckBox";
 import ButtonBlack from "../../../Components/Core/ButtonBlack";
-import { GoogleLogin } from "react-google-login";
 import { gapi } from "gapi-script";
 import { AiOutlineGoogle } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
@@ -169,33 +168,6 @@ function LoginForm() {
 			<ButtonBlack onClick={(e) => handleSubmit(e)} errors={true} load={true}>
 				login
 			</ButtonBlack>
-
-			<div className="login-options">
-				<p>or</p>
-				<GoogleLogin
-					clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-					render={(renderProps) => (
-						<ButtonBlack
-							onClick={() => {
-								setIsWaitingForGoogle(true)
-								renderProps.onClick();
-							}}
-							disabled={renderProps.disabled}
-						>
-							<AiOutlineGoogle />
-							<span>login using google</span>
-						</ButtonBlack>
-					)}
-					buttonText="Login"
-					onSuccess={(googleData) => {
-						handleGoogleLogin(googleData, true);
-					}}
-					onFailure={(googleData) => {
-						handleGoogleLogin(googleData, false);
-					}}
-					cookiePolicy={"single_host_origin"}
-				/>
-			</div>
 		</div>
 	);
 }
