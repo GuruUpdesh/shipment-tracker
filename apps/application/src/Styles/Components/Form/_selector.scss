@@ -1,0 +1,124 @@
+.selector-container .full-selector {
+	button span {
+		position: absolute;
+		top: -1.3em;
+		left: 1.08em;
+		color: var(--clr-border-800);
+		font-size: var(--fs-small-400);
+	}
+}
+
+.selector-container .selector {
+	border: 1px solid var(--clr-border-400);
+	border-radius: var(--br);
+	padding: 0.5em 1em;
+	background-color: var(--clr-bg-100);
+	position: relative;
+	cursor: pointer;
+
+	&:hover {
+		border: 1px solid var(--clr-border-600);
+
+		ul {
+			border-color: var(--clr-border-600);
+		}
+	}
+
+	&:focus-within,
+	&:focus {
+		outline: 1px solid var(--clr-primary-400);
+
+		ul {
+			outline: 1px solid var(--clr-primary-400);
+		}
+		span {
+			color: var(--clr-primary-400);
+		}
+	}
+
+	svg {
+		color: var(--clr-dark-400);
+		pointer-events: none;
+	}
+
+	button {
+		color: var(--clr-dark-400);
+		user-select: none;
+		padding: 0;
+		width: 100%;
+		text-align: left;
+
+		&:focus {
+			outline: none;
+			border: none;
+		}
+
+		svg {
+			float: right;
+		}
+	}
+
+	span {
+		position: absolute;
+		top: 9px;
+		left: 1.06em;
+		transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+		color: var(--clr-border-800);
+		pointer-events: none;
+	}
+	ul {
+		position: absolute;
+		list-style: none;
+		margin: 0;
+		padding: 0;
+		user-select: none;
+		background-color: inherit;
+		width: calc(100% + 2px);
+		transform: translateX(calc(-1em - 1px)) translateY(0.5em);
+		border: 1px solid var(--clr-border-400);
+		// border-top: none;
+		padding: 1em;
+		padding-top: 0.5em;
+		border-radius: 0 0 var(--br) var(--br);
+		transform-origin: top;
+
+		animation: list 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+	}
+
+	li {
+		button {
+			color: var(--clr-border-800);
+			&:hover, &:focus {
+				color: var(--clr-dark-400);
+			}
+			&:active {
+				color: var(--clr-primary-400);
+				transform: translateY(2px);
+			}
+		}
+		opacity: 0;
+		animation: fadeRight 0.2s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+
+		$n: 50;
+		@for $x from 1 through $n {
+			&:nth-child(#{$x}) {
+				animation-delay: 50ms * ($x - 1);
+			}
+		}
+	}
+}
+
+.active-selector {
+	border-radius: var(--br) var(--br) 0 0;
+}
+
+.selector-error {
+	.selector {
+		outline: 1px solid var(--clr-warning);
+	}
+
+	p {
+		color: var(--clr-warning);
+		font-size: var(--fs-small-300);
+	}
+}

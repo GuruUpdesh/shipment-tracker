@@ -1,0 +1,114 @@
+.main-nav {
+	z-index: 99;
+	background-color: var(--clr-bg-400);
+	padding: 1rem;
+	border-bottom: 1px solid var(--clr-border-400);
+	position: absolute;
+	width: 100%;
+	top: 0;
+
+	animation: fadeDown .3s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+
+	button {
+		border-radius: 100%;
+		padding: 1em 1em;
+		position: relative;
+
+		@media (max-width: $bpw-100) {
+			font-size: var(--fs-small-400);
+		}
+
+		svg {
+			display: block;
+		}
+
+		&:first-child {
+			margin-right: 1em;
+		}
+
+		@media (max-width: $bpw-200) {
+			&:first-child {
+				margin-right: .5em;
+			}
+		}
+
+		animation: fadeUp .5s cubic-bezier(0.175, 0.885, 0.32, 1.275) backwards;
+	}
+
+	.btn-add {
+		margin: 0 !important;
+		padding: 0.75em 3rem;
+		@media (max-width: $bpw-300) {
+			padding: 1em 1em;
+			border-radius: 100%;
+		}
+		border-radius: var(--br);
+		align-items: center;
+		background-color: var(--clr-primary-400);
+
+		&:hover {
+			background-color: var(--clr-primary-200);
+		}
+
+		&:active {
+			background-color: var(--clr-primary-500);
+		}
+	}
+
+	.search {
+		position: relative;
+
+		animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+
+		input {
+			text-indent: 3ch;
+			width: 100%;
+			transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+			font-size: clamp(12px, 1vw, 14px);
+			padding: 0.75em 1em;
+			position: relative;
+			z-index: 2;
+		}
+
+		input::placeholder {
+			font-style: italic;
+		}
+
+		&:focus-within {
+			input {
+				text-indent: 0;
+				width: calc(100% - 3ch);
+			}
+			.search-icon {
+				opacity: 0;
+			}
+
+			.clear-icon {
+				display: block;
+			}
+		}
+		.search-icon {
+			pointer-events: none;
+			position: absolute;
+			top: 50%;
+			transform: translateY(-35%);
+			left: 1em;
+			transition: opacity 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+			z-index: 3;
+			color: var(--clr-dark-400);
+		}
+
+		.clear-icon {
+			position: absolute;
+			cursor: pointer;
+			display: none;
+			top: 50%;
+			transform: translateY(-40%);
+			right: 2.5em;
+			transition: opacity 0.15s cubic-bezier(0.075, 0.82, 0.165, 1);
+			z-index: 3;
+			color: var(--clr-dark-400);
+			animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+		}
+	}
+}

@@ -1,0 +1,36 @@
+@import "./Nav/main";
+@import "./Nav/settings";
+@import "./Nav/filter";
+@import "helpIcon";
+@import "./Package/package";
+@import "./Package/map";
+@import "./modal";
+@import "./Form/form";
+@import "./infoModal";
+@import "./statusBar";
+@import "toast";
+@import "contextMenu";
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  padding: 0.5em 1em;
+}
+
+input {
+  border: none;
+  border: 1px solid var(--clr-border-400);
+  border-radius: var(--br);
+  padding: 0.5em 1em;
+  background-color: var(--clr-bg-100);
+  color: var(--clr-dark-400);
+
+  &:hover {
+    border: 1px solid var(--clr-border-600);
+  }
+
+  &:focus-visible {
+    outline: 1px solid var(--clr-primary-400);
+  }
+}

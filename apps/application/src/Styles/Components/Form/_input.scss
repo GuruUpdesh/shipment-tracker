@@ -1,0 +1,67 @@
+
+.input-container {
+  position: relative;
+  width: min-content;
+  margin-bottom: 1em;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+  span {
+    position: absolute;
+    top: 9px;
+    left: 1.06em;
+    transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+    color: var(--clr-border-800);
+    pointer-events: none;
+  }
+  
+  &:focus-within {
+    span {
+      position: absolute;
+      top: -1.3em;
+      left: 1.08em;
+      color: var(--clr-primary-400);
+      font-size: var(--fs-small-400);
+    }
+  }
+  
+  .eye {
+    position: absolute;
+    top: 4px;
+    right: 1em;
+    transform: translateY(50%);
+    opacity: 0.5;
+    
+    &:hover {
+      cursor: pointer;
+      opacity: 1;
+    }
+  }
+
+  .matches {
+    transform: translateY(2px);
+    color: var(--clr-primary-400)
+  }
+}
+
+.full-input {
+  span {
+    position: absolute;
+    top: -1.3em;
+    left: 1.08em;
+    color: var(--clr-border-800);
+    font-size: var(--fs-small-400);
+  }
+}
+
+.input-error {
+  color: var(--clr-warning);
+  input {
+    outline: 1px solid var(--clr-warning);
+  }
+
+  p {
+    font-size: var(--fs-small-300);
+  }
+}
