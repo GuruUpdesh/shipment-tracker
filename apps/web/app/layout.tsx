@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Jost } from "next/font/google"
+import { Jost } from "next/font/google";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 		"Unified Package Tracking Dashboard for UPS, USPS, Fedex, and more.",
 };
 
-const jost = Jost()
+const jost = Jost({ subsets: ["latin"] });
 
 export default function RootLayout({
 	children,

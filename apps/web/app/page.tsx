@@ -4,7 +4,7 @@ import { ArrowRight, Cloud, LayoutPanelLeft, Zap } from "lucide-react";
 import { Sen } from "next/font/google";
 import Link from "next/link";
 
-const sen = Sen();
+const sen = Sen({ subsets: ["latin"] });
 
 export default function Home() {
 	return (
