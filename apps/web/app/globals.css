@@ -1,39 +1,96 @@
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+	--clr-white-100: white;
+
+	--clr-dark-100: #3f505e;
+	--clr-dark-200: #303c46;
+	--clr-dark-400: #2a3137;
+	--clr-dark-500: #24292e;
+	--clr-dark-600: #202529;
+
+	--clr-grey-200: rgb(180, 180, 180);
+
+	--clr-dark-100-true: #3f505e;
+	--clr-dark-400-true: #2a3137;
+
+	--clr-bg-light-400: rgba(255, 255, 255, 0.5);
+	--clr-bg-100: white;
+	--clr-bg-200: rgb(240, 240, 240);
+	--clr-bg-400: #f1f1f1;
+	--clr-bg-dark-200: rgba(0, 0, 0, 0.1);
+	--clr-bg-dark-400: rgba(0, 0, 0, 0.2);
+	--clr-bg-dark-800: rgba(0, 0, 0, 0.5);
+
+	--clr-primary-100: #7ef3b5;
+	--clr-primary-200: #30e283;
+	--clr-primary-400: #20cd70;
+	--clr-primary-500: #23ad63;
+	--clr-primary-900: #21382c;
+
+	--clr-warning: #fc0000;
+	--clr-highlighter: rgba(255, 255, 255, 0.6);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* @media (prefers-color-scheme: dark) {
+	:root {
+		--clr-white-100: white;
+
+		--clr-dark-100: #3f505e;
+		--clr-dark-200: #303c46;
+		--clr-dark-400: white;
+		--clr-dark-500: #24292e;
+		--clr-dark-600: #202529;
+
+		--clr-grey-200: rgb(75, 75, 75);
+
+		--clr-dark-100-true: #3f505e;
+		--clr-dark-400-true: #2a3137;
+		--clr-bg-light-400: rgba(39, 39, 39, 0.5);
+		--clr-bg-100: #181a1b;
+		--clr-bg-400: #202324;
+
+		--clr-highlighter: rgba(255, 255, 255, 0.5);
+	}
+} */
 
 html,
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
+	max-width: 100vw;
+	overflow-x: hidden;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
+	color: var(--foreground);
+	background: var(--background);
 }
 
 * {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+	box-sizing: border-box;
+	padding: 0;
+	margin: 0;
 }
 
 a {
-  color: inherit;
-  text-decoration: none;
+	color: inherit;
+	text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* width */
+::-webkit-scrollbar {
+	width: 5px;
+	height: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: rgba(0, 0, 0, 0.2);
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
 }

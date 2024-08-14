@@ -47,32 +47,6 @@ const LoginPage = () => {
 					<ButtonText onClick={() => {navigate("/register")}}>create account</ButtonText>
 				</div>
 			</div>
-			<div className="perspective-wrapper">
-				<div
-					className="login-image-wrapper flex-center-column"
-					style={{
-						// background: `url(${process.env.PUBLIC_URL + "/Login.png"})`,
-						transform: ` translateX(-1em) rotateY(${(-90 + x * 180) / 5}deg) rotateX(${(90 - y * 180) / 5}deg)`,
-						boxShadow: `${10 - 20 * x}px ${10 - 20 * y}px 10px var(--clr-bg-dark-400)`,
-					}}
-				>
-					<div className="header">
-						<h3>Welcome Back!</h3>
-						<p>please login to continue</p>
-					</div>
-					<div className="content">
-						<p>don't have an account?</p>
-						<button
-							className="btn-normal-text"
-							onClick={() => {
-								navigate("/register");
-							}}
-						>
-							create account
-						</button>
-					</div>
-				</div>
-			</div>
 		</motion.div>
 	);
 };

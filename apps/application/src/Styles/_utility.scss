@@ -7,16 +7,16 @@
 .perspective-wrapper {
 	perspective: 1000px;
 	perspective-origin: 50% 50%;
-	
+
 	&:hover {
 		z-index: 2;
 	}
-	
+
 	div {
 		transition: all 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 
 		&:hover {
-			transition: all .2s cubic-bezier(0.075, 0.82, 0.165, 1);
+			transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 			// z-index: 2;
 		}
 	}
@@ -49,7 +49,9 @@
 	color: var(--clr-grey-400);
 	border-radius: var(--br-section-100);
 	position: relative;
-	box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.1), 0 -5px 6px rgba(238, 238, 238, 0.411);
+	box-shadow:
+		0px 3px 5px rgba(0, 0, 0, 0.1),
+		0 -5px 6px rgba(238, 238, 238, 0.411);
 	padding: 0.5em 1em;
 	border: 1px solid var(--clr-white-100);
 
@@ -112,7 +114,8 @@
 			padding: 0.5em 1em;
 			font-size: var(--fs-small-400);
 			border-radius: 20px;
-			animation: btnLabels 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+			animation: btnLabels 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
+				forwards;
 			animation-delay: 0.2s;
 			opacity: 0;
 			line-height: 125%;
@@ -167,7 +170,8 @@
 
 	&:focus {
 		.pulse {
-			animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1) forwards;
+			animation: circlePulse 1s cubic-bezier(0.075, 0.82, 0.165, 1)
+				forwards;
 		}
 	}
 
@@ -235,6 +239,7 @@
 	}
 }
 
+
 @keyframes loading {
 	0% {
 		transform: translateY(3px) rotate(0);
@@ -245,7 +250,11 @@
 }
 
 .btn-magnet {
-	background: linear-gradient(45deg, var(--clr-primary-400) 25%, var(--clr-primary-100));
+	background: linear-gradient(
+		45deg,
+		var(--clr-primary-400) 25%,
+		var(--clr-primary-100)
+	);
 	background-size: 300%;
 	color: var(--clr-white-100);
 	border-radius: 55px;

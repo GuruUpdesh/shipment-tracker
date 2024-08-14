@@ -1,99 +1,158 @@
 import Image from "next/image";
-import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
+import { ArrowRight, Cloud, LayoutPanelLeft, Zap } from "lucide-react";
+import { Sen } from "next/font/google";
+
+const sen = Sen();
 
 export default function Home() {
-  return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.tsx</code>
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-        <Button appName="web" className={styles.secondary}>
-          Open alert
-        </Button>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file-text.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
-  );
+	return (
+		<div className={styles.page}>
+			<header className={styles.header}>
+				<div className={styles.logo + " " + sen.className}>
+					<Image
+						src="/favicon.ico"
+						width={16}
+						height={16}
+						alt="stacked boxes"
+					/>
+					<p>Shipment Tracker</p>
+				</div>
+				<button className={styles.btn2}>Login</button>
+			</header>
+			<main className={styles.main}>
+				<section className={styles.hero}>
+					<h1>Package Tracking Dashboard</h1>
+					<p>
+						Simplify the process of tracking shipments by keeping
+						everything in one place.
+					</p>
+					<button className={styles.btn}>
+						Get Started
+						<ArrowRight className={styles.svg} />
+					</button>
+					<div className={styles.img}>
+						<Image src="/boxes.webp" fill alt="stacked boxes" />
+					</div>
+				</section>
+				<section className={styles.courier}>
+					<div className={styles.courierContainer}>
+						<div
+							style={{
+								width: "calc(100% - 110px)",
+								position: "absolute",
+								height: "100%",
+							}}
+						>
+							<Image src="/dashed.svg" fill alt="" />
+						</div>
+						<Image
+							src="/courier-images/ups.webp"
+							width={165 / 3}
+							height={200 / 3}
+							alt="UPS logo"
+						/>
+						<Image
+							src="/courier-images/usps.webp"
+							width={240 / 3}
+							height={200 / 3}
+							alt="USPS logo"
+						/>
+						<Image
+							src="/courier-images/fedex.webp"
+							width={400 / 3}
+							height={122 / 3}
+							alt="FedEx logo"
+						/>
+						<Image
+							src="/courier-images/dhl.webp"
+							width={270 / 3}
+							height={200 / 3}
+							alt="DHL logo"
+						/>
+					</div>
+				</section>
+				<section className={styles.dashboard}>
+					<div className={styles.dashboardContainer}>
+						<Image
+							src="/dashboard.webp"
+							fill
+							alt="Shipment Tracker Dashboard UI"
+							quality={100}
+						/>
+						<div className={styles.animatedBorder} />
+					</div>
+				</section>
+				<section className={styles.features}>
+					<h2>Built to be Easy</h2>
+					<div className={styles.cards}>
+						<div className={styles.card}>
+							<Cloud />
+							<div>
+								<h3>Web Based</h3>
+								<p>
+									We provide a solution for tracking all your
+									packages in one centralized web app. All
+									your packages sync across all your devices
+									through the cloud.
+								</p>
+							</div>
+						</div>
+						<div className={styles.card}>
+							<LayoutPanelLeft />
+							<div>
+								<h3>Intuitive Interface</h3>
+								<p>
+									Shipment Tracker is designed to be easy to
+									use. The intuitive interface allows you to
+									track your packages with ease.
+								</p>
+							</div>
+						</div>
+						<div className={styles.card}>
+							<Zap />
+							<div>
+								<h3>Save Time</h3>
+								<p>
+									No more checking multiple websites to track
+									your packages. Shipment Tracker does it all
+									for you.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+				<section className={styles.action}>
+					<div className={styles.actionContent}>
+						<h1>Start tracking today!</h1>
+						<button className={styles.btn}>Sign Up for Free</button>
+					</div>
+					<div className={styles.actionImage}>
+						<Image
+							src="/tracking.webp"
+							fill
+							alt="Shipment Tracker Dashboard UI"
+							quality={100}
+						/>
+					</div>
+				</section>
+			</main>
+			<footer className={styles.footer}>
+				<div className={styles.footerContent}>
+					<div className={styles.logo + " " + sen.className}>
+						<Image
+							src="/favicon.ico"
+							width={16}
+							height={16}
+							alt="stacked boxes"
+						/>
+						<p>Shipment Tracker</p>
+					</div>
+					<p className={styles.copyright}>
+						Copyright © 2024
+					</p>
+				</div>
+			</footer>
+		</div>
+	);
 }

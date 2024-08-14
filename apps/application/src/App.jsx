@@ -1,6 +1,6 @@
 import { useState, createContext, useEffect, useLayoutEffect, useRef } from "react";
 import { HashRouter } from "react-router-dom";
-import "./Styles/styles.css";
+import "./Styles/styles.scss";
 import ContextMenu from "./Components/other/ContextMenu";
 import Routes from "./pages/Routes";
 import { ToastContainer } from "react-toastify";

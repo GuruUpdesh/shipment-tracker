@@ -106,7 +106,7 @@ const HomePage = () => {
 					<h2>Built to be easy</h2>
 					<div className="card-grid">
 						<div className="card">
-							<MdCloud   fontSize={64} />
+							<MdCloud fontSize={64} />
 							<div className="spacer" />
 							<h3>Cloud Based</h3>
 							<p>

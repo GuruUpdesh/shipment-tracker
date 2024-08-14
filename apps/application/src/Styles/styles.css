@@ -1212,14 +1212,20 @@ select {
   box-shadow: -5px -5px 5px var(--clr-bg-light-400), 5px 5px 5px var(--clr-bg-dark-400);
 }
 
-a[href^="http://maps.google.com/maps"]{display:none !important}
-a[href^="https://maps.google.com/maps"]{display:none !important}
-
-.gmnoprint a, .gmnoprint span, .gm-style-cc {
-    display:none;
+.maps-wrapper > div > div > div > div:nth-child(15) > div > a > div > img {
+  display: none;
 }
-.gmnoprint div {
-    background:none !important;
+
+.maps-wrapper > div > div > div > div:nth-child(17) > div {
+  display: none;
+}
+
+.maps-wrapper > div > div > div > div:nth-child(17) {
+  display: none;
+}
+
+.maps-wrapper > div > div {
+  background-color: var(--clr-bg-100) !important;
 }
 
 .modal-backdrop {
@@ -2697,6 +2703,11 @@ input:focus-visible {
   position: absolute;
   transform: translate(1ch, 0px);
 }
+.btn-black .loader {
+  position: absolute;
+  transform: translate(1ch, 0px);
+  animation: spin 1s linear infinite forwards;
+}
 .btn-black svg {
   display: block;
 }
@@ -2829,6 +2840,14 @@ input:focus-visible {
   background-color: var(--clr-warning);
 }
 
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
 @keyframes loading {
   0% {
     transform: translateY(3px) rotate(0);
