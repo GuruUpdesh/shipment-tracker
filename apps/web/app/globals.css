@@ -9,6 +9,11 @@
     --clr-bg-primary: #f6f5ee;
     --clr-bg-light-400: rgba(128, 128, 128, 0.25);
     --clr-shadow: rgba(13, 63, 36, 0.25);
+
+    --sm: 640px;
+    --md: 768px;
+    --lg: 1024px;
+    --xl: 1280px;
 }
 
 @media (prefers-color-scheme: dark) {

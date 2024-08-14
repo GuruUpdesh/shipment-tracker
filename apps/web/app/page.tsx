@@ -46,7 +46,12 @@ export default function Home() {
 						<ArrowRight className={styles.svg} />
 					</Link>
 					<div className={styles.img}>
-						<Image src={Boxes} fill alt="stacked boxes" />
+						<Image
+							src={Boxes}
+							fill
+							alt="stacked boxes"
+							quality={100}
+						/>
 					</div>
 				</section>
 				<section className={styles.courier}>
@@ -148,7 +153,11 @@ export default function Home() {
 				</section>
 				<section className={styles.action}>
 					<div className={styles.actionContent}>
-						<h1>Start tracking today!</h1>
+						<h1>
+							Start tracking
+							<br />
+							today!
+						</h1>
 						<Link
 							href={process.env.APPLICATION_URL + "/register"}
 							className={styles.btn}
