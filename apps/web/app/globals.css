@@ -58,12 +58,12 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-	background: transparent;
+	background: var(--clr-bg-100);
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-	background: rgba(0, 0, 0, 0.2);
+	background: var(--clr-bg-light-400);
 }
 
 /* Handle on hover */

@@ -5,6 +5,8 @@ import { Sen } from "next/font/google";
 import Link from "next/link";
 import DashboardLight from "../public/dashboard.webp";
 import DashboardDark from "../public/dashboard-dark.webp";
+import DashboardMobileLight from "../public/dashboard-mobile.webp";
+import DashboardMobileDark from "../public/dashboard-mobile-dark.webp";
 import TrackingLight from "../public/tracking.webp";
 import TrackingDark from "../public/tracking-dark.webp";
 import Boxes from "../public/boxes.webp";
@@ -96,6 +98,14 @@ export default function Home() {
 					<div className={styles.dashboardContainer}>
 						<picture>
 							<source
+								srcSet={DashboardMobileDark.src}
+								media="(max-width: 640px) and (prefers-color-scheme: dark)"
+							/>
+							<source
+								srcSet={DashboardMobileLight.src}
+								media="(max-width: 640px)"
+							/>
+							<source
 								srcSet={DashboardDark.src}
 								media="(prefers-color-scheme: dark)"
 							/>
@@ -158,6 +168,10 @@ export default function Home() {
 							<br />
 							today!
 						</h1>
+						<p>
+							Shipment tracker is free to use, and easy to get
+							started with.
+						</p>
 						<Link
 							href={process.env.APPLICATION_URL + "/register"}
 							className={styles.btn}

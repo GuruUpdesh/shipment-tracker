@@ -81,9 +81,6 @@
 }
 
 .hero h1 {
-	--max-size: 6rem;
-	--min-size: 4rem;
-
 	text-align: left;
 	font-size: clamp(4rem, 5vw + 1rem, 6rem);
 	animation: textRevealLarge 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
@@ -96,9 +93,13 @@
 	}
 }
 
-.hero p {
+.hero p,
+.action p {
 	color: var(--clr-dark-400);
 	font-size: clamp(1rem, 3vw, 1.25rem);
+}
+
+.hero p {
 	animation: fadeDown 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
 	animation-delay: 0s;
 }
@@ -198,16 +199,20 @@
 
 .dashboardContainer {
 	position: relative;
-	aspect-ratio: 3.5 / 1;
-	border-radius: 16px;
+	aspect-ratio: 1;
 	box-shadow: 0px 4px 100px 0px var(--clr-shadow);
 	z-index: -2;
+	border-radius: 16px;
 }
 
+@media only screen and (min-width: 640px) {
+	.dashboardContainer {
+		aspect-ratio: 3.5 / 1;
+	}
+}
 .dashboardContainer > img {
 	border-radius: 16px;
 }
-
 .dashboardContainer > div {
 	border-radius: 16px;
 }
@@ -277,7 +282,7 @@
 	position: relative;
 	margin-top: calc(var(--spacing) * 10);
 	isolation: isolate;
-	overflow: hidden;
+	/* overflow: hidden; */
 }
 
 .actionContent {
@@ -287,29 +292,40 @@
 	grid-column: span 3 / span 3;
 	padding-bottom: calc(var(--spacing) * 10);
 	max-width: 600px;
+	background: linear-gradient(
+		to right,
+		var(--clr-bg-100) 50%,
+		transparent 100%
+	);
 }
 
 .actionImage {
 	position: absolute;
 	top: 0;
-	right: -70%;
+	right: 0;
 	aspect-ratio: 7 / 6;
 	width: 50%;
 	min-width: 400px;
 	border-radius: 16px 16px 0 0;
 	overflow: hidden;
-	box-shadow: 0px 4px 100px 0px var(--clr-shadow);
 	z-index: -1;
 }
 
 @media only screen and (min-width: 768px) {
 	.actionImage {
-		right: 0;
+		box-shadow: 0px 4px 100px 0px var(--clr-shadow);
 	}
 }
 
 .actionImage img {
-	transform: translateY(-1px) scale(1.001);
+	transform: translateX(60%);
+	transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+@media only screen and (min-width: 768px) {
+	.actionImage img {
+		transform: translateX(0);
+	}
 }
 
 .footer {
@@ -323,6 +339,7 @@
 .footerContent {
 	width: 100%;
 	max-width: 1300px;
+	min-height: 200px;
 	padding: calc(var(--spacing) * 4);
 }
 
