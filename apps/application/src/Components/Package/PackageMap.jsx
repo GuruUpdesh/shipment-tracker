@@ -144,7 +144,7 @@ function PackageMap({ center, drawLines, zoom, transitHistory }) {
 			</GoogleMap>
 		</div>
 	) : (
-		<></>
+		<div className="maps-placeholder"></div>
 	);
 }
 

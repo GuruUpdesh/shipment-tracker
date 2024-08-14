@@ -148,6 +148,14 @@
 		background-color: var(--clr-bg-100);
 
 		animation: fadeIn 1s cubic-bezier(0.075, 0.82, 0.165, 1) backwards;
+
+		div div {
+			background-color: transparent !important;
+		}
+	}
+
+	.maps-placeholder {
+		height: 120px;
 	}
 
 	.bottom-right-indicators {

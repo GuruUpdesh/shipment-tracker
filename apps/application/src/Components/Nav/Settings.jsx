@@ -57,7 +57,7 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 							</h1>
 						</div>
 						<div className="content-container">
-							<h2>settings & help</h2>
+							<h2>Settings</h2>
 							<p>{localStorage.getItem("email")}</p>
 						</div>
 					</div>
@@ -95,7 +95,16 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 							</button>
 						</li>
 						<li>
-							<button>
+							<button
+								onClick={() => {
+									window
+										.open(
+											`${import.meta.env.VITE_HOMEPAGE}/help`,
+											"_blank"
+										)
+										.focus();
+								}}
+							>
 								help <BsQuestionLg />
 							</button>
 						</li>

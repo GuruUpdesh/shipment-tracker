@@ -8,7 +8,13 @@ import { getTrackingUrl } from "tracking-number-validation";
 import HelpIcon from "../../other/HelpIcon";
 import notify from "../../../util/notify";
 
-const InfoModal = ({ isOpen, setIsOpen, packageInfo, setIsConfirmOpen, setIsEditFormOpen }) => {
+const InfoModal = ({
+	isOpen,
+	setIsOpen,
+	packageInfo,
+	setIsConfirmOpen,
+	setIsEditFormOpen,
+}) => {
 	const ref = useRef();
 	const { header, transitHistory } = packageInfo;
 
@@ -41,7 +47,7 @@ const InfoModal = ({ isOpen, setIsOpen, packageInfo, setIsConfirmOpen, setIsEdit
 
 	return (
 		<Modal key={packageInfo.header.id}>
-			<div className={"info-modal " + ((headerShrink && !mapToggle) ? "expand-history" : "")} ref={ref}>
+			<div className="info-modal" ref={ref}>
 				<InfoHeader
 					header={header}
 					transitHistory={transitHistory}
@@ -72,15 +78,23 @@ const InfoModal = ({ isOpen, setIsOpen, packageInfo, setIsConfirmOpen, setIsEdit
 						<button
 							className="btn-normal-text"
 							onClick={() => {
-								navigator.clipboard.writeText(header.trackingNumber);
+								navigator.clipboard.writeText(
+									header.trackingNumber
+								);
 								notify("copied to clipboard", 2000, "success");
 							}}
 						>
 							{header.trackingNumber}
 						</button>
 					</div>
-					<StatusBar header={header} transitHistory={transitHistory} />
-					<button className="btn-close btn-black" onClick={getCourierLink}>
+					<StatusBar
+						header={header}
+						transitHistory={transitHistory}
+					/>
+					<button
+						className="btn-close btn-black"
+						onClick={getCourierLink}
+					>
 						{header.courier}.com <BsArrowRight />
 					</button>
 					<ul>
