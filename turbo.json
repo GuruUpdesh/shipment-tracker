@@ -1,18 +1,29 @@
 {
-  "$schema": "https://turbo.build/schema.json",
-  "ui": "tui",
-  "tasks": {
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["$TURBO_DEFAULT$", ".env*"],
-      "outputs": [".next/**", "!.next/cache/**"]
-    },
-    "lint": {
-      "dependsOn": ["^lint"]
-    },
-    "dev": {
-      "cache": false,
-      "persistent": true
-    }
-  }
+	"$schema": "https://turbo.build/schema.json",
+	"ui": "tui",
+	"tasks": {
+		"build": {
+			"dependsOn": ["^build"],
+			"inputs": ["$TURBO_DEFAULT$", ".env*"],
+			"outputs": [".next/**", "!.next/cache/**"]
+		},
+		"web#build": {
+			"dependsOn": ["^build"],
+			"env": ["APPLICATION_URL"]
+		},
+		"application#build": {
+			"dependsOn": ["^build"],
+			"env": [
+				"VITE_REACT_APP_API_URL",
+				"VITE_REACT_APP_GOOGLE_MAPS_API_KEY"
+			]
+		},
+		"lint": {
+			"dependsOn": ["^lint"]
+		},
+		"dev": {
+			"cache": false,
+			"persistent": true
+		}
+	}
 }
