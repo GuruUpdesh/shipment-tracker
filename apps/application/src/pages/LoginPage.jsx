@@ -30,13 +30,16 @@ const LoginPage = () => {
 			}}
 			initial={{ opacity: 0 }}
 			animate={{ opacity: 1 }}
-			exit={{ opacity: 0, transition: { duration: 0.2, ease: "easeInOut" } }}
+			exit={{
+				opacity: 0,
+				transition: { duration: 0.2, ease: "easeInOut" },
+			}}
 		>
 			<div className="login-container flex-column">
 				<button
 					className="back login-block flex-column"
 					onClick={() => {
-						navigate("/");
+						navigate(-1);
 					}}
 				>
 					<BsArrowLeft />
@@ -44,7 +47,13 @@ const LoginPage = () => {
 				<LoginForm />
 				<div className="login-footer login-block flex-column">
 					<p>don't have an account?</p>
-					<ButtonText onClick={() => {navigate("/register")}}>create account</ButtonText>
+					<ButtonText
+						onClick={() => {
+							navigate("/register");
+						}}
+					>
+						create account
+					</ButtonText>
 				</div>
 			</div>
 		</motion.div>

@@ -240,9 +240,9 @@
 	border: none;
 	border-radius: 1000px;
 	background-color: var(--clr-primary-400);
-	padding: 0.6rem 1rem;
+	padding: 0.5rem 1rem;
 	color: var(--clr-white-100);
-	font-weight: 700;
+	font-weight: 600;
 	overflow: hidden;
 	cursor: pointer;
 	transition:
@@ -266,10 +266,11 @@
 	gap: calc(var(--spacing) * 2);
 	border: none;
 	border-radius: var(--spacing);
+	font-size: 0.75rem;
 	background-color: var(--clr-dark-400);
 	color: var(--clr-white-100);
-	font-weight: 700;
-	padding: 0.6rem 1rem;
+	font-weight: 600;
+	padding: 0.5rem 1rem;
 	cursor: pointer;
 	transition:
 		background-color 500ms cubic-bezier(0.075, 0.82, 0.165, 1),

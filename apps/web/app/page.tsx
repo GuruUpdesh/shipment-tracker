@@ -2,6 +2,7 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import { ArrowRight, Cloud, LayoutPanelLeft, Zap } from "lucide-react";
 import { Sen } from "next/font/google";
+import Link from "next/link";
 
 const sen = Sen();
 
@@ -18,7 +19,12 @@ export default function Home() {
 					/>
 					<p>Shipment Tracker</p>
 				</div>
-				<button className={styles.btn2}>Login</button>
+				<Link
+					href={process.env.APPLICATION_URL + "/login"}
+					className={styles.btn2}
+				>
+					Login
+				</Link>
 			</header>
 			<main className={styles.main}>
 				<section className={styles.hero}>
@@ -27,10 +33,13 @@ export default function Home() {
 						Simplify the process of tracking shipments by keeping
 						everything in one place.
 					</p>
-					<button className={styles.btn}>
+					<Link
+						href={process.env.APPLICATION_URL + "/login"}
+						className={styles.btn}
+					>
 						Get Started
 						<ArrowRight className={styles.svg} />
-					</button>
+					</Link>
 					<div className={styles.img}>
 						<Image src="/boxes.webp" fill alt="stacked boxes" />
 					</div>
@@ -125,7 +134,12 @@ export default function Home() {
 				<section className={styles.action}>
 					<div className={styles.actionContent}>
 						<h1>Start tracking today!</h1>
-						<button className={styles.btn}>Sign Up for Free</button>
+						<Link
+							href={process.env.APPLICATION_URL + "/register"}
+							className={styles.btn}
+						>
+							Sign Up for Free
+						</Link>
 					</div>
 					<div className={styles.actionImage}>
 						<Image
@@ -148,9 +162,7 @@ export default function Home() {
 						/>
 						<p>Shipment Tracker</p>
 					</div>
-					<p className={styles.copyright}>
-						Copyright © 2024
-					</p>
+					<p className={styles.copyright}>Copyright © 2024</p>
 				</div>
 			</footer>
 		</div>

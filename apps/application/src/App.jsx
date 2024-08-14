@@ -1,7 +1,6 @@
 import { useState, createContext, useEffect, useLayoutEffect, useRef } from "react";
-import { HashRouter } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import "./Styles/styles.scss";
-import ContextMenu from "./Components/other/ContextMenu";
 import Routes from "./pages/Routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -39,7 +38,7 @@ function App() {
 	const packagesRef = useRef();
 
 	return (
-		<HashRouter>
+		<BrowserRouter>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ThemeContext.Provider value={{ theme, setTheme }}>
 					<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
@@ -47,7 +46,7 @@ function App() {
 					<Routes />
 				</ThemeContext.Provider>
 			</UserContext.Provider>
-		</HashRouter>
+		</BrowserRouter>
 	);
 }
 
