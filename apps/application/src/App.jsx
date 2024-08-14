@@ -42,7 +42,6 @@ function App() {
 			<UserContext.Provider value={{ user, setUser }}>
 				<ThemeContext.Provider value={{ theme, setTheme }}>
 					<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
-					{/* <ContextMenu /> */}
 					<Routes />
 				</ThemeContext.Provider>
 			</UserContext.Provider>

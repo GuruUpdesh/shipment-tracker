@@ -150,7 +150,6 @@ const Packages = forwardRef((props, ref) => {
 	return (
 		<>
 			<div className="package-wrapper" ref={packageWrapperRef}>
-				{/* {props.isArchive && <h1>Archive</h1>} */}
 				{startedLoading && filteredPackages.length !== 0 && (
 					<div className="grid-3row-layout">
 						{filteredPackages.map((currentPackage, index) => {

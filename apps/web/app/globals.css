@@ -1,56 +1,27 @@
 :root {
-	--clr-white-100: white;
-
-	--clr-dark-100: #3f505e;
-	--clr-dark-200: #303c46;
-	--clr-dark-400: #2a3137;
+    --clr-white-100: white;
+    --clr-dark-400: #2a3137;
 	--clr-dark-500: #24292e;
-	--clr-dark-600: #202529;
-
-	--clr-grey-200: rgb(180, 180, 180);
-
-	--clr-dark-100-true: #3f505e;
-	--clr-dark-400-true: #2a3137;
-
-	--clr-bg-light-400: rgba(255, 255, 255, 0.5);
-	--clr-bg-100: white;
-	--clr-bg-200: rgb(240, 240, 240);
-	--clr-bg-400: #f1f1f1;
-	--clr-bg-dark-200: rgba(0, 0, 0, 0.1);
-	--clr-bg-dark-400: rgba(0, 0, 0, 0.2);
-	--clr-bg-dark-800: rgba(0, 0, 0, 0.5);
-
-	--clr-primary-100: #7ef3b5;
-	--clr-primary-200: #30e283;
-	--clr-primary-400: #20cd70;
-	--clr-primary-500: #23ad63;
-	--clr-primary-900: #21382c;
-
-	--clr-warning: #fc0000;
-	--clr-highlighter: rgba(255, 255, 255, 0.6);
+    --clr-bg-100: white;
+    --clr-bg-400: #f1f1f1;
+    --clr-primary-400: #20cd70;
+    --clr-primary-500: #23ad63;
+    --clr-bg-primary: #f6f5ee;
+    --clr-bg-light-400: rgba(128, 128, 128, 0.25);
+    --clr-shadow: rgba(13, 63, 36, 0.25);
 }
 
-/* @media (prefers-color-scheme: dark) {
-	:root {
-		--clr-white-100: white;
-
-		--clr-dark-100: #3f505e;
-		--clr-dark-200: #303c46;
-		--clr-dark-400: white;
-		--clr-dark-500: #24292e;
-		--clr-dark-600: #202529;
-
-		--clr-grey-200: rgb(75, 75, 75);
-
-		--clr-dark-100-true: #3f505e;
-		--clr-dark-400-true: #2a3137;
-		--clr-bg-light-400: rgba(39, 39, 39, 0.5);
-		--clr-bg-100: #181a1b;
-		--clr-bg-400: #202324;
-
-		--clr-highlighter: rgba(255, 255, 255, 0.5);
-	}
-} */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --clr-white-100: white;
+        --clr-dark-400: white;
+		--clr-dark-500: #f1f1f1;
+        --clr-bg-100: #181a1b;
+        --clr-bg-400: #202324;
+        --clr-bg-primary: #383730;
+        --clr-shadow: rgba(0, 114, 53, 0.25);
+    }
+}
 
 html,
 body {

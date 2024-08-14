@@ -3,6 +3,10 @@ import styles from "./page.module.css";
 import { ArrowRight, Cloud, LayoutPanelLeft, Zap } from "lucide-react";
 import { Sen } from "next/font/google";
 import Link from "next/link";
+import DashboardLight from "../public/dashboard.webp";
+import DashboardDark from "../public/dashboard-dark.webp";
+import TrackingLight from "../public/tracking.webp";
+import TrackingDark from "../public/tracking-dark.webp";
 
 const sen = Sen({ subsets: ["latin"] });
 
@@ -20,7 +24,7 @@ export default function Home() {
 					<p>Shipment Tracker</p>
 				</div>
 				<Link
-					href={process.env.APPLICATION_URL + "/login"}
+					href={process.env.APPLICATION_URL + "/packages"}
 					className={styles.btn2}
 				>
 					Login
@@ -28,13 +32,13 @@ export default function Home() {
 			</header>
 			<main className={styles.main}>
 				<section className={styles.hero}>
-					<h1>Package Tracking Dashboard</h1>
+					<h1>Multi-Courier Package Tracking</h1>
 					<p>
 						Simplify the process of tracking shipments by keeping
 						everything in one place.
 					</p>
 					<Link
-						href={process.env.APPLICATION_URL + "/login"}
+						href={process.env.APPLICATION_URL + "/packages"}
 						className={styles.btn}
 					>
 						Get Started
@@ -47,6 +51,7 @@ export default function Home() {
 				<section className={styles.courier}>
 					<div className={styles.courierContainer}>
 						<div
+							className={styles.courierPath}
 							style={{
 								width: "calc(100% - 110px)",
 								position: "absolute",
@@ -83,12 +88,21 @@ export default function Home() {
 				</section>
 				<section className={styles.dashboard}>
 					<div className={styles.dashboardContainer}>
-						<Image
-							src="/dashboard.webp"
-							fill
-							alt="Shipment Tracker Dashboard UI"
-							quality={100}
-						/>
+						<picture>
+							<source
+								srcSet={DashboardDark.src}
+								media="(prefers-color-scheme: dark)"
+							/>
+							<Image
+								src={DashboardLight}
+								fill
+								alt="Shipment Tracker Dashboard UI"
+								quality={100}
+								style={{
+									borderRadius: "16px 16px 0 0",
+								}}
+							/>
+						</picture>
 						<div className={styles.animatedBorder} />
 					</div>
 				</section>
@@ -142,12 +156,21 @@ export default function Home() {
 						</Link>
 					</div>
 					<div className={styles.actionImage}>
-						<Image
-							src="/tracking.webp"
-							fill
-							alt="Shipment Tracker Dashboard UI"
-							quality={100}
-						/>
+						<picture>
+							<source
+								srcSet={TrackingDark.src}
+								media="(prefers-color-scheme: dark)"
+							/>
+							<Image
+								src={TrackingLight}
+								fill
+								alt="Shipment Tracker Dashboard UI"
+								quality={100}
+								style={{
+									borderRadius: "16px 16px 0 0",
+								}}
+							/>
+						</picture>
 					</div>
 				</section>
 			</main>

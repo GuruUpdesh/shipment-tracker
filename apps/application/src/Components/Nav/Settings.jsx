@@ -23,7 +23,10 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 	const { theme, setTheme } = useContext(ThemeContext);
 	function toggleTheme() {
 		setTheme(theme === "light" ? "dark" : "light");
-		document.documentElement.setAttribute("data-theme", theme === "light" ? "dark" : "light");
+		document.documentElement.setAttribute(
+			"data-theme",
+			theme === "light" ? "dark" : "light"
+		);
 	}
 
 	useEffect(() => {
@@ -33,14 +36,25 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 	const settingsRef = useRef();
 	useOnClickOutside(settingsRef, closeSettingsMenu);
 
-	const {user, setUser} = useUser()
+	const { user, setUser } = useUser();
 	return (
-		<div className={"nav-settings " + (playCloseAnimation ? "nav-settings-close" : "")} ref={settingsRef}>
+		<div
+			className={
+				"nav-settings " +
+				(playCloseAnimation ? "nav-settings-close" : "")
+			}
+			ref={settingsRef}
+		>
 			<div className="content-wrapper">
 				<div>
 					<div className="settings-header">
 						<div className="image-container">
-							<h1>{localStorage.getItem("email") && localStorage.getItem("email")[0].toUpperCase()}</h1>
+							<h1>
+								{localStorage.getItem("email") &&
+									localStorage
+										.getItem("email")[0]
+										.toUpperCase()}
+							</h1>
 						</div>
 						<div className="content-container">
 							<h2>settings & help</h2>
@@ -69,7 +83,12 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 						<li>
 							<button
 								onClick={() => {
-									window.open("https://github.com/GuruUpdesh", "_blank").focus();
+									window
+										.open(
+											"https://github.com/GuruUpdesh",
+											"_blank"
+										)
+										.focus();
 								}}
 							>
 								github <BsGithub />
@@ -86,7 +105,7 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 					<button
 						className="logout"
 						onClick={() => {
-							logout(user, setUser)
+							logout(user, setUser);
 							navigate("/login");
 						}}
 					>
@@ -96,19 +115,36 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 					<div className="theme-toggler">
 						<div className="question">
 							<HelpIcon
-								message={"Change the website colors to be light or dark depending on your preferences."}
+								message={
+									"Change the website colors to be light or dark depending on your preferences."
+								}
 							/>
 							<p>Color Scheme</p>
 						</div>
 						<div className="theme-buttons" onClick={toggleTheme}>
 							<div
-								className={"highlighter " + (theme === "light" ? " left-highlighter" : "right-highlighter")}
+								className={
+									"highlighter " +
+									(theme === "light"
+										? " left-highlighter"
+										: "right-highlighter")
+								}
 							></div>
-							<button className={theme === "light" ? "active-theme" : ""} onClick={toggleTheme}>
+							<button
+								className={
+									theme === "light" ? "active-theme" : ""
+								}
+								onClick={toggleTheme}
+							>
 								<IoSunny />
 								light
 							</button>
-							<button className={theme === "dark" ? "active-theme" : ""} onClick={toggleTheme}>
+							<button
+								className={
+									theme === "dark" ? "active-theme" : ""
+								}
+								onClick={toggleTheme}
+							>
 								<IoIosMoon />
 								dark
 							</button>

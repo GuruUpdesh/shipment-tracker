@@ -31,6 +31,7 @@ const Package = ({
 			}
 		}
 	}, [packageInfo]);
+
 	async function deletePackageWithError() {
 		const response = await fetch(
 			`${import.meta.env.VITE_REACT_APP_API_URL}/api/delete`,
@@ -130,7 +131,7 @@ const Package = ({
 							</div>
 							{isArchive && (
 								<>
-									<ButtonBlack>
+									<ButtonBlack onClick={() => deletePackageWithError()}>
 										<AiOutlineDelete />
 										<span>delete</span>
 									</ButtonBlack>
