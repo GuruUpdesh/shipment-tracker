@@ -7,6 +7,7 @@ import DashboardLight from "../public/dashboard.webp";
 import DashboardDark from "../public/dashboard-dark.webp";
 import TrackingLight from "../public/tracking.webp";
 import TrackingDark from "../public/tracking-dark.webp";
+import Boxes from "../public/boxes.webp";
 
 const sen = Sen({ subsets: ["latin"] });
 
@@ -45,7 +46,7 @@ export default function Home() {
 						<ArrowRight className={styles.svg} />
 					</Link>
 					<div className={styles.img}>
-						<Image src="/boxes.webp" fill alt="stacked boxes" />
+						<Image src={Boxes} fill alt="stacked boxes" />
 					</div>
 				</section>
 				<section className={styles.courier}>
