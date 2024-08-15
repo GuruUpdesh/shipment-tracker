@@ -28,20 +28,22 @@ export default function Home() {
 	return (
 		<div className={styles.page}>
 			<header className={styles.header}>
-				<div className={styles.logo + " " + urbanist.className}>
-					<Logo
-						width={17}
-						height={17.8}
-						className={styles.logoIcon}
-					/>
-					<p>Package tracr</p>
+				<div className={styles.headerContent}>
+					<div className={styles.logo + " " + urbanist.className}>
+						<Logo
+							width={17}
+							height={17.8}
+							className={styles.logoIcon}
+						/>
+						<p>Package tracr</p>
+					</div>
+					<Link
+						href={process.env.APPLICATION_URL + "/packages"}
+						className={styles.btn2}
+					>
+						{authenticated ? "Dashboard" : "Login"}
+					</Link>
 				</div>
-				<Link
-					href={process.env.APPLICATION_URL + "/packages"}
-					className={styles.btn2}
-				>
-					{authenticated ? "Dashboard" : "Login"}
-				</Link>
 			</header>
 			<main className={styles.main}>
 				<section className={styles.hero}>
