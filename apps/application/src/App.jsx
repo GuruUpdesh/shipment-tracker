@@ -45,7 +45,7 @@ function App() {
 					<Routes />
 				</ThemeContext.Provider>
 			</UserContext.Provider>
-		</BrowserR>
+		</BrowserRouter>
 	);
 }
 
