@@ -209,6 +209,7 @@ export default function Home() {
 						/>
 						<p>Shipment Tracker</p>
 					</div>
+					<Link href="/help">Help</Link>
 					<p className={styles.copyright}>Copyright © 2024</p>
 				</div>
 			</footer>
