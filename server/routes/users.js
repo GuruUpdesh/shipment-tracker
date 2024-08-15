@@ -144,6 +144,7 @@ router.post("/is-auth", async (req, res) => {
 				httpOnly: false,
 				secure: false,
 				sameSite: "strict",
+				domain: ".packagetracr.com",
 			})
 			.json({ success: true, message: "Authentication successful" });
 	} catch (error) {
