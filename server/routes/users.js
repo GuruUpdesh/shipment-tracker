@@ -16,7 +16,11 @@ router.post("/register", async (req, res) => {
 
 		// create the account
 		const hashedPassword = await hashPassword(req.body.password); // hash password
-		const user = await model.createUser(req.body.email, req.body.name, hashedPassword);
+		const user = await model.createUser(
+			req.body.email,
+			req.body.name,
+			hashedPassword
+		);
 		if (user) {
 			return res.status(201).json({
 				message: "User Created!",
@@ -78,11 +82,16 @@ router.post("/login", async (req, res) => {
 		// find user with email
 		const foundUser = await model.findUserByEmail(req.body.email);
 		if (!foundUser) {
-			return res.status(400).json({ message: "Email or password is incorrect" });
+			return res
+				.status(400)
+				.json({ message: "Email or password is incorrect" });
 		}
 
 		// validate
-		const validate = await verifyPassword(req.body.password, foundUser.password).then((result) => {
+		const validate = await verifyPassword(
+			req.body.password,
+			foundUser.password
+		).then((result) => {
 			if (result) {
 				const id = foundUser.id;
 				return res.status(200).json({
@@ -91,7 +100,9 @@ router.post("/login", async (req, res) => {
 				});
 			}
 			// if validation fails
-			return res.status(400).json({ message: "Email or password is incorrect" });
+			return res
+				.status(400)
+				.json({ message: "Email or password is incorrect" });
 		});
 	} catch (error) {
 		console.error(error);
@@ -112,22 +123,46 @@ router.post("/login", async (req, res) => {
 
 // 		return;
 // 	}
-// 	res.status(304)
-// 		.cookie("jwt", token, {
-// 			expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
-// 			httpOnly: true,
-// 			secure: true,
-// 			sameSite: "none",
-// 		})
-// 		.json({ success: true, token });
+// res.status(304)
+// 	.cookie("jwt", token, {
+// 		expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
+// 		httpOnly: true,
+// 		secure: true,
+// 		sameSite: "none",
+// 	})
+// 	.json({ success: true, token });
 // };
+
+router.post("/is-auth", async (req, res) => {
+	try {
+		const id = req.query.id;
+		const token = jwt.sign({ id }, `${process.env.SECRET}`, {});
+
+		res.status(304)
+			.cookie("is-auth", 1, {
+				expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
+				httpOnly: true,
+				secure: false,
+				sameSite: "strict",
+			})
+			.json({ success: true, token });
+	} catch (error) {
+		console.error(error);
+		return res.status(400);
+	}
+});
 
 router.post("/cookie", async (req, res) => {
 	try {
 		// return generateToken(req.query.id, req.query.remember, res);
 		const { id, email } = req.body;
 		const jwtToken = jwt.sign(
-			{ id, email, exp: new Date().setMonth(new Date().getMonth() + 1), iss: "shipmentracker" },
+			{
+				id,
+				email,
+				exp: new Date().setMonth(new Date().getMonth() + 1),
+				iss: "shipmentracker",
+			},
 			`${process.env.SECRET}`
 		);
 		console.log(jwtToken);
@@ -173,10 +208,15 @@ router.post("/auth/google", async (req, res) => {
 
 		const foundUser = await model.findUserByEmail(email);
 		if (!foundUser) {
-			return res.status(400).json({ message: "Email or password is incorrect" });
+			return res
+				.status(400)
+				.json({ message: "Email or password is incorrect" });
 		}
 
-		return res.status(200).json({ message: "Authentication successful!", userData: { email: email, id: foundUser.id } });
+		return res.status(200).json({
+			message: "Authentication successful!",
+			userData: { email: email, id: foundUser.id },
+		});
 	} catch (error) {
 		return res.status(400).json({ message: `${error}` });
 	}

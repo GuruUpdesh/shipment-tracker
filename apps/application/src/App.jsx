@@ -1,4 +1,10 @@
-import { useState, createContext, useEffect, useLayoutEffect, useRef } from "react";
+import {
+	useState,
+	createContext,
+	useEffect,
+	useLayoutEffect,
+	useRef,
+} from "react";
 import { BrowserRouter, HashRouter } from "react-router-dom";
 import "./Styles/styles.scss";
 import Routes from "./pages/Routes";
@@ -9,7 +15,9 @@ export const ThemeContext = createContext(null);
 export const UserContext = createContext(null);
 
 function App() {
-	const [theme, setTheme] = useState(localStorage.getItem("theme") ? localStorage.getItem("theme") : "light");
+	const [theme, setTheme] = useState(
+		localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
+	);
 	const [user, setUser] = useState({
 		isMobile: /Mobi/i.test(window.navigator.userAgent),
 		isAuth: localStorage.getItem("jwtToken") ? true : false,
@@ -31,6 +39,23 @@ function App() {
 	}, [user]);
 
 	useEffect(() => {
+		getIsAuthCookie();
+		async function getIsAuthCookie() {
+			const response = await fetch(
+				`${import.meta.env.VITE_REACT_APP_API_URL}/api/is-auth`,
+				{
+					credentials: "include",
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+					},
+				}
+			);
+		}
+	}, []);
+
+	useEffect(() => {
 		localStorage.setItem("theme", theme);
 		document.documentElement.setAttribute("data-theme", theme);
 	}, [theme]);
@@ -41,7 +66,12 @@ function App() {
 		<BrowserRouter>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ThemeContext.Provider value={{ theme, setTheme }}>
-					<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
+					<ToastContainer
+						position="bottom-center"
+						closeOnClick
+						draggable={false}
+						toastId="test"
+					/>
 					<Routes />
 				</ThemeContext.Provider>
 			</UserContext.Provider>
