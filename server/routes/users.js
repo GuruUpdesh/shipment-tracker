@@ -142,7 +142,7 @@ router.post("/is-auth", async (req, res) => {
 			.cookie("is-auth", 1, {
 				expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
 				httpOnly: false,
-				secure: true,
+				secure: false,
 				sameSite: "strict",
 			})
 			.json({ success: true, message: "Authentication successful" });
