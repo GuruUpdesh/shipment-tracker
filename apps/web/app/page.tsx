@@ -15,8 +15,8 @@ import { headers } from "next/headers";
 const sen = Sen({ subsets: ["latin"] });
 
 export default function Home() {
-	const headersList = headers()
-	console.log(headersList)
+	const headersList = headers().get("is-auth");
+	console.log(headersList);
 	return (
 		<div className={styles.page}>
 			<header className={styles.header}>

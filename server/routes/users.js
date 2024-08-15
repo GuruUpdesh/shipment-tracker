@@ -141,11 +141,11 @@ router.post("/is-auth", async (req, res) => {
 		res.status(200)
 			.cookie("is-auth", 1, {
 				expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
-				httpOnly: true,
+				httpOnly: false,
 				secure: true,
 				sameSite: "strict",
 			})
-			.json({ message: "Authentication successful" });
+			.json({ success: true, message: "Authentication successful" });
 	} catch (error) {
 		console.error(error);
 		return res.status(400);
