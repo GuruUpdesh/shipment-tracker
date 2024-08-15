@@ -121,12 +121,12 @@ const InfoHeader = ({
 				{mapToggle ? (
 					<>
 						<BiArrowBack />
-						<span>details</span>
+						<span>Details</span>
 					</>
 				) : (
 					<>
 						<FiMap />
-						<span>map</span>
+						<span>Map</span>
 					</>
 				)}
 			</button>
@@ -185,19 +185,19 @@ const InfoHeader = ({
 						<button className="btn-black" onClick={cycleImgIndex}>
 							<AiOutlineSwap />
 							<span>
-								change image<p>{"(shift + i)"}</p>
+								Swap Image<p>shift + i</p>
 							</span>
 						</button>
-						<button className="btn-black">
+						{/* <button className="btn-black">
 							<AiOutlineCheckSquare />
 							<span>
-								mark as delivered<p>{"(shift + d)"}</p>
+								Mark Delivered<p>shift + d</p>
 							</span>
-						</button>
+						</button> */}
 						<button className="btn-black" onClick={archive}>
 							<RiInboxArchiveLine />
 							<span>
-								archive<p>{"(shift + a)"}</p>
+								Archive<p>shift + a</p>
 							</span>
 						</button>
 						<button
@@ -209,7 +209,7 @@ const InfoHeader = ({
 						>
 							<BiEdit />
 							<span>
-								edit<p>{"(shift + e)"}</p>
+								Edit<p>shift + e</p>
 							</span>
 						</button>
 						<button
@@ -221,7 +221,7 @@ const InfoHeader = ({
 						>
 							<AiOutlineDelete />
 							<span>
-								delete <p>{"(shift + x)"}</p>
+								Delete <p>shift + x</p>
 							</span>
 						</button>
 					</div>

@@ -2,7 +2,7 @@ import React, { useRef, useState, useEffect } from "react";
 import Modal from "../Modal";
 import useOnClickOutside from "../../../Hooks/useOnClickOutside";
 import StatusBar from "./StatusBar";
-import { BsArrowRight } from "react-icons/bs";
+import { FiExternalLink } from "react-icons/fi";
 import InfoHeader from "./InfoHeader";
 import { getTrackingUrl } from "tracking-number-validation";
 import HelpIcon from "../../other/HelpIcon";
@@ -71,7 +71,7 @@ const InfoModal = ({
 					<div className="transit-sub-content">
 						<HelpIcon
 							message={
-								"We use a basic algorithm to guess where your package is in its journey. We do not guarantee the accuracy of this information. For more up to date information visit the couriers tracking page directly by clicking the button below."
+								"We do not guarantee the accuracy of this information. For more up to date data visit the couriers directly."
 							}
 							direction={"left"}
 						/>
@@ -95,7 +95,7 @@ const InfoModal = ({
 						className="btn-close btn-black"
 						onClick={getCourierLink}
 					>
-						{header.courier}.com <BsArrowRight />
+						{header.courier}.com <FiExternalLink />
 					</button>
 					<ul>
 						{transitHistory.map((transitObject, index) => {

@@ -85,20 +85,6 @@ const Settings = ({ settingsOpen, setSettingsOpen }) => {
 								onClick={() => {
 									window
 										.open(
-											"https://github.com/GuruUpdesh",
-											"_blank"
-										)
-										.focus();
-								}}
-							>
-								github <BsGithub />
-							</button>
-						</li>
-						<li>
-							<button
-								onClick={() => {
-									window
-										.open(
 											`${import.meta.env.VITE_HOMEPAGE}/help`,
 											"_blank"
 										)

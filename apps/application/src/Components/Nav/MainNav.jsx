@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MdSettings } from "react-icons/md";
 import { BsFillArchiveFill } from "react-icons/bs";
-import { GoPackage } from "react-icons/go";
+import { FaBox } from "react-icons/fa6";
 import { BiPlus } from "react-icons/bi";
 import { IoSearch } from "react-icons/io5";
 import Settings from "./Settings";
@@ -60,12 +60,12 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 	}
 
 	return (
-		<nav className="main-nav flex-space-between  site-padding">
+		<nav className="main-nav flex-space-between site-padding">
 			{settingsOpen && <Settings settingsOpen={settingsOpen} setSettingsOpen={setSettingsOpen} />}
-			<div>
+			<div className="flex-space-between">
 				<ButtonBlack onClick={toggleSettingsMenu}>
 					<FaUser />
-					<span>user</span>
+					<span>User</span>
 				</ButtonBlack>
 				<ButtonBlack
 					onClick={() => {
@@ -74,13 +74,13 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 				>
 					{isArchive ? (
 						<>
-							<GoPackage />
-							<span>packages</span>
+							<FaBox />
+							<span>Packages</span>
 						</>
 					) : (
 						<>
 							<BsFillArchiveFill />
-							<span>archive</span>
+							<span>Archive</span>
 						</>
 					)}
 				</ButtonBlack>
@@ -90,7 +90,7 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 					<input
 						className="search-input"
 						value={searchValue}
-						placeholder="search"
+						placeholder="Search"
 						type="text"
 						onChange={(e) => searchHandler(e.target.value)}
 						ref={searchRef}
@@ -121,7 +121,7 @@ const MainNav = ({ setIsAddFormOpen, packagesRef, isArchive }) => {
 				>
 					<BiPlus />
 					<span>
-						add <p>{"(shift + a)"}</p>
+						Add <p>shift + a</p>
 					</span>
 				</ButtonBlack>
 			</div>

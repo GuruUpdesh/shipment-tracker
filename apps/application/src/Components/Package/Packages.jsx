@@ -181,9 +181,7 @@ const Packages = forwardRef((props, ref) => {
 				)}
 				{!startedLoading && (
 					<div className="package-message">
-						<p>
-							fetching package information {`${startedLoading}`}
-						</p>
+						<p>Loading packages...</p>
 					</div>
 				)}
 				{filteredPackages.length === 0 &&
@@ -191,14 +189,31 @@ const Packages = forwardRef((props, ref) => {
 					filteredPackages === packagesList.current && (
 						<div className="package-message">
 							<div className="content-container">
-								<h3>welcome to shipmentracker</h3>
-								<p className="sub">to get started simply</p>
-								<ButtonText>add a package</ButtonText>
-								<p className="or">or</p>
-								<p className="sub">
-									if this is your first time
-								</p>
-								<ButtonText>take a tour</ButtonText>
+								{props.isArchive ? (
+									<>
+										<h3>Welcome to Your Package Archive</h3>
+										<p className="sub">
+											This is where you can store old
+											packages that you no longer wish to
+											track but want to retain a record
+											of.
+										</p>
+									</>
+								) : (
+									<>
+										<h3>Welcome to Package Tracr</h3>
+										<p className="sub">
+											To get started simply
+										</p>
+										<ButtonText
+											onClick={() => {
+												props.setIsAddFormOpen(true);
+											}}
+										>
+											add a package
+										</ButtonText>
+									</>
+								)}
 							</div>
 						</div>
 					)}

@@ -70,8 +70,9 @@
 	border-radius: var(--br);
 	transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 	position: relative;
-	// font-size: var(--fs-me);
 	user-select: none;
+	display: flex;
+	align-items: center;
 
 	.loading-icon {
 		display: inline;
@@ -103,9 +104,12 @@
 		background-color: var(--clr-dark-100-true);
 
 		span {
-			display: block;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1ch;
 			position: absolute;
-			background-color: var(--clr-bg-dark-800);
+			background-color: var(--clr-dark-600);
 			backdrop-filter: blur(5px);
 			left: 50%;
 			top: 100%;
@@ -113,16 +117,18 @@
 			transform-origin: top;
 			padding: 0.5em 1em;
 			font-size: var(--fs-small-400);
-			border-radius: 20px;
+			border-radius: var(--br);
 			animation: btnLabels 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275)
 				forwards;
 			animation-delay: 0.2s;
 			opacity: 0;
 			line-height: 125%;
+			white-space: nowrap;
 
 			p {
 				white-space: nowrap;
 				font-size: var(--fs-small-200);
+				opacity: 0.75;
 			}
 
 			&:after {
@@ -134,7 +140,7 @@
 				position: absolute;
 				top: 0;
 				left: 50%;
-				border-bottom-color: var(--clr-bg-dark-800);
+				border-bottom-color: var(--clr-dark-600);
 				transform: translate(-50%, -100%);
 			}
 		}

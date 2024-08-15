@@ -109,7 +109,6 @@
 
 		&:hover {
 			color: var(--clr-primary-400);
-			box-shadow: 0 2px 3px var(--clr-bg-dark-400);
 
 			svg {
 				fill: var(--clr-primary-400);
@@ -269,7 +268,6 @@
 			outline: 1px solid transparent;
 			&:hover {
 				color: var(--clr-primary-400);
-				box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 
 				svg {
 					fill: var(--clr-primary-400);

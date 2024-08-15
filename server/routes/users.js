@@ -181,7 +181,7 @@ router.post("/cookie", async (req, res) => {
 				id,
 				email,
 				exp: new Date().setMonth(new Date().getMonth() + 1),
-				iss: "shipmentracker",
+				iss: "packagetracr",
 			},
 			`${process.env.SECRET}`
 		);
