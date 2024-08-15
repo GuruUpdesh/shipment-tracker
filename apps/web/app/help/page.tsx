@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./HelpPage.module.css";
+import styles from "../content.module.css";
 import { ChevronLeft } from "lucide-react";
 
 type Props = {

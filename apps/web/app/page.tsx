@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import { ArrowRight, Cloud, LayoutPanelLeft, Zap } from "lucide-react";
-import { Sen } from "next/font/google";
+import { Urbanist } from "next/font/google";
 import Link from "next/link";
 import DashboardLight from "../public/dashboard.webp";
 import DashboardDark from "../public/dashboard-dark.webp";
@@ -11,8 +11,9 @@ import TrackingLight from "../public/tracking.webp";
 import TrackingDark from "../public/tracking-dark.webp";
 import Boxes from "../public/boxes.webp";
 import { cookies } from "next/headers";
+import Logo from "./components/Logo";
 
-const sen = Sen({ subsets: ["latin"] });
+const urbanist = Urbanist({ subsets: ["latin"] });
 
 export default function Home() {
 	const isAuth = cookies().get("is-auth");
@@ -27,14 +28,13 @@ export default function Home() {
 	return (
 		<div className={styles.page}>
 			<header className={styles.header}>
-				<div className={styles.logo + " " + sen.className}>
-					<Image
-						src="/favicon.ico"
-						width={16}
-						height={16}
-						alt="stacked boxes"
+				<div className={styles.logo + " " + urbanist.className}>
+					<Logo
+						width={17}
+						height={17.8}
+						className={styles.logoIcon}
 					/>
-					<p>Shipment Tracker</p>
+					<p>Package tracr</p>
 				</div>
 				<Link
 					href={process.env.APPLICATION_URL + "/packages"}
@@ -122,7 +122,7 @@ export default function Home() {
 							<Image
 								src={DashboardLight}
 								fill
-								alt="Shipment Tracker Dashboard UI"
+								alt="Package Tracr Dashboard UI"
 								quality={100}
 								style={{
 									borderRadius: "16px 16px 0 0",
@@ -152,9 +152,9 @@ export default function Home() {
 							<div>
 								<h3>Intuitive Interface</h3>
 								<p>
-									Shipment Tracker is designed to be easy to
-									use. The intuitive interface allows you to
-									track your packages with ease.
+									Package Tracr is designed to be easy to use.
+									The intuitive interface allows you to track
+									your packages with ease.
 								</p>
 							</div>
 						</div>
@@ -164,8 +164,8 @@ export default function Home() {
 								<h3>Save Time</h3>
 								<p>
 									No more checking multiple websites to track
-									your packages. Shipment Tracker does it all
-									for you.
+									your packages. Package Tracr does it all for
+									you.
 								</p>
 							</div>
 						</div>
@@ -179,7 +179,7 @@ export default function Home() {
 							today!
 						</h1>
 						<p>
-							Shipment tracker is free to use, and easy to get
+							Package Tracr is free to use, and easy to get
 							started with.
 						</p>
 						<Link
@@ -198,7 +198,7 @@ export default function Home() {
 							<Image
 								src={TrackingLight}
 								fill
-								alt="Shipment Tracker Dashboard UI"
+								alt="Package Tracr Dashboard UI"
 								quality={100}
 								style={{
 									borderRadius: "16px 16px 0 0",
@@ -210,17 +210,93 @@ export default function Home() {
 			</main>
 			<footer className={styles.footer}>
 				<div className={styles.footerContent}>
-					<div className={styles.logo + " " + sen.className}>
-						<Image
-							src="/favicon.ico"
-							width={16}
-							height={16}
-							alt="stacked boxes"
-						/>
-						<p>Shipment Tracker</p>
+					<div className={styles.footerMain}>
+						<div className={styles.footerLogo}>
+							<div
+								className={
+									styles.logo + " " + urbanist.className
+								}
+							>
+								<Logo
+									width={17}
+									height={17.8}
+									className={styles.logoIcon}
+								/>
+								<p>Package tracr</p>
+							</div>
+							<p className={styles.footerDescription}>
+								Simplify the process of tracking shipments by
+								keeping everything in one place.
+							</p>
+						</div>
+						<div className={styles.footerLinks}>
+							<div className={styles.footerColumn}>
+								<h3>Application</h3>
+								<ul>
+									<li>
+										<Link
+											href={
+												process.env.APPLICATION_URL +
+												"/login"
+											}
+										>
+											Login
+										</Link>
+									</li>
+									<li>
+										{" "}
+										<Link
+											href={
+												process.env.APPLICATION_URL +
+												"/register"
+											}
+										>
+											Sign Up
+										</Link>
+									</li>
+									<li>
+										<Link href="/help">Help</Link>
+									</li>
+								</ul>
+							</div>
+							<div className={styles.footerColumn}>
+								<h3>Legal</h3>
+								<ul>
+									<li>
+										<Link href="/privacy">Privacy</Link>
+									</li>
+									<li>
+										<Link href="/terms">Terms</Link>
+									</li>
+								</ul>
+							</div>
+							<div className={styles.footerColumn}>
+								<h3>Other</h3>
+								<ul>
+									<li>
+										<Link
+											href="https://github.com/GuruUpdesh/shipment-tracker"
+											target="_blank"
+										>
+											GitHub
+										</Link>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
-					<Link href="/help">Help</Link>
-					<p className={styles.copyright}>Copyright © 2024</p>
+					<div className={styles.footerBottom}>
+						<p className={styles.copyright}>Copyright © 2024</p>
+						<div className={styles.footerCredit}>
+							<p>A project by</p>
+							<Link
+								href="https://www.guruupdeshsingh.dev"
+								target="_blank"
+							>
+								Guru Updesh Singh
+							</Link>
+						</div>
+					</div>
 				</div>
 			</footer>
 		</div>

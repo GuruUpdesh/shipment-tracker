@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import { Jost } from "next/font/google";
-import { Analytics } from "@vercel/analytics/react"
+import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Shipment Tracker",
+	title: "Package Tracr",
 	description:
-		"Unified Package Tracking Dashboard for UPS, USPS, Fedex, and more.",
+		"Universal Package Tracking Dashboard for UPS, USPS, Fedex, and more. Get shipment info, and order details by tracing it for free.",
 };
 
 const jost = Jost({ subsets: ["latin"] });

@@ -1,0 +1,149 @@
+/* HelpPage.module.css */
+.page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	background-color: var(--clr-bg-100);
+	width: 100vw;
+	min-height: 100svh;
+}
+
+.header {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	max-width: 1300px;
+	padding: 16px;
+}
+
+.backButton {
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	color: var(--clr-dark-400);
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.icon {
+	width: 24px;
+	height: 24px;
+}
+
+.main {
+	display: flex;
+	flex-direction: column;
+	max-width: 800px;
+	width: 100%;
+	gap: 20px;
+	padding: 0 16px 40px;
+}
+
+.section {
+	color: var(--clr-dark-400);
+}
+
+.section h1 {
+	font-size: 2.5rem;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.section h2 {
+	font-size: 1.5rem;
+	font-weight: 500;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+
+.section h3 {
+	font-size: 1.25rem;
+	font-weight: 500;
+	margin-bottom: 10px;
+}
+
+.section p {
+	margin-bottom: 15px;
+	line-height: 1.5;
+}
+
+.section ol,
+.section ul {
+	padding-left: 24px;
+	margin-bottom: 15px;
+}
+
+.section li {
+	margin-bottom: 5px;
+}
+
+.date {
+	color: var(--clr-dark-300);
+	margin-bottom: 20px;
+}
+
+@media (max-width: 640px) {
+	.main {
+		gap: 15px;
+	}
+
+	.section h1 {
+		font-size: 2rem;
+	}
+
+	.section h2 {
+		font-size: 1.3rem;
+	}
+
+	.section h3 {
+		font-size: 1.1rem;
+	}
+}
+
+.section ol,
+.section ul {
+	padding-left: 24px;
+	margin-bottom: 16px;
+}
+
+.section li {
+	margin-bottom: 8px;
+}
+
+.faq {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.accordion {
+	border: 1px solid var(--clr-bg-400);
+	border-radius: 8px;
+	overflow: hidden;
+}
+
+.accordion summary {
+	padding: 16px;
+	cursor: pointer;
+	background-color: var(--clr-bg-400);
+	font-weight: 500;
+}
+
+.accordion p {
+	padding: 16px;
+}
+
+@media (max-width: 640px) {
+	.main {
+		gap: 40px;
+	}
+
+	.section h1 {
+		font-size: 2rem;
+	}
+
+	.section h3 {
+		font-size: 1.1rem;
+	}
+}
