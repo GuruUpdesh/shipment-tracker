@@ -1,5 +1,5 @@
 import { useState, createContext, useEffect, useLayoutEffect, useRef } from "react";
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 import "./Styles/styles.scss";
 import Routes from "./pages/Routes";
 import { ToastContainer } from "react-toastify";
@@ -38,14 +38,14 @@ function App() {
 	const packagesRef = useRef();
 
 	return (
-		<BrowserRouter>
+		<HashRouter>
 			<UserContext.Provider value={{ user, setUser }}>
 				<ThemeContext.Provider value={{ theme, setTheme }}>
 					<ToastContainer position="bottom-center" closeOnClick draggable={false} toastId="test" />
 					<Routes />
 				</ThemeContext.Provider>
 			</UserContext.Provider>
-		</BrowserRouter>
+		</HashRouter>
 	);
 }
 
