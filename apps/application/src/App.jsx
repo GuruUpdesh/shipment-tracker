@@ -41,7 +41,7 @@ function App() {
 	useEffect(() => {
 		getIsAuthCookie();
 		async function getIsAuthCookie() {
-			const response = await fetch(
+			await fetch(
 				`${import.meta.env.VITE_REACT_APP_API_URL}/api/is-auth`,
 				{
 					credentials: "include",
@@ -50,6 +50,7 @@ function App() {
 						"Content-Type": "application/json",
 						Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
 					},
+					
 				}
 			);
 		}
