@@ -138,13 +138,14 @@ router.post("/is-auth", async (req, res) => {
 		const id = req.query.id;
 		const token = jwt.sign({ id }, `${process.env.SECRET}`, {});
 
-		res.status(304)
+		res.status(200)
 			.cookie("is-auth", 1, {
 				expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
 				httpOnly: true,
 				secure: true,
 				sameSite: "strict",
 			})
+			.json({ message: "Authentication successful" });
 	} catch (error) {
 		console.error(error);
 		return res.status(400);

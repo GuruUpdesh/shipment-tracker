@@ -28,9 +28,7 @@ app.use(
 	cors({
 		credentials: true,
 		origin: [
-			`${process.env.FRONT_URL}`,
-			"https://shipmenttracker.guruupdeshsingh.dev",
-			"https://shipmentracker.guruupdeshsingh.dev",
+			`${process.env.FRONT_URL}`
 		],
 	})
 );

@@ -41,18 +41,26 @@ function App() {
 	useEffect(() => {
 		getIsAuthCookie();
 		async function getIsAuthCookie() {
-			await fetch(
-				`${import.meta.env.VITE_REACT_APP_API_URL}/api/is-auth`,
-				{
-					credentials: "include",
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-						Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
-					},
-					
+			try {
+				const response = await fetch(
+					`${import.meta.env.VITE_REACT_APP_API_URL}/api/is-auth`,
+					{
+						credentials: "include",
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: `Bearer ${localStorage.getItem("jwtToken")}`,
+						},
+					}
+				);
+				if (!response.ok) {
+					throw new Error("Network response was not ok");
 				}
-			);
+				const data = await response.json();
+				console.log(data);
+			} catch (error) {
+				console.error("Error:", error);
+			}
 		}
 	}, []);
 
