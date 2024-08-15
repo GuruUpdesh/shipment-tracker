@@ -2,7 +2,7 @@
 	--clr-white-100: white;
 	--clr-dark-400: #2a3137;
 	--clr-dark-500: #24292e;
-	--clr-bg-100: white;
+	--clr-bg-100: 250, 250, 250;
 	--clr-bg-400: #f1f1f1;
 	--clr-primary-400: #20cd70;
 	--clr-primary-500: #23ad63;
@@ -18,7 +18,7 @@
 		--clr-white-100: white;
 		--clr-dark-400: white;
 		--clr-dark-500: #f1f1f1;
-		--clr-bg-100: #181a1b;
+		--clr-bg-100: 24, 26, 27;
 		--clr-bg-400: #202324;
 		--clr-bg-primary: #383730;
 		--clr-shadow: rgba(0, 114, 53, 0.25);

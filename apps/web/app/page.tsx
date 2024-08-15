@@ -188,7 +188,8 @@ export default function Home() {
 							href={process.env.APPLICATION_URL + "/register"}
 							className={styles.btn}
 						>
-							Sign Up for Free
+							Sign up for free
+							<ArrowRight className={styles.svg} />
 						</Link>
 					</div>
 					<div className={styles.actionImage}>

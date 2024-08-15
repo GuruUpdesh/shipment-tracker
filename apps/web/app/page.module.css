@@ -2,7 +2,7 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	background-color: var(--clr-bg-100);
+	background-color: rgba(var(--clr-bg-100), 1);
 	width: 100vw;
 	min-height: 100svh;
 	font-synthesis: none;
@@ -15,7 +15,8 @@
 	display: flex;
 	align-items: center;
 	width: 100%;
-	background-color: var(--clr-bg-100);
+	background-color: rgba(var(--clr-bg-100), 0.75);
+	backdrop-filter: blur(20px);
 	z-index: 30;
 	border-bottom: 1px solid var(--clr-bg-400);
 }
@@ -193,7 +194,11 @@
 	width: 200vw;
 	height: 10%;
 	min-height: 100px;
-	background: linear-gradient(0deg, var(--clr-bg-100) 0%, transparent 100%);
+	background: linear-gradient(
+		0deg,
+		rgba(var(--clr-bg-100), 1) 0%,
+		transparent 100%
+	);
 	left: -25%;
 	bottom: 0;
 }
@@ -203,7 +208,7 @@
 	position: absolute;
 	width: 200vw;
 	height: 100%;
-	background-color: var(--clr-bg-100);
+	background-color: rgba(var(--clr-bg-100), 1);
 	bottom: -100%;
 	left: -25%;
 	z-index: -1;
@@ -306,7 +311,7 @@
 	max-width: 600px;
 	background: linear-gradient(
 		to right,
-		var(--clr-bg-100) 50%,
+		rgba(var(--clr-bg-100), 1) 50%,
 		transparent 100%
 	);
 }
@@ -341,7 +346,7 @@
 }
 
 .footer {
-	background-color: var(--clr-bg-100);
+	background-color: rgba(var(--clr-bg-100), 1);
 	width: 100%;
 	display: flex;
 	justify-content: center;
@@ -491,7 +496,7 @@
 	border-radius: var(--spacing);
 	font-size: 0.75rem;
 	background-color: var(--clr-dark-400);
-	color: var(--clr-bg-100);
+	color: rgba(var(--clr-bg-100), 1);
 	font-weight: 600;
 	padding: 0.5rem 1rem;
 	cursor: pointer;
@@ -525,6 +530,12 @@
 
 .logoIcon {
 	fill: var(--clr-dark-400);
+}
+
+@media (prefers-color-scheme: dark) {
+	.logoIcon {
+		fill: var(--clr-primary-400);
+	}
 }
 
 .animatedBorder {
