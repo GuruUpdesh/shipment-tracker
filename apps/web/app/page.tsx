@@ -10,12 +10,12 @@ import DashboardMobileDark from "../public/dashboard-mobile-dark.webp";
 import TrackingLight from "../public/tracking.webp";
 import TrackingDark from "../public/tracking-dark.webp";
 import Boxes from "../public/boxes.webp";
-import { headers } from "next/headers";
+import { cookies } from "next/headers";;
 
 const sen = Sen({ subsets: ["latin"] });
 
 export default function Home() {
-	const headersList = headers().get("is-auth");
+	const headersList = cookies().get("is-auth");
 	console.log(headersList);
 	return (
 		<div className={styles.page}>
