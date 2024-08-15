@@ -134,23 +134,42 @@ router.post("/login", async (req, res) => {
 // };
 
 router.post("/is-auth", async (req, res) => {
+	let authenticate = 0;
 	try {
-		const id = req.query.id;
-		const token = jwt.sign({ id }, `${process.env.SECRET}`, {});
+		const jwtTokenHeader = req.headers.authorization;
+		const { id } = req.body;
+		if (!jwtTokenHeader || id === undefined) {
+			throw error("missing jwt header or id");
+		}
+		const token = jwtTokenHeader.split(" ")[1];
+		const decrypt = await jwt.verify(token, `${process.env.SECRET}`);
 
-		res.status(200)
-			.cookie("is-auth", 1, {
-				expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
-				httpOnly: false,
-				secure: false,
-				sameSite: "strict",
-				domain: ".packagetracr.com",
-			})
-			.json({ success: true, message: "Authentication successful" });
+		if (new Date().getTime() >= decrypt.exp) {
+			throw error("token is expired");
+		}
+
+		if (id !== decrypt.id) {
+			throw error("ids don't match");
+		}
+
+		authenticate = 1;
 	} catch (error) {
 		console.error(error);
-		return res.status(400);
 	}
+
+	const domain = process.env.FRONT_URL.includes("https")
+		? ".packagetracr.com"
+		: undefined;
+	return res
+		.status(200)
+		.cookie("is-auth", authenticate, {
+			expires: new Date(new Date().getTime() + 5 * 1000 * 3600),
+			httpOnly: false,
+			secure: false,
+			sameSite: "strict",
+			domain: domain,
+		})
+		.json({ success: true, message: "Authentication successful" });
 });
 
 router.post("/cookie", async (req, res) => {

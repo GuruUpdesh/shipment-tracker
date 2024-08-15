@@ -10,13 +10,20 @@ import DashboardMobileDark from "../public/dashboard-mobile-dark.webp";
 import TrackingLight from "../public/tracking.webp";
 import TrackingDark from "../public/tracking-dark.webp";
 import Boxes from "../public/boxes.webp";
-import { cookies } from "next/headers";;
+import { cookies } from "next/headers";
 
 const sen = Sen({ subsets: ["latin"] });
 
 export default function Home() {
-	const headersList = cookies().get("is-auth");
-	console.log(headersList);
+	const isAuth = cookies().get("is-auth");
+	console.log(isAuth);
+	let authenticated = false;
+	if (isAuth) {
+		const value = JSON.parse(isAuth.value) as number | undefined;
+		authenticated = value ? true : false;
+	}
+	console.log(authenticated);
+
 	return (
 		<div className={styles.page}>
 			<header className={styles.header}>
@@ -33,7 +40,7 @@ export default function Home() {
 					href={process.env.APPLICATION_URL + "/packages"}
 					className={styles.btn2}
 				>
-					Login
+					{authenticated ? "Dashboard" : "Login"}
 				</Link>
 			</header>
 			<main className={styles.main}>
