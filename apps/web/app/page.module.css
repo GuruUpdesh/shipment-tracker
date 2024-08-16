@@ -207,9 +207,9 @@
 	content: "";
 	position: absolute;
 	width: 200vw;
-	height: 100%;
+	height: 50%;
 	background-color: rgba(var(--clr-bg-100), 1);
-	bottom: -100%;
+	bottom: -50%;
 	left: -25%;
 	z-index: -1;
 }
@@ -550,6 +550,12 @@
 	inherits: false;
 }
 
+@property --rotate2 {
+	syntax: "<angle>";
+	initial-value: 132deg;
+	inherits: false;
+}
+
 .animatedBorder::before {
 	content: "";
 	width: calc(100% + 2px);
@@ -575,11 +581,11 @@
 	left: -1px;
 	position: absolute;
 	background: conic-gradient(
-		from var(--rotate) at 50% 100%,
+		from var(--rotate2) at 50% 100%,
 		transparent 300deg,
 		var(--clr-primary-400) 360deg
 	);
-	animation: rotation 5s linear infinite;
+	animation: rotation2 5s linear infinite;
 	border-radius: inherit;
 	z-index: -1;
 	filter: blur(10px);
@@ -591,6 +597,15 @@
 	}
 	to {
 		--rotate: 1turn;
+	}
+}
+
+@keyframes rotation2 {
+	from {
+		--rotate2: 0turn;
+	}
+	to {
+		--rotate2: 1turn;
 	}
 }
 
