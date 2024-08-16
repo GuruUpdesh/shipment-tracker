@@ -33,7 +33,7 @@ body {
 
 body {
 	color: var(--clr-dark-400);
-	background: var(--clr-bg-100);
+	background-color: rgba(var(--clr-bg-100), 1);
 }
 
 * {
