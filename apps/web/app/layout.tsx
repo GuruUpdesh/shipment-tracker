@@ -4,9 +4,9 @@ import { Analytics } from "@vercel/analytics/react";
 import "./globals.css";
 
 export const metadata: Metadata = {
-	title: "Package Tracr",
+	title: "Track Your Package: UPS, USPS, FedEx, & DHL",
 	description:
-		"Universal Package Tracking Dashboard for UPS, USPS, Fedex, and more. Get shipment info, and order details by tracing it for free.",
+		"Where is my package? Package Tracking Website for UPS, USPS, Fedex, and DHL. Get the latest shipment information, and order details by inputting a tracking number for free.",
 };
 
 const jost = Jost({ subsets: ["latin"] });
